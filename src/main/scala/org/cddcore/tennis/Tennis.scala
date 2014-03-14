@@ -38,7 +38,7 @@ object Tennis {
     useCase("The running score of each game is described in a manner peculiar to tennis: scores from zero to three points are described as 'love', 'fifteen', 'thirty', and 'forty' respectively.").
     scenario(0, 0).expected("love - love").because((l: Int, r: Int) => l < 4 && r < 4).code((l: Int, r: Int) => lookup(l).name + " - " + lookup(r).name).
     scenario(2, 3).expected("Thirty - Forty").
-    scenario(2, 1).expected("Thirty - Fifteen").
+    scenario(2, 1).expected("Thirty - Fifteeny").
 
     useCase("If at least three points have been scored by each player, and the scores are equal, the score is 'deuce'.").priority(1).
     scenario(4, 4).expected("Deuce").because((l: Int, r: Int) => l >= 3 && r >= 3 && l == r).
