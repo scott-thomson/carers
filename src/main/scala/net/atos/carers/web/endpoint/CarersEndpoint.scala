@@ -37,8 +37,16 @@ object CarersEndpoint {
     response.flushBuffer();
   }
 
+  def defaultPort = {
+    val portString = System.getenv("PORT")
+    println("PortString[" + portString + "]")
+    val port = portString match { case null => 8090; case _ => portString.toInt }
+    println("Port[" + port + "]")
+    port
+  }
+
   def main(args: Array[String]) {
-    val s = new Server(8080);
+    val s = new Server(defaultPort);
     s.setHandler(carersHandler);
     s.start
     s.join
