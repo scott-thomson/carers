@@ -9,5 +9,5 @@ import org.junit.runner.RunWith
  */
 @RunWith(classOf[CddContinuousIntegrationRunner])
 class CarersContinuousIntegration extends CddContinuousIntegrationTest {
-  val engines = List(Carers.engine)
+  val engines = List()
 }
