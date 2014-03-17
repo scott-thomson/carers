@@ -13,8 +13,8 @@ case class KeyAndParams(key: String, params: Any*)
 case class World(dateProcessingDate: DateTime) extends LoggerDisplay {
   def loggerDisplay(dp: LoggerDisplayProcessor): String =
     "World(" + dateProcessingDate + ")"
-}
-
+} 
+ 
 object World {
   def apply(processingDate: String): World = apply(Xmls.asDate(processingDate))
 }
@@ -66,7 +66,7 @@ object Carers {
 
   val engine = Engine[CarersXmlSituation, KeyAndParams]().title("Validate Claim Rules").
     code((c: CarersXmlSituation) => KeyAndParams("Default Response")).
-    useCase("Claimants under the age of 16 are not entitled to claim Carer's Allowance", "Carer’s Allowance is intended for people over the age of 16 who are unable to undertake or continue regular full time employment because they are needed at home to look after a disabled person. Carer’s Allowance is not available to customers under the age of 16.").
+    useCase("Claimants under the age of 16 are not entitled to claim Carer's Allowance", "Carerï¿½s Allowance is intended for people over the age of 16 who are unable to undertake or continue regular full time employment because they are needed at home to look after a disabled person. Carerï¿½s Allowance is not available to customers under the age of 16.").
     scenario(("2010-7-25", "CL100104A"), "Claimant CL100104 is a child under 16").expected(KeyAndParams("510", "16")).
     because((c: CarersXmlSituation) => !c.overSixteen).
     build
