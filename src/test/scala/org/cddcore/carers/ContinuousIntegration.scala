@@ -1,4 +1,4 @@
-package org.cddcore.tennis
+package org.cddcore.carers
 
 import org.cddcore.engine.tests._
 import org.junit.runner.RunWith
@@ -9,5 +9,5 @@ import org.junit.runner.RunWith
  */
 @RunWith(classOf[CddContinuousIntegrationRunner])
 class CarersContinuousIntegration extends CddContinuousIntegrationTest {
-  def engines = List(Carers.scorer)
+  val engines = List(Carers.scorer)
 }
