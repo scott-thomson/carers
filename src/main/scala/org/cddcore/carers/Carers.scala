@@ -78,10 +78,30 @@ object Carers {
     expected(KeyAndParams("530", "Not resident in UK")).
     because((c: CarersXmlSituation) => !c.claimAlwaysUK()).
 
+    useCase("Claimant Residence", "Claimants must resident and present in the UK").
+    scenario(("2010-7-25", "CL100107A"), "Claimant CL100107 is not UK resident").
+    expected(KeyAndParams("530", "Not resident in UK")).
+    because((c: CarersXmlSituation) => !c.claimAlwaysUK()).
+
+    useCase("Claimant Current Residence", "Claimants must be currently resident in the UK with no restrictions").
+    scenario(("2010-7-25", "CL100108A"), "Claimant CL100108 is not normally UK resident").
+    expected(KeyAndParams("534", "Not resident in UK")).
+    because((c: CarersXmlSituation) => !c.claimCurrentResidentUK()).
+
+    useCase("Claimant in Full Time Education", "Claimants must not be in full time education (over 21 hours/week)").
+    scenario(("2010-7-25", "CL100109A"), "Claimant CL100109 is in full time education").
+    expected(KeyAndParams("513", "Claimant in full time education")).
+    because((c: CarersXmlSituation) => c.claimEducationFullTime()).
+
+    //    useCase("Claimant ...", "Claimants must ...").
+    //    scenario(("2010-7-25", "CL100XXXA"), "Claimant CL100xxx is ").
+    //    expected(KeyAndParams("534", "Not ...")).
+    //    because((c: CarersXmlSituation) => !c.claimXXX()).
+
     build
 
   def main(args: Array[String]) {
     val formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
-    println(engine(("2010-7-25", "CL100104A")))
+    println(engine(("2010-7-25", "CL100108A")))
   }
 }
