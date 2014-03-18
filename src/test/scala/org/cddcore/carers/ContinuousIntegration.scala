@@ -1,5 +1,6 @@
 package org.cddcore.carers
 
+import org.cddcore.engine._
 import org.cddcore.engine.tests._
 import org.junit.runner.RunWith
 
@@ -9,5 +10,5 @@ import org.junit.runner.RunWith
  */
 @RunWith(classOf[CddContinuousIntegrationRunner])
 class CarersContinuousIntegration extends CddContinuousIntegrationTest {
-  val engines = List()
+  val engines = List(Carers.engine)
 }
