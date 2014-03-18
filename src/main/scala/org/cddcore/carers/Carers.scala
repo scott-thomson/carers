@@ -8,13 +8,13 @@ import org.joda.time.format.DateTimeFormat
 import scala.xml._
 import org.joda.time.Years
 
-case class KeyAndParams(key: String, params: Any*)
+case class KeyAndParams(key: String, comment: String, params: Any*)
 
 case class World(dateProcessingDate: DateTime) extends LoggerDisplay {
   def loggerDisplay(dp: LoggerDisplayProcessor): String =
     "World(" + dateProcessingDate + ")"
-} 
- 
+}
+
 object World {
   def apply(processingDate: String): World = apply(Xmls.asDate(processingDate))
 }
@@ -40,11 +40,11 @@ case class CarersXmlSituation(w: World, validateClaimXml: Elem) extends XmlSitua
 
   import Xml._
   lazy val claimBirthDate = xml(validateClaimXml) \ "ClaimantData" \ "ClaimantBirthDate" \ "PersonBirthDate" \ date("yyyy-MM-dd")
-  lazy val overSixteen = Carers.overSixteen(claimBirthDate(), w.dateProcessingDate)
+  lazy val claimantUnderSixteen = Carers.checkUnderSixteen(claimBirthDate(), w.dateProcessingDate)
   lazy val claim35Hours = xml(validateClaimXml) \ "ClaimData" \ "Claim35Hours" \ yesNo(default = false)
-  lazy val ClaimCurrentResidentUK = xml(validateClaimXml) \ "ClaimData" \ "ClaimCurrentResidentUK" \ yesNo(default = false)
-  lazy val ClaimEducationFullTime = xml(validateClaimXml) \ "ClaimData" \ "ClaimEducationFullTime" \ yesNo(default = false)
-  lazy val ClaimAlwaysUK = xml(validateClaimXml) \ "ClaimData" \ "ClaimAlwaysUK" \ yesNo(default = false)
+  lazy val claimCurrentResidentUK = xml(validateClaimXml) \ "ClaimData" \ "ClaimCurrentResidentUK" \ yesNo(default = false)
+  lazy val claimEducationFullTime = xml(validateClaimXml) \ "ClaimData" \ "ClaimEducationFullTime" \ yesNo(default = false)
+  lazy val claimAlwaysUK = xml(validateClaimXml) \ "ClaimData" \ "ClaimAlwaysUK" \ yesNo(default = false)
 
 }
 
@@ -53,26 +53,35 @@ object Carers {
   implicit def stringStringToCarers(x: Tuple2[String, String]) = CarersXmlSituation(World(x._1), Xmls.validateClaim(x._2))
   implicit def stringToDate(x: String) = Xmls.asDate(x)
 
-  val overSixteen = Engine[DateTime, DateTime, Boolean]().title("Over sixteen").
+  val checkUnderSixteen = Engine[DateTime, DateTime, Boolean]().title("Over sixteen").
     useCase("Oversixteen").
-    scenario("1996-12-10", "2012-12-9").expected(false).
-    code((from: DateTime, to: DateTime) => {
-      val years = Years.yearsBetween(from, to).getYears;
-      years >= 16
-    }).
-    scenario("1996-12-10", "2012-12-10").expected(true).
-    scenario("1996-12-10", "2012-12-11").expected(true).
+    scenario("1996-12-10", "2012-12-9").expected(true).
+    code((from: DateTime, to: DateTime) => ((Years.yearsBetween(from, to).getYears) < 16)).
+    scenario("1996-12-10", "2012-12-10").expected(false).
+    scenario("1996-12-10", "2012-12-11").expected(false).
     build
 
   val engine = Engine[CarersXmlSituation, KeyAndParams]().title("Validate Claim Rules").
-    code((c: CarersXmlSituation) => KeyAndParams("Default Response")).
-    useCase("Claimants under the age of 16 are not entitled to claim Carer's Allowance", "Carer�s Allowance is intended for people over the age of 16 who are unable to undertake or continue regular full time employment because they are needed at home to look after a disabled person. Carer�s Allowance is not available to customers under the age of 16.").
-    scenario(("2010-7-25", "CL100104A"), "Claimant CL100104 is a child under 16").expected(KeyAndParams("510", "16")).
-    because((c: CarersXmlSituation) => !c.overSixteen).
+    code((c: CarersXmlSituation) => KeyAndParams("000", "Default Response")).
+    useCase("Claimants under the age of 16 are not entitled to claim Carer's Allowance", "Carer's Allowance is intended for people over the age of 16 who are unable to undertake or continue regular full time employment because they are needed at home to look after a disabled person. Carer's Allowance is not available to customers under the age of 16.").
+    scenario(("2010-7-25", "CL100104A"), "Claimant CL100104 is a child under 16").
+    expected(KeyAndParams("510", "You must be over 16")).
+    because((c: CarersXmlSituation) => c.claimantUnderSixteen).
+
+    useCase("Caring Hours", "Claimants must be caring for over 35 hours per week").
+    scenario(("2010-7-25", "CL100105A"), "Claimant CL100105 is not caring for 35 hours").
+    expected(KeyAndParams("501", "Not caring for 35 hours")).
+    because((c: CarersXmlSituation) => !c.claim35Hours()).
+
+    useCase("Claimant Residence", "Claimants must resident and present in the UK").
+    scenario(("2010-7-25", "CL100107A"), "Claimant CL100107 is not UK resident").
+    expected(KeyAndParams("530", "Not resident in UK")).
+    because((c: CarersXmlSituation) => !c.claimAlwaysUK()).
+
     build
 
   def main(args: Array[String]) {
     val formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
-    //    println(engine(("2010-7-25", "CL100104A")))
+    println(engine(("2010-7-25", "CL100104A")))
   }
 }

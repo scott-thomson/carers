@@ -1,6 +1,5 @@
 package org.cddcore.carers
 
-import org.cddcore.engine._
 import org.cddcore.engine.tests._
 import org.junit.runner.RunWith
 
