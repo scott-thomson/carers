@@ -5,10 +5,11 @@ import org.cddcore.engine.tests.CddJunitRunner
 import org.cddcore.engine.Engine
 import org.joda.time.format.DateTimeFormat
 import org.cddcore.engine.UseCase
+import org.cddcore.engine.Xml
 
 @RunWith(classOf[CddJunitRunner])
 object Expenses {
-  implicit def stringStringToCarers(x: Tuple2[String, String]) = CarersXmlSituation(World(x._1), Xmls.validateClaim(x._2))
+  implicit def stringStringToCarers(x: Tuple2[String, String]) = CarersXmlSituation(World(x._1), Claim.getXml(x._2))
 
   val expenses = Engine.folding[CarersXmlSituation, Double, Double]((acc, v) => acc + v, 0).
     title("Expenses").

@@ -71,6 +71,9 @@ case class CarersXmlSituation(w: World, claimXml: Elem) extends XmlSituation {
   lazy val hasOccPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesOccPension" \ yesNo(default = false)
   lazy val psnPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesPsnPensionAmount" \ double
   lazy val hasPsnPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesPsnPension" \ yesNo(default = false)
+  lazy val hasEmploymentData = xml(claimXml) \ "newEmploymentData" \ boolean
+  lazy val employmentGrossSalary = xml(claimXml) \ "EmploymentData" \ "EmploymentGrossSalary" \ double
+  lazy val employmentPayPeriodicity = xml(claimXml) \ "EmploymentData" \ "EmploymentPayPeriodicity" \ string
 
   lazy val DependantNino = xml(claimXml) \ "DependantData" \ "DependantNINO" \ string
   lazy val dependantCisXml: Elem = DependantNino.get() match {
