@@ -10,55 +10,83 @@ import org.joda.time.Years
 
 case class KeyAndParams(key: String, comment: String, params: Any*)
 
-case class World(dateProcessingDate: DateTime) extends LoggerDisplay {
+case class World(dateProcessingDate: DateTime, ninoToCis: NinoToCis = new TestNinoToCis) extends LoggerDisplay {
   def loggerDisplay(dp: LoggerDisplayProcessor): String =
     "World(" + dateProcessingDate + ")"
 }
 
 object World {
-  def apply(processingDate: String): World = apply(Xmls.asDate(processingDate))
+  def apply(processingDate: String): World = apply(Claim.asDate(processingDate))
 }
 
-object Xmls {
+trait NinoToCis {
+  def apply(nino: String): Elem
+}
 
-  def validateClaim(id: String) = {
+class TestNinoToCis extends NinoToCis {
+  def apply(nino: String) =
     try {
-      val full = s"ValidateClaim/${id}.xml"
+      val full = s"Cis/${nino}.txt"
+      val url = getClass.getClassLoader.getResource(full)
+      if (url == null)
+        <NoCis/>
+      else {
+        val xmlString = scala.io.Source.fromURL(url).mkString
+        val xml = XML.loadString(xmlString)
+        xml
+      }
+    } catch {
+      case e: Exception => throw new RuntimeException("Cannot load " + nino, e)
+    }
+}
+
+object Claim {
+  def getXml(id: String) = {
+    val full = s"ClaimXml/${id}.xml"
+    try {
       val url = getClass.getClassLoader.getResource(full)
       val xmlString = scala.io.Source.fromURL(url).mkString
       val xml = XML.loadString(xmlString)
       xml
     } catch {
-      case e: Exception => throw new RuntimeException("Cannot load " + id, e)
+      case e: Exception => throw new RuntimeException("Cannot load " + id + " fullid is " + full, e)
     }
   }
   private val formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
   def asDate(s: String): DateTime = formatter.parseDateTime(s);
 }
 
-case class CarersXmlSituation(w: World, validateClaimXml: Elem) extends XmlSituation {
+case class CarersXmlSituation(w: World, claimXml: Elem) extends XmlSituation {
 
   import Xml._
-  lazy val claimBirthDate = xml(validateClaimXml) \ "ClaimantData" \ "ClaimantBirthDate" \ "PersonBirthDate" \ date("yyyy-MM-dd")
+  lazy val claimBirthDate = xml(claimXml) \ "ClaimantData" \ "ClaimantBirthDate" \ "PersonBirthDate" \ date("yyyy-MM-dd")
   lazy val claimantUnderSixteen = Carers.checkUnderSixteen(claimBirthDate(), w.dateProcessingDate)
-  lazy val claim35Hours = xml(validateClaimXml) \ "ClaimData" \ "Claim35Hours" \ yesNo(default = false)
-  lazy val claimCurrentResidentUK = xml(validateClaimXml) \ "ClaimData" \ "ClaimCurrentResidentUK" \ yesNo(default = false)
-  lazy val claimEducationFullTime = xml(validateClaimXml) \ "ClaimData" \ "ClaimEducationFullTime" \ yesNo(default = false)
-  lazy val claimAlwaysUK = xml(validateClaimXml) \ "ClaimData" \ "ClaimAlwaysUK" \ yesNo(default = false)
-  lazy val childCareExpenses = xml(validateClaimXml) \ "ExpensesData" \ "ExpensesChildAmount" \ double
-  lazy val hasChildCareExpenses = xml(validateClaimXml) \ "ExpensesData" \ "ExpensesChild" \ yesNo(default = false)
-  lazy val occPensionExpenses = xml(validateClaimXml) \ "ExpensesData" \ "ExpensesOccPensionAmount" \ double
-  lazy val hasOccPensionExpenses = xml(validateClaimXml) \ "ExpensesData" \ "ExpensesOccPension" \ yesNo(default = false)
-  lazy val psnPensionExpenses = xml(validateClaimXml) \ "ExpensesData" \ "ExpensesPsnPensionAmount" \ double
-  lazy val hasPsnPensionExpenses = xml(validateClaimXml) \ "ExpensesData" \ "ExpensesPsnPension" \ yesNo(default = false)
+  lazy val claim35Hours = xml(claimXml) \ "ClaimData" \ "Claim35Hours" \ yesNo(default = false)
+  lazy val claimCurrentResidentUK = xml(claimXml) \ "ClaimData" \ "ClaimCurrentResidentUK" \ yesNo(default = false)
+  lazy val claimEducationFullTime = xml(claimXml) \ "ClaimData" \ "ClaimEducationFullTime" \ yesNo(default = false)
+  lazy val claimAlwaysUK = xml(claimXml) \ "ClaimData" \ "ClaimAlwaysUK" \ yesNo(default = false)
+  lazy val childCareExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesChildAmount" \ double
+  lazy val hasChildCareExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesChild" \ yesNo(default = false)
+  lazy val occPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesOccPensionAmount" \ double
+  lazy val hasOccPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesOccPension" \ yesNo(default = false)
+  lazy val psnPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesPsnPensionAmount" \ double
+  lazy val hasPsnPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesPsnPension" \ yesNo(default = false)
+
+  lazy val DependantNino = xml(claimXml) \ "DependantData" \ "DependantNINO" \ string
+  lazy val dependantCisXml: Elem = DependantNino.get() match {
+    case Some(s) => w.ninoToCis(s);
+    case None => <NoDependantXml/>
+  }
+  lazy val dependantLevelOfQualifyingCare = xml(dependantCisXml) \\ "AwardComponent" \ string
+  lazy val dependantHasSufficientLevelOfQualifyingCare = dependantLevelOfQualifyingCare() == "DLA Middle Rate Care"
 }
 
 @RunWith(classOf[CddJunitRunner])
 object Carers {
-  implicit def stringStringToCarers(x: Tuple2[String, String]) = CarersXmlSituation(World(x._1), Xmls.validateClaim(x._2))
-  implicit def stringToDate(x: String) = Xmls.asDate(x)
+  implicit def stringStringToCarers(x: Tuple2[String, String]) = CarersXmlSituation(World(x._1), Claim.getXml(x._2))
+  implicit def stringToDate(x: String) = Claim.asDate(x)
 
-  val checkUnderSixteen = Engine[DateTime, DateTime, Boolean]().title("Over sixteen").
+  val checkUnderSixteen = Engine[DateTime, DateTime, Boolean]().title("Check for being under-age (less than age sixteen)").
     useCase("Oversixteen").
     scenario("1996-12-10", "2012-12-9").expected(true).
     code((from: DateTime, to: DateTime) => ((Years.yearsBetween(from, to).getYears) < 16)).

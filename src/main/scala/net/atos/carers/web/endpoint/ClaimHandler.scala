@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 import org.eclipse.jetty.server.handler.AbstractHandler
 import scala.xml.Elem
+import org.cddcore.carers.Carers
+import org.cddcore.carers.Claim
+import org.cddcore.carers.World
+import org.cddcore.carers.CarersXmlSituation
+import scala.xml.XML
 
 class ClaimHandler extends AbstractHandler {
   private val MethodPost: String = "POST";
@@ -27,10 +32,17 @@ class ClaimHandler extends AbstractHandler {
   def handleGet() = getCarerView("", getDefaultDate);
 
   def handlePost(custXml: String, claimDate: String) = {
-    println("In handle post")
-    //CDD Business logic will return a return message - hard coded for now   
-    val returnMessage = "Claim Processed Successfully"
-    getCarerView(custXml, returnMessage, claimDate)
+    println("In handle post 1 ")
+    val dateTime = Claim.asDate(claimDate)
+    val world = World(dateTime)
+    val xml = try { XML.loadString(custXml) } catch { case e: Throwable => e.printStackTrace(); throw e }
+    val situation = CarersXmlSituation(world, xml)
+    val result = Carers.engine(situation)
+    println("In handle post 2: " + result)
+    //    //CDD Business logic will return a return message - hard coded for now   
+    //    val returnMessage = result.toString
+
+    getCarerView(custXml, result.toString, claimDate)
   }
 
   def getCarerView(xmlString: String, claimDate: String): Elem =
@@ -107,7 +119,7 @@ class ClaimHandler extends AbstractHandler {
         <title>Validate Claim</title>
       </head>
       <body>
-        <form action="\" method="POST">
+        <form action="/" method="POST">
           <h1>Validate Claim</h1>
           <table>
             <tr>
