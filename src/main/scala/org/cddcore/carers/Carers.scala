@@ -45,7 +45,12 @@ case class CarersXmlSituation(w: World, validateClaimXml: Elem) extends XmlSitua
   lazy val claimCurrentResidentUK = xml(validateClaimXml) \ "ClaimData" \ "ClaimCurrentResidentUK" \ yesNo(default = false)
   lazy val claimEducationFullTime = xml(validateClaimXml) \ "ClaimData" \ "ClaimEducationFullTime" \ yesNo(default = false)
   lazy val claimAlwaysUK = xml(validateClaimXml) \ "ClaimData" \ "ClaimAlwaysUK" \ yesNo(default = false)
-
+  lazy val childCareExpenses = xml(validateClaimXml) \ "ExpensesData" \ "ExpensesChildAmount" \ double
+  lazy val hasChildCareExpenses = xml(validateClaimXml) \ "ExpensesData" \ "ExpensesChild" \ yesNo(default = false)
+  lazy val occPensionExpenses = xml(validateClaimXml) \ "ExpensesData" \ "ExpensesOccPensionAmount" \ double
+  lazy val hasOccPensionExpenses = xml(validateClaimXml) \ "ExpensesData" \ "ExpensesOccPension" \ yesNo(default = false)
+  lazy val psnPensionExpenses = xml(validateClaimXml) \ "ExpensesData" \ "ExpensesPsnPensionAmount" \ double
+  lazy val hasPsnPensionExpenses = xml(validateClaimXml) \ "ExpensesData" \ "ExpensesPsnPension" \ yesNo(default = false)
 }
 
 @RunWith(classOf[CddJunitRunner])

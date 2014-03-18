@@ -39,7 +39,7 @@ class ClaimHandler extends AbstractHandler {
         <title>Validate Claim</title>
       </head>
       <body>
-        <form action="\" method="POST">
+        <form action="/" method="POST">
           <h1>Validate Claim</h1>
           <table>
             <tr>
@@ -72,7 +72,7 @@ class ClaimHandler extends AbstractHandler {
         <title>Validate Claim</title>
       </head>
       <body>
-        <form action="\" method="POST">
+        <form action="/" method="POST">
           <h1>Validate Claim</h1>
           <table>
             <tr>
