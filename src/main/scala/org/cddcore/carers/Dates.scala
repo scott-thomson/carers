@@ -6,6 +6,8 @@ import org.joda.time.format.DateTimeFormat
 import org.joda.time.DateTime
 import org.cddcore.engine.Engine
 import org.cddcore.engine.tests.CddJunitRunner
+import org.cddcore.engine.UseCase
+import org.joda.time.Days
 
 object DateRange {
   val formatter = DateTimeFormat.forPattern("yyyy-MM-dd(E)");
@@ -25,6 +27,7 @@ case class DateRange(val from: DateTime, val to: DateTime, val reason: String) {
   import DateRange._
   val valid = to.isAfter(from) || to == from
   val dayOfFrom = from.dayOfWeek();
+  val days = Days.daysBetween(from, to).getDays() + 1
 
   def fromToEndOfFirstWeek(dayToSplit: Int) = DateRange(datesMax(from, firstDayOfWeek(from, dayToSplit)), datesMin(to, lastDayOfWeek(from, dayToSplit)), reason)
   def middleSection(dayToSplit: Int) = DateRange(firstDayOfWeek(from, dayToSplit).plusDays(7), firstDayOfWeek(to, dayToSplit).minusDays(1), reason)
@@ -53,23 +56,43 @@ object DateRanges {
   implicit def listStringTuplesToDateRangesToBeProcessedTogether(stringTuples: List[Tuple3[String, String, String]]) =
     DateRangesToBeProcessedTogether(stringTuples.collect { case (from, to, reason) => DateRange(from, to, reason) })
 
-  val firstDayOfWeek = Engine[DateTime, Int, DateTime]().title("First Day of Week").
-    description("Given a date, and the day of the week that is day one, what is the date at the start of the week the date is in?").
-    useCase("Day to split is less or equal than day of week").
-    scenario("2010-1-4", 1, "monday split monday").expected("2010-1-4").
-    code((d: DateTime, dayToSplit: Int) => d.withDayOfWeek(dayToSplit)).
-    scenario("2010-1-5", 1, "tuesday split monday").expected("2010-1-4").
-    scenario("2010-1-10", 1, "sunday split monday").expected("2010-1-4").
-    scenario("2010-1-3", 7, "sunday split sunday").expected("2010-1-3").
+  //  val firstDayOfWeek = Engine[DateTime, Int, DateTime]().title("First Day of Week").
+  //    description("Given a date, and the day of the week that is day one, what is the date at the start of the week the date is in?").
+  //    useCase("Day to split is less or equal than day of week").
+  //    scenario("2010-1-4", 1, "monday split monday").expected("2010-1-4").
+  //    code((d: DateTime, dayToSplit: Int) => d.withDayOfWeek(dayToSplit)).
+  //    scenario("2010-1-5", 1, "tuesday split monday").expected("2010-1-4").
+  //    scenario("2010-1-10", 1, "sunday split monday").expected("2010-1-4").
+  //    scenario("2010-1-3", 7, "sunday split sunday").expected("2010-1-3").
+  //
+  //    useCase("Day to split is bigger  than day of week").
+  //    scenario("2010-1-5", 7, "tuesday split sunday").expected("2010-1-3").
+  //    code((d: DateTime, dayToSplit: Int) => d.minusDays(7).withDayOfWeek(dayToSplit)).
+  //    because((d: DateTime, dayToSplit: Int) => dayToSplit > d.getDayOfWeek()).
+  //
+  //    scenario("2010-1-9", 7, "saturday split sunday").expected("2010-1-3").
+  //    scenario("2010-1-4", 7, "monday split sunday").expected("2010-1-3").
+  //    scenario("2010-1-10", 3, "monday split wednesday").expected("2010-1-6").
+  //
+  //    build
 
-    useCase("Day to split is bigger  than day of week").
-    scenario("2010-1-5", 7, "tuesday split sunday").expected("2010-1-3").
-    code((d: DateTime, dayToSplit: Int) => d.minusDays(7).withDayOfWeek(dayToSplit)).
-    because((d: DateTime, dayToSplit: Int) => dayToSplit > d.getDayOfWeek()).
+  val firstDayOfWeek = Engine[DateTime, Int, DateTime]().title("First Day Of Week Engine").
+    description("Given a date and a first day of week index, return the date of the first day of the week containing the supplied date").
+    useCase("Date supplied is greater than or equal to the day of week to start on").
+    scenario("2010-1-4", 1, "Given a monday and start on monday").expected("2010-1-4").
+    code((d: DateTime, dayToStartOn: Int) => d.withDayOfWeek(dayToStartOn)).
+    scenario("2010-1-5", 1, "Given a tuesday and start on monday").expected("2010-1-4").
+    scenario("2010-1-10", 1, "Given a sunday and start on monday").expected("2010-1-4").
 
-    scenario("2010-1-9", 7, "saturday split sunday").expected("2010-1-3").
-    scenario("2010-1-4", 7, "monday split sunday").expected("2010-1-3").
-    scenario("2010-1-10", 3, "monday split wednesday").expected("2010-1-6").
+    scenario("2010-1-10", 7, "Given a sunday and start on sunday").expected("2010-1-10").
+
+    useCase("Date supplied is less than the day of week to start on").
+    scenario("2010-1-11", 2, "Given a monday and start on tuesday").expected("2010-1-5").
+    code((d: DateTime, dayToStartOn: Int) => d.minusWeeks(1).withDayOfWeek(dayToStartOn)).
+    because((d: DateTime, dayToStartOn: Int) => dayToStartOn > d.getDayOfWeek()).
+    scenario("2010-1-9", 7, "Given a saturday and start on sunday").expected("2010-1-3").
+    scenario("2010-1-9", 3, "Given a saturday and start on wednesday").expected("2010-1-6").
+    scenario("2010-1-5", 7, "Given a tuesday and start on sunday").expected("2010-1-3").
 
     build
 

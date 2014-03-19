@@ -30,35 +30,57 @@ object InterestingDates {
     scenario("2010-2-1", "2010-2-15", None).expected(false).
     build
 
-  def interestingDates = Engine.folding[CarersXmlSituation, Option[DateTime], List[DateTime]]((acc, opt) => acc ::: opt.toList, List()).title("Interesting Dates").
+  implicit def stringToCarersXmlSituation(id: String) = CarersXmlSituation(World("2010-7-5"), Claim.getXml(id))
+  implicit def stringStringToDateTimeString(t: (String, String)) = List((Claim.asDate(t._1), t._2))
+  implicit def toValidateClaim(x: List[(String, String, Boolean)]): CarersXmlSituation = Claim.validateClaimWithBreaks(x: _*)
 
-    childEngine("BirthDate", "Your birthdate is interesting IFF you become the age of sixteen during the period of the claim").
-    scenario(("2010-3-1", "CL100105a")).expected(None).
-    scenario(("2010-3-1", "CL1PA100")).expected("1994-7-10").
-    code((c: CarersXmlSituation) => Some(c.claimBirthDate())).
+  val interestingDates = Engine.folding[CarersXmlSituation, Iterable[(DateTime, String)], List[(DateTime, String)]]((acc, opt) => acc ++ opt, List()).title("Interesting Dates").
+    childEngine("Sixteenth Birthday", "Your birthdate is interesting IFF you become the age of sixteen during the period of the claim").
+    scenario("CL100105a").expected(List()).
+    scenario("CL1PA100").expected(("2010-7-10", "Sixteenth Birthday")).
+    code((c: CarersXmlSituation) => List((c.claimBirthDate().plusYears(16), "Sixteenth Birthday"))).
     because((c: CarersXmlSituation) => isInRange(c.claimBirthDate().plusYears(16), c.claimStartDate(), c.claimEndDate())).
 
     childEngine("Claim start date", "Is always an interesting date").
-    scenario(("2010-3-1", "CL100105a")).expected("2010-1-1").
-    code((c: CarersXmlSituation) => Some(c.claimStartDate())).
+    scenario("CL100105a").expected(("2010-1-1", "Claim Start Date")).
+    code((c: CarersXmlSituation) => List((c.claimStartDate(), "Claim Start Date"))).
 
     childEngine("Claim end date", "Is always an interesting date, and we have to fake it if it doesn't exist").
-    scenario(("2010-3-1", "CL100105a")).expected("3999-12-31").
+    scenario("CL100105a").expected(("3999-12-31", "Claim End Date")).
 
-    scenario(("2010-3-1", "CL1PA100")).expected("2999-12-31").
-    code((c: CarersXmlSituation) => c.claimEndDate()).
+    scenario("CL1PA100").expected(("2999-12-31", "Claim End Date")).
+    code((c: CarersXmlSituation) => List((c.claimEndDate().get, "Claim End Date"))).
     because((c: CarersXmlSituation) => c.claimEndDate().isDefined).
 
     childEngine("Claim submitted date", "Is always an interesting date").
-    scenario(("2010-3-1", "CL100105a")).expected("2010-1-1").
-    code((c: CarersXmlSituation) => Some(c.claimSubmittedDate())).
+    scenario("CL100105a").expected(("2010-1-1", "Claim Submitted Date")).
+    code((c: CarersXmlSituation) => List((c.claimSubmittedDate(), "Claim Submitted Date"))).
 
-    childEngine("Time Limit For Claiming Three Months", "Is  an interesting date, if it falls inside the claim period").
-    scenario(("2010-3-1", "CL100105a")).expected(None).
+    childEngine("Time Limit For Claiming Three Months", "Is an interesting date, if it falls inside the claim period").
+    scenario("CL100105a").expected(List()).
 
-    scenario(("2010-3-1", "CL1PA100")).expected("2010-3-9").
-    code((c: CarersXmlSituation) => Some(c.timeLimitForClaimingThreeMonths)).
+    scenario("CL1PA100").expected(("2010-3-9", "Three month claim time limit")).
+    code((c: CarersXmlSituation) => List((c.timeLimitForClaimingThreeMonths, "Three month claim time limit"))).
     because((c: CarersXmlSituation) => isInRange(c.timeLimitForClaimingThreeMonths, c.claimStartDate(), c.claimEndDate())).
+
+    childEngine("Breaks in Care add the from date, and the first date after the to date").
+    scenario(List(("2010-3-1", "2010-3-4", true)), "Single break").expected(List(("2010-3-1", "Break in care (Hospital) started"), ("2010-3-5", "Break in care (Hospital) ended"))).
+    code((c: CarersXmlSituation) => c.breaksInCare().flatMap(addStartDateOfDateInInCareAndFirstDateOutOfBreak)).
+    scenario(List(("2010-3-1", "2010-3-4", true), ("2010-4-1", "2010-4-4", true)), "Two breaks").
+    expected(List(("2010-3-1", "Break in care (Hospital) started"), ("2010-3-5", "Break in care (Hospital) ended"),
+      ("2010-4-1", "Break in care (Hospital) started"), ("2010-4-5", "Break in care (Hospital) ended"))).
+
+    childEngine("Four weeks after the start of a non hospital break in care, and twelve weeks after a hospital break of care are interesting if the break is active then").
+    scenario(List(("2010-7-1", "2010-7-4", false)), "Non hospital break, Too short").expected(List()).
+    code((c: CarersXmlSituation) => c.breaksInCare().flatMap(dr => {
+      dr.reason.equalsIgnoreCase("Hospital") match {
+        case false => conditionallyAddDate(dr, 4)
+        case true => conditionallyAddDate(dr, 12)
+      }
+    }).toList).
+    scenario(List(("2010-7-1", "2010-8-1", false)), "Non hospital break, more than four weeks").expected(List(("2010-7-29", "Care break too long"))).
+    scenario(List(("2010-7-1", "2010-8-1", true)), "Hospital break. Too short").expected(List()).
+    scenario(List(("2010-7-1", "2010-10-1", true)), "Hospital break, more than twelve weeks").expected(List(("2010-9-23", "Care break too long"))).
 
     build;
 
