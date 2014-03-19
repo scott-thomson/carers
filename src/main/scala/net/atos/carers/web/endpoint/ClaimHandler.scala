@@ -34,6 +34,7 @@ class ClaimHandler extends AbstractHandler {
         e.printStackTrace()
         val props = System.getProperties();
         props.list(System.err);
+        props.list(response.getWriter());
     }
     baseRequest.setHandled(true)
   }
