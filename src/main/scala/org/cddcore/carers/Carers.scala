@@ -90,6 +90,10 @@ case class CarersXmlSituation(world: World, claimXml: Elem) extends XmlSituation
   lazy val claimSubmittedDate = xml(claimXml) \ "StatementData" \ "StatementDate" \ date
   lazy val dependantAwardStartDate = xml(dependantCisXml) \ "Award" \ "AssessmentDetails" \ "ClaimStartDate" \ optionDate
 
+  lazy val income = Income.income(this)
+  lazy val expenses = Expenses.expenses(this)
+  lazy val netIncome = income - expenses
+
   lazy val awardList = xml(dependantCisXml) \ "Award" \
     obj((group) => group.map((n) => {
       val benefitType = (n \ "AssessmentDetails" \ "BenefitType").text
@@ -179,10 +183,18 @@ object Carers {
     expected(KeyAndParams("ENT", "Dependent award is valid on date")).
     because((c: CarersXmlSituation) => c.isThereAnyQualifyingBenefit(c.world.dateProcessingDate)).
 
+    useCase("Claimant Income and Expenses", "Claimants must have a limit to income offsetting expenses").
+    //      scenario(("2010-7-25", "CL100111A"), "Customers with income exceeding the threshold are not entitled to CA").
+    //      expected(KeyAndParams("520", "Too much income")).
+    //      because((c: CarersXmlSituation) => c.netIncome > 95).
+
+    scenario(("2010-7-25", "CL100113A"), "Customers with income exceeding the threshold are not entitled to CA").
+    expected(KeyAndParams("520", "Too much income")).
+    because((c: CarersXmlSituation) => c.netIncome > 95).
     build
 
   def main(args: Array[String]) {
     val formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
-    println(engine(("2010-7-25", "CL100108A")))
+    println(("2010-7-25", "CL100111A"): CarersXmlSituation)
   }
 }
