@@ -22,11 +22,13 @@ class ClaimHandler extends AbstractHandler {
   def handle(target: String, baseRequest: Request, request: HttpServletRequest, response: HttpServletResponse) {
     response.setContentType("text/html;charset=utf-8")
     response.setStatus(HttpServletResponse.SC_OK);
-    request.getMethod match {
-      case MethodPost => response.getWriter().println(handlePost(request.getParameter("custxml"), request.getParameter("claimDate")))
-      case MethodGet => response.getWriter().println(handleGet)
-      case _ => response.getWriter().println(getInvalidRequestView())
-    }
+    try {
+      request.getMethod match {
+        case MethodPost => response.getWriter().println(handlePost(request.getParameter("custxml"), request.getParameter("claimDate")))
+        case MethodGet => response.getWriter().println(handleGet)
+        case _ => response.getWriter().println(getInvalidRequestView())
+      }
+    } catch { case e: Exception => e.printStackTrace(response.getWriter) }
     baseRequest.setHandled(true)
   }
 
