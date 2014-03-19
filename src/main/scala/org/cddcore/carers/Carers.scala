@@ -80,7 +80,7 @@ case class CarersXmlSituation(world: World, claimXml: Elem) extends XmlSituation
     case Some(s) => world.ninoToCis(s);
     case None => <NoDependantXml/>
   }
-  
+
   lazy val dependantLevelOfQualifyingCare = xml(dependantCisXml) \\ "AwardComponent" \ string
   lazy val dependantHasSufficientLevelOfQualifyingCare = dependantLevelOfQualifyingCare() == "DLA Middle Rate Care"
 
@@ -89,7 +89,6 @@ case class CarersXmlSituation(world: World, claimXml: Elem) extends XmlSituation
   lazy val claimEndDate = xml(claimXml) \ "ClaimData" \ "ClaimEndDate" \ optionDate
   lazy val claimSubmittedDate = xml(claimXml) \ "StatementData" \ "StatementDate" \ date
   lazy val dependantAwardStartDate = xml(dependantCisXml) \ "Award" \ "AssessmentDetails" \ "ClaimStartDate" \ optionDate
-
 
   lazy val awardList = xml(dependantCisXml) \ "Award" \
     obj((group) => group.map((n) => {
@@ -100,7 +99,7 @@ case class CarersXmlSituation(world: World, claimXml: Elem) extends XmlSituation
       Award(benefitType, awardComponent, claimStatus, awardStartDate)
     }).toList)
 
-  def isThereAnyQualifyingBenefit(d:DateTime) = awardList().foldLeft[Boolean](false) ((acc,a) => acc || Carers.checkQualifyingBenefit(d,a))
+  def isThereAnyQualifyingBenefit(d: DateTime) = awardList().foldLeft[Boolean](false)((acc, a) => acc || Carers.checkQualifyingBenefit(d, a))
 }
 
 case class Award(benefitType: String, awardComponent: String, claimStatus: String, awardStartDate: DateTime)
@@ -122,24 +121,25 @@ object Carers {
   implicit def toAward(x: (String, String, String, String)) = Award(x._1, x._2, x._3, Claim.asDate(x._4))
 
   val checkQualifyingBenefit = Engine[DateTime, Award, Boolean]().title("Check for qualifying Benefit").
-  
+
     useCase("QB not in payment or future dated").
     scenario("2010-05-28", ("AA", "AA lower rate", "Active", "2010-05-27"), "QB start date in past").expected(true).
     scenario("2010-05-28", ("AA", "AA lower rate", "Active", "2010-05-28"), "QB start date exact").expected(true).
     because((d: DateTime, a: Award) => !d.isBefore(a.awardStartDate) && a.claimStatus == "Active").
 
     scenario("2010-05-28", ("AA", "AA lower rate", "Active", "2010-05-29"), "QB start date in future").expected(false).
-    because((d: DateTime, a: Award) => d.isBefore(a.awardStartDate) ).
+    because((d: DateTime, a: Award) => d.isBefore(a.awardStartDate)).
     scenario("2010-05-28", ("AA", "AA lower rate", "Inactive", "2010-05-01"), "QB not in payment").expected(false).
     because((d: DateTime, a: Award) => a.claimStatus != "Active").
 
     scenario("2010-05-28", ("ZZ", "AA lower rate", "Active", "2010-05-01"), "QB is one of AA/DLA/CAA").expected(false).
     because((d: DateTime, a: Award) => a.benefitType match {
       case "AA" | "DLA" | "CAA" => false
-      case _ => true} ).
-    
+      case _ => true
+    }).
+
     build
-    
+
   val engine = Engine[CarersXmlSituation, KeyAndParams]().title("Validate Claim Rules").
     code((c: CarersXmlSituation) => KeyAndParams("000", "Default Response")).
     useCase("Claimants under the age of 16 are not entitled to claim Carer's Allowance", "Carer's Allowance is intended for people over the age of 16 who are unable to undertake or continue regular full time employment because they are needed at home to look after a disabled person. Carer's Allowance is not available to customers under the age of 16.").
@@ -174,7 +174,7 @@ object Carers {
     scenario(("2010-7-25", "CL100106A"), "Dependent party without qualifying benefit").
     expected(KeyAndParams("503", "Dependent doesn't have a Qualifying Benefit")).
     because((c: CarersXmlSituation) => !c.isThereAnyQualifyingBenefit(c.world.dateProcessingDate)).
-    
+
     scenario(("2010-7-25", "CL100101A"), "Dependent party with suitable qualifying benefit").
     expected(KeyAndParams("ENT", "Dependent award is valid on date")).
     because((c: CarersXmlSituation) => c.isThereAnyQualifyingBenefit(c.world.dateProcessingDate)).
