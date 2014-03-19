@@ -32,6 +32,7 @@ case class DateRange(val from: DateTime, val to: DateTime, val reason: String) {
   def fromToEndOfFirstWeek(dayToSplit: Int) = DateRange(datesMax(from, firstDayOfWeek(from, dayToSplit)), datesMin(to, lastDayOfWeek(from, dayToSplit)), reason)
   def middleSection(dayToSplit: Int) = DateRange(firstDayOfWeek(from, dayToSplit).plusDays(7), firstDayOfWeek(to, dayToSplit).minusDays(1), reason)
   def startOfLastWeekToEnd(dayToSplit: Int) = DateRange(datesMax(from, firstDayOfWeek(to, dayToSplit)), to, reason)
+  def contains(d: DateTime) = ((d == from) || d.isAfter(from)) && (d == to || d.isBefore(to))
 
   override def toString = s"DateRange(reason,${formatter.print(from)},${formatter.print(to)})"
 }

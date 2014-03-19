@@ -17,6 +17,8 @@ case class World(dateProcessingDate: DateTime, ninoToCis: NinoToCis = new TestNi
 
 object World {
   def apply(processingDate: String): World = apply(Claim.asDate(processingDate))
+
+  def apply(ninoToCis: NinoToCis): World = World(Claim.asDate("2010-7-5"), ninoToCis)
 }
 
 trait NinoToCis {
@@ -52,6 +54,29 @@ object Claim {
       case e: Exception => throw new RuntimeException("Cannot load " + id + " fullid is " + full, e)
     }
   }
+
+  /** The boolean is 'hospitalisation' */
+  def validateClaimWithBreaks(breaks: (String, String, Boolean)*): CarersXmlSituation =
+    validateClaimWithBreaksFull(breaks.map((x) => (x._1, x._2, if (x._3) "Hospitalisation" else "other", if (x._3) "Hospital" else "other")): _*)
+
+  def validateClaimWithBreaksFull(breaks: (String, String, String, String)*): CarersXmlSituation = {
+    val url = getClass.getClassLoader.getResource("ClaimXml/CL801119A.xml")
+    val xmlString = scala.io.Source.fromURL(url).mkString
+    val breaksInCareXml = <ClaimBreaks>
+                            {
+                              breaks.map((t) =>
+                                <BreakInCare>
+                                  <BICFromDate>{ t._1 }</BICFromDate>
+                                  <BICToDate>{ t._2 }</BICToDate>
+                                  <BICReason>{ t._3 }</BICReason>
+                                  <BICType>{ t._4 }</BICType>
+                                </BreakInCare>)
+                            }
+                          </ClaimBreaks>
+    val withBreaks = xmlString.replace("<ClaimBreaks />", breaksInCareXml.toString)
+    new CarersXmlSituation(World(new TestNinoToCis), XML.loadString(withBreaks))
+  }
+
   private val formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
   def asDate(s: String): DateTime = formatter.parseDateTime(s);
 }
@@ -102,6 +127,14 @@ case class CarersXmlSituation(world: World, claimXml: Elem) extends XmlSituation
       val awardStartDate = Claim.asDate((n \ "AwardDetails" \ "AwardStartDate").text)
       Award(benefitType, awardComponent, claimStatus, awardStartDate)
     }).toList)
+
+  lazy val breaksInCare = xml(claimXml) \ "ClaimData" \ "ClaimBreaks" \ "BreakInCare" \
+    obj((ns) => ns.map((n) => {
+      val from = Claim.asDate((n \ "BICFromDate").text)
+      val to = Claim.asDate((n \ "BICToDate").text)
+      val reason = (n \ "BICType").text
+      new DateRange(from, to, reason)
+    }))
 
   def isThereAnyQualifyingBenefit(d: DateTime) = awardList().foldLeft[Boolean](false)((acc, a) => acc || Carers.checkQualifyingBenefit(d, a))
 }
