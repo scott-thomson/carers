@@ -38,12 +38,14 @@ class ClaimHandler extends AbstractHandler {
     val world = World(dateTime)
     val xml = try { XML.loadString(custXml) } catch { case e: Throwable => e.printStackTrace(); throw e }
     val situation = CarersXmlSituation(world, xml)
-    val result = TimeLineCalcs.findTimeLine(situation).mkString("\n")
+    val result = <div>{
+      TimeLineCalcs.findTimeLine(situation).map((tli) => <p>{ tli } </p>)
+    }</div>
     println("In handle post 2: " + result)
     //    //CDD Business logic will return a return message - hard coded for now   
     //    val returnMessage = result.toString
 
-    getCarerView(custXml, result.toString, claimDate)
+    getCarerView(custXml, result, claimDate)
   }
 
   val operatingPort = System.getenv("PORT")
@@ -81,7 +83,7 @@ class ClaimHandler extends AbstractHandler {
       </body>
     </html>
 
-  def getCarerView(xmlString: String, returnMessage: String, claimDate: String): Elem =
+  def getCarerView(xmlString: String, returnMessage: Elem, claimDate: String): Elem =
     <html>
       <head>
         <title>Validate Claim</title>
