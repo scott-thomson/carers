@@ -9,12 +9,14 @@ import org.junit.runner.RunWith
  */
 @RunWith(classOf[CddContinuousIntegrationRunner])
 class CarersContinuousIntegration extends CddContinuousIntegrationTest {
-  val engines = List(Income.income, 
+  val engines = List(Income.income,
     Expenses.expenses,
     Carers.engine,
     Carers.checkUnderSixteen,
     Carers.checkQualifyingBenefit,
     InterestingDates.interestingDates,
+    BreaksInCare.breaksInCare,
+    BreakInCare.singleBreakInCare,
     DateRanges.firstDayOfWeek,
     DateRanges.datesToRanges,
     DateRanges.groupByWeek,

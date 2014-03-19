@@ -12,6 +12,7 @@ import org.cddcore.carers.Claim
 import org.cddcore.carers.World
 import org.cddcore.carers.CarersXmlSituation
 import scala.xml.XML
+import org.cddcore.carers.TimeLineCalcs
 
 class ClaimHandler extends AbstractHandler {
   private val MethodPost: String = "POST";
@@ -37,14 +38,14 @@ class ClaimHandler extends AbstractHandler {
     val world = World(dateTime)
     val xml = try { XML.loadString(custXml) } catch { case e: Throwable => e.printStackTrace(); throw e }
     val situation = CarersXmlSituation(world, xml)
-    val result = Carers.engine(situation)
+    val result = TimeLineCalcs.findTimeLine(situation).mkString("\n")
     println("In handle post 2: " + result)
     //    //CDD Business logic will return a return message - hard coded for now   
     //    val returnMessage = result.toString
 
     getCarerView(custXml, result.toString, claimDate)
   }
-  
+
   val operatingPort = System.getenv("PORT")
 
   def getCarerView(xmlString: String, claimDate: String): Elem =
@@ -54,7 +55,7 @@ class ClaimHandler extends AbstractHandler {
       </head>
       <body>
         <form action="/" method="POST">
-          <h1>Validate Claim {operatingPort}</h1>
+          <h1>Validate Claim { operatingPort }</h1>
           <table>
             <tr>
               <td>

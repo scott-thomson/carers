@@ -34,6 +34,15 @@ object InterestingDates {
   implicit def stringStringToDateTimeString(t: (String, String)) = List((Claim.asDate(t._1), t._2))
   implicit def toValidateClaim(x: List[(String, String, Boolean)]): CarersXmlSituation = Claim.validateClaimWithBreaks(x: _*)
 
+  private val addStartDateOfDateInInCareAndFirstDateOutOfBreak = (dr: DateRange) => List(
+    (dr.from, "Break in care (" + dr.reason + ") started"),
+    (dr.to.plusDays(1), "Break in care (" + dr.reason + ") ended"))
+
+  def conditionallyAddDate(dr: DateRange, weeks: Int): List[(DateTime, String)] = {
+    val lastDay = dr.from.plusWeeks(weeks)
+    if (dr.to.isAfter(lastDay) || dr.to == lastDay) List((lastDay, "Care break too long")) else List()
+  }
+
   val interestingDates = Engine.folding[CarersXmlSituation, Iterable[(DateTime, String)], List[(DateTime, String)]]((acc, opt) => acc ++ opt, List()).title("Interesting Dates").
     childEngine("Sixteenth Birthday", "Your birthdate is interesting IFF you become the age of sixteen during the period of the claim").
     scenario("CL100105a").expected(List()).
