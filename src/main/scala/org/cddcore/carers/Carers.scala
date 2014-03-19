@@ -65,12 +65,22 @@ case class CarersXmlSituation(world: World, claimXml: Elem) extends XmlSituation
   lazy val claimCurrentResidentUK = xml(claimXml) \ "ClaimData" \ "ClaimCurrentResidentUK" \ yesNo(default = false)
   lazy val claimEducationFullTime = xml(claimXml) \ "ClaimData" \ "ClaimEducationFullTime" \ yesNo(default = false)
   lazy val claimAlwaysUK = xml(claimXml) \ "ClaimData" \ "ClaimAlwaysUK" \ yesNo(default = false)
+  lazy val childCareExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesChildAmount" \ double
+  lazy val hasChildCareExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesChild" \ yesNo(default = false)
+  lazy val occPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesOccPensionAmount" \ double
+  lazy val hasOccPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesOccPension" \ yesNo(default = false)
+  lazy val psnPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesPsnPensionAmount" \ double
+  lazy val hasPsnPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesPsnPension" \ yesNo(default = false)
+  lazy val hasEmploymentData = xml(claimXml) \ "newEmploymentData" \ boolean
+  lazy val employmentGrossSalary = xml(claimXml) \ "EmploymentData" \ "EmploymentGrossSalary" \ double
+  lazy val employmentPayPeriodicity = xml(claimXml) \ "EmploymentData" \ "EmploymentPayPeriodicity" \ string
 
   lazy val DependantNino = xml(claimXml) \ "DependantData" \ "DependantNINO" \ string
   lazy val dependantCisXml: Elem = DependantNino.get() match {
     case Some(s) => world.ninoToCis(s);
     case None => <NoDependantXml/>
   }
+
 
   lazy val awardList = xml(dependantCisXml) \ "Award" \
     obj((group) => group.map((n) => {
@@ -82,6 +92,7 @@ case class CarersXmlSituation(world: World, claimXml: Elem) extends XmlSituation
     }).toList)
 
   def isThereAnyQualifyingBenefit(d:DateTime) = awardList().foldLeft[Boolean](false) ((acc,a) => acc || Carers.checkQualifyingBenefit(d,a))
+
 }
 
 case class Award(benefitType: String, awardComponent: String, claimStatus: String, awardStartDate: DateTime)
