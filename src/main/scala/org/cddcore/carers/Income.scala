@@ -1,11 +1,8 @@
-package org.cddcore.income
+package org.cddcore.carers
 
-import org.cddcore.carers.CarersXmlSituation
-import org.cddcore.carers.World
 import org.cddcore.engine.Engine
 import org.junit.runner.RunWith
 import org.cddcore.engine.tests.CddJunitRunner
-import org.cddcore.carers.Claim
 
 @RunWith(classOf[CddJunitRunner])
 object Income {
@@ -31,4 +28,10 @@ object Income {
     scenario(("2010-3-1", "CL100112A")).expected(110).
 
     build
+    
+  def main(args: Array[String]) {
+    println(income(("2010-7-25", "CL100108A")))
+    println(income(("2010-3-1", "CL100112A")))
+  }
+    
 }
