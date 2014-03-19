@@ -35,6 +35,8 @@ class ClaimHandler extends AbstractHandler {
         val props = System.getProperties();
         props.list(System.err);
         props.list(response.getWriter());
+        response.getWriter().println("Class Path = ")
+        response.getWriter().println(props.get("java.class.path"))
     }
     baseRequest.setHandled(true)
   }
