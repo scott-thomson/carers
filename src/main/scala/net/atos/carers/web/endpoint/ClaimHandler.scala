@@ -44,6 +44,8 @@ class ClaimHandler extends AbstractHandler {
 
     getCarerView(custXml, result.toString, claimDate)
   }
+  
+  val operatingPort = System.getenv("PORT")
 
   def getCarerView(xmlString: String, claimDate: String): Elem =
     <html>
@@ -52,7 +54,7 @@ class ClaimHandler extends AbstractHandler {
       </head>
       <body>
         <form action="/" method="POST">
-          <h1>Validate Claim</h1>
+          <h1>Validate Claim {operatingPort}</h1>
           <table>
             <tr>
               <td>
