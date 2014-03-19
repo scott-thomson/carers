@@ -45,28 +45,28 @@ object InterestingDates {
 
   val interestingDates = Engine.folding[CarersXmlSituation, Iterable[(DateTime, String)], List[(DateTime, String)]]((acc, opt) => acc ++ opt, List()).title("Interesting Dates").
     childEngine("Sixteenth Birthday", "Your birthdate is interesting IFF you become the age of sixteen during the period of the claim").
-    scenario("CL100105a").expected(List()).
+    scenario("CL100105A").expected(List()).
     scenario("CL1PA100").expected(("2010-7-10", "Sixteenth Birthday")).
     code((c: CarersXmlSituation) => List((c.claimBirthDate().plusYears(16), "Sixteenth Birthday"))).
     because((c: CarersXmlSituation) => isInRange(c.claimBirthDate().plusYears(16), c.claimStartDate(), c.claimEndDate())).
 
     childEngine("Claim start date", "Is always an interesting date").
-    scenario("CL100105a").expected(("2010-1-1", "Claim Start Date")).
+    scenario("CL100105A").expected(("2010-1-1", "Claim Start Date")).
     code((c: CarersXmlSituation) => List((c.claimStartDate(), "Claim Start Date"))).
 
     childEngine("Claim end date", "Is always an interesting date, and we have to fake it if it doesn't exist").
-    scenario("CL100105a").expected(("3999-12-31", "Claim End Date")).
+    scenario("CL100105A").expected(("3999-12-31", "Claim End Date")).
 
     scenario("CL1PA100").expected(("2999-12-31", "Claim End Date")).
     code((c: CarersXmlSituation) => List((c.claimEndDate().get, "Claim End Date"))).
     because((c: CarersXmlSituation) => c.claimEndDate().isDefined).
 
     childEngine("Claim submitted date", "Is always an interesting date").
-    scenario("CL100105a").expected(("2010-1-1", "Claim Submitted Date")).
+    scenario("CL100105A").expected(("2010-1-1", "Claim Submitted Date")).
     code((c: CarersXmlSituation) => List((c.claimSubmittedDate(), "Claim Submitted Date"))).
 
     childEngine("Time Limit For Claiming Three Months", "Is an interesting date, if it falls inside the claim period").
-    scenario("CL100105a").expected(List()).
+    scenario("CL100105A").expected(List()).
 
     scenario("CL1PA100").expected(("2010-3-9", "Three month claim time limit")).
     code((c: CarersXmlSituation) => List((c.timeLimitForClaimingThreeMonths, "Three month claim time limit"))).
