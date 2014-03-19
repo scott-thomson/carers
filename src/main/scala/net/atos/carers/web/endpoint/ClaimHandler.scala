@@ -28,7 +28,13 @@ class ClaimHandler extends AbstractHandler {
         case MethodGet => response.getWriter().println(handleGet)
         case _ => response.getWriter().println(getInvalidRequestView())
       }
-    } catch { case e: Throwable => e.printStackTrace(response.getWriter); e.printStackTrace() }
+    } catch {
+      case e: Throwable =>
+        e.printStackTrace(response.getWriter);
+        e.printStackTrace()
+        val props = System.getProperties();
+        props.list(System.err);
+    }
     baseRequest.setHandled(true)
   }
 
