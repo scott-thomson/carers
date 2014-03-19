@@ -80,6 +80,15 @@ case class CarersXmlSituation(world: World, claimXml: Elem) extends XmlSituation
     case Some(s) => world.ninoToCis(s);
     case None => <NoDependantXml/>
   }
+  
+  lazy val dependantLevelOfQualifyingCare = xml(dependantCisXml) \\ "AwardComponent" \ string
+  lazy val dependantHasSufficientLevelOfQualifyingCare = dependantLevelOfQualifyingCare() == "DLA Middle Rate Care"
+
+  lazy val claimStartDate = xml(claimXml) \ "ClaimData" \ "ClaimStartDate" \ date
+  lazy val timeLimitForClaimingThreeMonths = claimSubmittedDate().minusMonths(3)
+  lazy val claimEndDate = xml(claimXml) \ "ClaimData" \ "ClaimEndDate" \ optionDate
+  lazy val claimSubmittedDate = xml(claimXml) \ "StatementData" \ "StatementDate" \ date
+  lazy val dependantAwardStartDate = xml(dependantCisXml) \ "Award" \ "AssessmentDetails" \ "ClaimStartDate" \ optionDate
 
   lazy val income = Income.income(this)
   lazy val expenses = Expenses.expenses(this)
@@ -94,10 +103,9 @@ case class CarersXmlSituation(world: World, claimXml: Elem) extends XmlSituation
       Award(benefitType, awardComponent, claimStatus, awardStartDate)
     }).toList)
 
-  def isThereAnyQualifyingBenefit(d: DateTime) = awardList().foldLeft[Boolean](false)((acc, a) => acc || Carers.checkQualifyingBenefit(d, a))
-  //  override def toString =
-  //    super.toString +
-  //      "\n NetIncome=" + netIncome
+
+  def isThereAnyQualifyingBenefit(d:DateTime) = awardList().foldLeft[Boolean](false) ((acc,a) => acc || Carers.checkQualifyingBenefit(d,a))
+
 }
 
 case class Award(benefitType: String, awardComponent: String, claimStatus: String, awardStartDate: DateTime)
@@ -106,6 +114,7 @@ case class Award(benefitType: String, awardComponent: String, claimStatus: Strin
 object Carers {
   implicit def stringStringToCarers(x: Tuple2[String, String]) = CarersXmlSituation(World(x._1), Claim.getXml(x._2))
   implicit def stringToDate(x: String) = Claim.asDate(x)
+  implicit def stringToOptionDate(x: String) = Some(Claim.asDate(x))
 
   val checkUnderSixteen = Engine[DateTime, DateTime, Boolean]().title("Check for being under-age (less than age sixteen)").
     useCase("Oversixteen").
