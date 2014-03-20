@@ -33,8 +33,9 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
   }
 
   "The default port method" should "return 8090 if PORT isn't set" in {
-    System.getenv("PORT") should equal(null)
-    ValidateClaimServer.defaultPort should equal(8090)
+    val port = System.getenv("PORT")
+    val expected = if (port == null) 8090 else port.toInt
+    ValidateClaimServer.defaultPort should equal(expected)
   }
 
   "Our Rubbishy Website" should "Display a form when it recieves a GET" in {
