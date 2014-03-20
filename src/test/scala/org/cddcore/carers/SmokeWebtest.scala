@@ -38,15 +38,15 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
     pageTitle should be("Validate Claim")
   }
 
-  "Our Rubbishy Website" should "be able to set focus to the custxml textarea" in {
+  "It" should "be able to set focus to the custxml textarea" in {
     click on name("custxml")
   }
   
-  "Our Rubbishy Website" should "be able to set focus to the claimDate textarea" in {
+  "It" should "be able to set focus to the claimDate textarea" in {
     click on name("claimDate")
   }
   
-  "Our Rubbishy Website" should "be able to submit claim XML and then see a timeline" in {
+  "It" should "be able to submit claim XML and then see a timeline" in {
     textArea("custxml").value = getClaimXML
     submit()
     val xml: Elem = XML.loadString(pageSource)
@@ -54,9 +54,17 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
     assert(timeLineNodes.length > 0)
   }
 
-  "Our Rubbishy Website" should "blah if submit without claim xml" in {
+  "It" should "throw an exception if submitted with an invalid claimDate value" in {
     go to (host + "index.html")
-    // submit()
+    click on name("claimDate")
+    textField("claimDate").value = "not a date"
+    submit()
+  }
+
+  "It" should "throw an exception if submitted with invalid xml" in {
+    go to (host + "index.html")
+    textArea("custxml").value = "not xml"
+    submit()
   }
   
   def getClaimXML: String = {
