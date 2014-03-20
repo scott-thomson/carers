@@ -1,0 +1,1135 @@
+Loading /c/Program Files (x86)/sbt/bin/sbt-launch-lib.bash
+[info] Loading project definition from C:\Users\A547554\git\carers\project
+[info] Set current project to Carers (in build file:/C:/Users/A547554/git/carers/)
+[warn] Potentially incompatible versions of dependencies of {file:/C:/Users/A547554/git/carers/}default-b6e067:
+[warn]    org.scala-lang: 2.10.3, 2.10.1
+[error] Test org.cddcore.carers.SmokeWebtest failed: Address already in use: bind
+[error]     at sun.nio.ch.Net.bind0(Native Method)
+[error]     at sun.nio.ch.Net.bind(Net.java:444)
+[error]     at sun.nio.ch.Net.bind(Net.java:436)
+[error]     at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+[error]     at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+[error]     at org.eclipse.jetty.server.nio.SelectChannelConnector.open(SelectChannelConnector.java:210)
+[error]     at org.eclipse.jetty.server.nio.SelectChannelConnector.doStart(SelectChannelConnector.java:289)
+[error]     at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:55)
+[error]     at org.eclipse.jetty.server.Server.doStart(Server.java:242)
+[error]     at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:55)
+[error]     at org.cddcore.carers.SmokeWebtest.beforeAll(SmokeWebtest.scala:22)
+[error]     at org.scalatest.BeforeAndAfterAll$class.beforeAll(BeforeAndAfterAll.scala:187)
+[error]     at org.cddcore.carers.SmokeWebtest.beforeAll(SmokeWebtest.scala:14)
+[error]     at org.scalatest.BeforeAndAfterAll$class.run(BeforeAndAfterAll.scala:253)
+[error]     at org.cddcore.carers.SmokeWebtest.run(SmokeWebtest.scala:14)
+[error]     at org.scalatest.junit.JUnitRunner.run(JUnitRunner.scala:99)
+[error]     ...
+[info] SmokeWebtest:
+[info] Our Rubbishy Website
+[info] - should Display a form when it recieves a GET
+RootUrl = Some(file:///C:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration.Project.html)
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration.Project.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Income.EngineFromTests.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Income\No_income.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Income\No_income\Scenario5.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Income\No_income\Scenario6.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Income\No_income\Scenario7.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Income\Annually_paid.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Income\Annually_paid\Scenario9.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Income\Annually_paid\Scenario10.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Income\Weekly_paid.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Income\Weekly_paid\Scenario12.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Income\Weekly_paid\Scenario13.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses.EngineWithChildren.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Child_care_expenses.EngineChild.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Child_care_expenses\Customer_has_child_care_expenses.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Child_care_expenses\Customer_has_child_care_expenses\Scenario17.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Child_care_expenses\Customer_has_no_child_care_expenses.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Child_care_expenses\Customer_has_no_child_care_expenses\Scenario19.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Child_care_expenses\Customer_has_no_child_care_expenses_data.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Child_care_expenses\Customer_has_no_child_care_expenses_data\Scenario21.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\PSN__Pensions.EngineChild.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\PSN__Pensions\Customer_has_PSN_Pension.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\PSN__Pensions\Customer_has_PSN_Pension\Scenario24.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\PSN__Pensions\Customer_has_no_PSN_Pension.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\PSN__Pensions\Customer_has_no_PSN_Pension\Scenario26.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\PSN__Pensions\Customer_has_no_PSN_Pension_data.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\PSN__Pensions\Customer_has_no_PSN_Pension_data\Scenario28.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Occupational_Pension.EngineChild.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Occupational_Pension\Customer_has_Occupational_Pension.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Occupational_Pension\Customer_has_Occupational_Pension\Scenario31.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Occupational_Pension\Customer_has_no_Occupational_pension.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Occupational_Pension\Customer_has_no_Occupational_pension\Scenario33.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Occupational_Pension\UseCase34.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Expenses\Occupational_Pension\UseCase34\Scenario35.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules.EngineFromTests.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\UseCase37.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\UseCase37\Claimant_CL100104_is_a_child_under_16.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Caring_Hours.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Caring_Hours\Scenario40.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Claimant_Residence.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Claimant_Residence\Claimant_CL100107_is_not_UK_resident.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Claimant_Current_Residence.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Claimant_Current_Residence\Scenario44.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Claimant_in_Full_Time_Education.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Claimant_in_Full_Time_Education\Scenario46.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Qualifying_Benefit.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Qualifying_Benefit\Scenario48.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Qualifying_Benefit\Scenario49.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Claimant_Income_and_Expenses.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Claimant_Income_and_Expenses\Scenario51.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Validate_Claim_Rules\Claimant_Income_and_Expenses\Scenario52.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests53.EngineFromTests.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests53\Oversixteen.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests53\Oversixteen\Scenario55.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests53\Oversixteen\Scenario56.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests53\Oversixteen\Scenario57.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Check_for_qualifying_Benefit.EngineFromTests.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Check_for_qualifying_Benefit\QB_not_in_payment_or_future_dated.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Check_for_qualifying_Benefit\QB_not_in_payment_or_future_dated\QB_start_date_in_past.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Check_for_qualifying_Benefit\QB_not_in_payment_or_future_dated\QB_start_date_exact.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Check_for_qualifying_Benefit\QB_not_in_payment_or_future_dated\QB_start_date_in_future.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Check_for_qualifying_Benefit\QB_not_in_payment_or_future_dated\QB_not_in_payment.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Check_for_qualifying_Benefit\QB_not_in_payment_or_future_dated\QB_is_one_of_AA_DLA_CAA.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates.EngineWithChildren.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\Sixteenth_Birthday.EngineChild.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\Sixteenth_Birthday\Scenario67.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\Sixteenth_Birthday\Scenario68.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\Claim_start_date.EngineChild.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\Claim_start_date\Scenario70.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\Claim_end_date.EngineChild.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\Claim_end_date\Scenario72.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\Claim_end_date\Scenario73.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\Claim_submitted_date.EngineChild.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\Claim_submitted_date\Scenario75.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\Time_Limit_For_Claiming_Three_Months.EngineChild.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\Time_Limit_For_Claiming_Three_Months\Scenario77.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\Time_Limit_For_Claiming_Three_Months\Scenario78.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\EngineChild79.EngineChild.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\EngineChild79\Single_break.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\EngineChild79\Two_breaks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\EngineChild82.EngineChild.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\EngineChild82\Non_hospital_break_Too_short.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\EngineChild82\Non_hospital_break_more_than_four_weeks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\EngineChild82\Hospital_break._Too_short.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Interesting_Dates\EngineChild82\Hospital_break_more_than_twelve_weeks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_in_range.EngineFromTests.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_in_range\all_dates_exist.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_in_range\all_dates_exist\Scenario89.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_in_range\all_dates_exist\Scenario90.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_in_range\all_dates_exist\Scenario91.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_in_range\all_dates_exist\Scenario92.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_in_range\all_dates_exist\Scenario93.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_in_range\all_dates_exist\Scenario94.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_in_range\all_dates_exist\Scenario95.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_in_range\if_end_doesnt_exist_return_false.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_in_range\if_end_doesnt_exist_return_false\Scenario97.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_in_range\if_end_doesnt_exist_return_false\Scenario98.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care.EngineFromTests.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase100.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase100\Just_before_break.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase100\Just_after_break.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase100\Just_before_break_multiple_breaks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase100\Just_after_break_multiple_breaks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase105.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase105\Scenario106.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase105\Scenario107.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase108.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase108\Scenario109.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase108\Scenario110.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase111.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase111\First_day_of_break_that_is_over_4_weeks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase111\Scenario113.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase111\Scenario114.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase111\Last_day_of_break_that_is_over_4_weeks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase111\After_break_that_is_over_4_weeks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase117.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase117\First_day_of_break_that_is_over_12_weeks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase117\Scenario119.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase117\Scenario120.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase117\Scenario121.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase117\Last_day_of_break_that_is_over_12_weeks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase117\After_break_that_is_over_12_weeks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase124.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase124\before_a_break_that_is_pre_22_weeks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase124\Scenario126.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase124\last_day_a_break_that_is_pre_22_weeks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Breaks_in_care\UseCase124\after_a_break_that_is_pre_22_weeks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care.EngineFromTests.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\Outside_date_range.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\Outside_date_range\Before_date.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\Not_yet_22_weeks_after_claim_start_date.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\Not_yet_22_weeks_after_claim_start_date\After_date.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\Not_yet_22_weeks_after_claim_start_date\Scenario134.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase135.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase135\Non_hospital_break_first_day.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase135\Non_hospital_break_second_day.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase135\Scenario138.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase135\Scenario139.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase135\Non_hospital_break_last_day_of_break.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase135\Scenario141.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase142.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase142\Hospital_break_first_day.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase142\Scenario144.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase142\Scenario145.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase142\Hospital_break_last_day_of_twelve_weeks.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase142\Scenario147.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase142\Hospital_break_last_day_of_break.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Single_Break_In_Care\UseCase142\Hospital_break_first_day_after_break.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\First_Day_Of_Week_Engine.EngineFromTests.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\First_Day_Of_Week_Engine\UseCase151.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\First_Day_Of_Week_Engine\UseCase151\Given_a_monday_and_start_on_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\First_Day_Of_Week_Engine\UseCase151\Given_a_tuesday_and_start_on_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\First_Day_Of_Week_Engine\UseCase151\Given_a_sunday_and_start_on_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\First_Day_Of_Week_Engine\UseCase151\Given_a_sunday_and_start_on_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\First_Day_Of_Week_Engine\UseCase156.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\First_Day_Of_Week_Engine\UseCase156\Given_a_monday_and_start_on_tuesday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\First_Day_Of_Week_Engine\UseCase156\Given_a_saturday_and_start_on_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\First_Day_Of_Week_Engine\UseCase156\Given_a_saturday_and_start_on_wednesday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\First_Day_Of_Week_Engine\UseCase156\Given_a_tuesday_and_start_on_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_to_ranges.EngineFromTests.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_to_ranges\No_days.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_to_ranges\Just_one_day.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_to_ranges\two_days.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\Date_to_ranges\three_days.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\group_by_week.EngineFromTests.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\group_by_week\Just_one_week.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\group_by_week\Just_one_week\just_monday_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\group_by_week\Just_one_week\monday_to_wednesday_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\group_by_week\Just_one_week\Scenario170.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\group_by_week\Multiple_weeks.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\group_by_week\Multiple_weeks\monday_to_month_wednesday_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\group_by_week\Multiple_weeks\Scenario173.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\group_by_week\Multiple_weeks\monday_to_month_wednesday_split_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175.EngineFromTests.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Within_same_week.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Within_same_week\Monday_to_sunday_1_week_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Within_same_week\Monday_to_Tuesday_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Within_same_week\Tuesday_to_Saturday_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Within_same_week\Monday_to_Sunday_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Within_same_week\Monday_to_Tuesday_split_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Within_same_week\Tuesday_to_Saturday_split_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Within_same_week\Sunday_to_Saturday_split_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_two_weeks.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_two_weeks\Wednesday_to_Tuesday_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_two_weeks\Sunday_to_Sunday_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_two_weeks\Saturday_to_Saturday_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_two_weeks\Wednesday_to_Tuesday_split_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_two_weeks\Saturday_to_Saturday_split_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_multiple_weeks.UseCase.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_multiple_weeks\Monday_to_Month_Tuesday_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_multiple_weeks\Wednesday_to_Month_Tuesday_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_multiple_weeks\Sunday_to_Month_Sunday_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_multiple_weeks\Saturday_to_Month_Saturday_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_multiple_weeks\Monday_to_Month_Tuesday_split_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_multiple_weeks\Wednesday_to_Month_Tuesday_split_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_multiple_weeks\Sunday_to_Month_Sunday_split_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_multiple_weeks\Sunday_to_Month_Saturday_split_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests175\Across_multiple_weeks\Saturday_to_Month_Saturday_split_sunday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests200.EngineFromTests.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests200\mon_wed_monday_month_split_monday.Scenario.html
+CreatingC:\Users\A547554\.cdd\Junit\org.cddcore.carers.CarersContinuousIntegration\EngineFromTests200\mon_wed_monday_month_split_sunday.Scenario.html
+Map(EngineWithChildren(Sixteenth Birthday,Claim start date,Claim end date,Claim submitted date,Time Limit For Claiming Three Months,Breaks in Care add the from date, and the first date after the to date,Four weeks after the start of a non hospital break in care, and twelve weeks after a hospital break of care are interesting if the break is active then) -> Interesting Dates, ranges.groupBy[String](((d: org.cddcore.carers.DateRange) => {
+  val fake: org.joda.time.DateTime = d.from.plusDays(8.-(dayToSplit));
+  fake.getYear().+(":").+(fake.weekOfWeekyear().getAsString())
+})).toList.sortBy[String](((x$2: (String, List[org.cddcore.carers.DateRange])) => x$2._1))(math.Ordering.String).collect[org.cddcore.carers.DateRangesToBeProcessedTogether, List[org.cddcore.carers.DateRangesToBeProcessedTogether]](({
+  @SerialVersionUID(0) final <synthetic> class $anonfun extends scala.runtime.AbstractPartialFunction[(String, List[org.cddcore.carers.DateRange]),org.cddcore.carers.DateRangesToBeProcessedTogether] with Serializable {
+    def <init>(): anonymous class $anonfun = {
+      $anonfun.super.<init>();
+      ()
+    };
+    final override def applyOrElse[A1 >: Nothing <: (String, List[org.cddcore.carers.DateRange]), B1 >: org.cddcore.carers.DateRangesToBeProcessedTogether <: Any](x2: A1, default: A1 => B1): B1 = ((x2.asInstanceOf[(String, List[org.cddcore.carers.DateRange])]: (String, List[org.cddcore.carers.DateRange])): (String, List[org.cddcore.carers.DateRange]) @unchecked) match {
+      case (_1: String, _2: List[org.cddcore.carers.DateRange])(String, List[org.cddcore.carers.DateRange])(_, (v @ _)) => DateRangesToBeProcessedTogether(v)
+      case (defaultCase$ @ _) => default(x2)
+    };
+    final def isDefinedAt(x2: (String, List[org.cddcore.carers.DateRange])): Boolean = ((x2.asInstanceOf[(String, List[org.cddcore.carers.DateRange])]: (String, List[org.cddcore.carers.DateRange])): (String, List[org.cddcore.carers.DateRange]) @unchecked) match {
+      case (_1: String, _2: List[org.cddcore.carers.DateRange])(String, List[org.cddcore.carers.DateRange])(_, (v @ _)) => true
+      case (defaultCase$ @ _) => false
+    }
+  };
+  new $anonfun()
+}: PartialFunction[(String, List[org.cddcore.carers.DateRange]),org.cddcore.carers.DateRangesToBeProcessedTogether]))(immutable.List.canBuildFrom[org.cddcore.carers.DateRangesToBeProcessedTogether]):monday to month wednesday, split sunday,monday to wednesday, thursday to saturday, then monday to month wednesday split monday,monday to month wednesday, split monday,monday to wednesday, thursday to saturday, split monday,monday to wednesday, split monday,just monday, split monday
+ -> group by week, if(d.isBefore(a.awardStartDate))
+ false:QB start date in future
+else
+ if(a.claimStatus.!=("Active"))
+  false:QB not in payment
+ else
+  if(a.benefitType match {
+  case ("AA"| "DLA"| "CAA") => false
+  case _ => true
+})
+   false:QB is one of AA/DLA/CAA
+  else
+   true:QB start date exact,QB start date in past
+ -> Check for qualifying Benefit, if(dayToStartOn.>(d.getDayOfWeek()))
+ d.minusWeeks(1).withDayOfWeek(dayToStartOn):Given a tuesday and start on sunday,Given a saturday and start on sunday,Given a monday and start on tuesday
+else
+ d.withDayOfWeek(dayToStartOn):Given a saturday and start on wednesday,Given a sunday and start on sunday,Given a sunday and start on monday,Given a tuesday and start on monday,Given a monday and start on monday
+ -> First Day Of Week Engine, {
+  val startDate: org.joda.time.DateTime = c.claimStartDate();
+  c.breaksInCare().foldLeft[Boolean](true)(((acc: Boolean, dr: org.cddcore.carers.DateRange) => acc.&&(BreakInCare.singleBreakInCare(d, startDate, dr))))
+}:after a break that is pre 22 weeks,last day a break that is pre 22 weeks,first day of a break that is pre 22 weeks,before a break that is pre 22 weeks,After break that is over 12 weeks,Last day of break that is over 12 weeks,First invalid day of break that is over 12 weeks,Last valid day of break that is over 12 weeks,Last valid day of break that is over 12 weeks1,First day of break that is over 12 weeks,After break that is over 4 weeks,Last day of break that is over 4 weeks,First invalid day of break that is over 4 weeks,Last valid day of break that is over 4 weeks,First day of break that is over 4 weeks,Last day of break that is one day short of 4 weeks,First day of break that is one day short of 4 weeks,Last day of break that is one day short of 12 weeks,First day of break that is one day short of 12 weeks,Just after break, multiple breaks,Just before break, multiple breaks,Just after break,Just before break
+ -> Breaks in care, {
+  val interesting: List[org.cddcore.carers.DateRange] = DateRanges.datesToRanges(dates);
+  val split: List[org.cddcore.carers.DateRange] = DateRanges.splitIntoStartMiddleEnd(interesting, dayToSplit);
+  val result: List[org.cddcore.carers.DateRangesToBeProcessedTogether] = DateRanges.groupByWeek(split, dayToSplit);
+  result
+}:mon, wed, monday month, split sunday,mon, wed, monday month, split monday
+ -> Interesting Dates To DateRanges To Be Processed Together, {
+  import DateRange._;
+  val raw: List[org.cddcore.carers.DateRange] = immutable.List.apply[org.cddcore.carers.DateRange](x.fromToEndOfFirstWeek(dayToSplit), x.middleSection(dayToSplit), x.startOfLastWeekToEnd(dayToSplit));
+  val result: List[org.cddcore.carers.DateRange] = raw.removeDuplicates.filter(((x$4: org.cddcore.carers.DateRange) => x$4.valid));
+  result
+}:Saturday to Month Saturday, split sunday,Sunday to Month Saturday, split sunday,Sunday to Month Sunday, split sunday,Wednesday to Month Tuesday, split sunday,Monday to Month Tuesday, split sunday,Saturday to Month Saturday, split monday,Sunday to Month Sunday, split monday,Wednesday to Month Tuesday, split monday,Monday to Month Tuesday, split monday,Saturday to Saturday, split sunday,Wednesday to Tuesday, split sunday,Saturday to Saturday, split monday,Sunday to Sunday, split monday,Wednesday to Tuesday, split monday,Sunday to Saturday, split sunday,Tuesday to Saturday, split sunday,Monday to Tuesday, split sunday,Monday to Sunday, split monday,Tuesday to Saturday, split monday,Monday to Tuesday, split monday,Monday to sunday, 1 week, split monday
+ -> Splitting date ranges into start, middle and end. The second parameter is 'which day of the week is it using the usually Joda time definitions, start.isBefore(dateOfInterest).||(start.==(dateOfInterest)).&&(end.isDefined).&&(end.get.isAfter(dateOfInterest).||(end.get.==(dateOfInterest))):<Too long-153>,<Too long-152>,<Too long-151>,<Too long-150>,<Too long-149>,<Too long-148>,<Too long-147>,<Too long-146>,<Too long-145>
+ -> Date in range, if(c.claimantUnderSixteen)
+ KeyAndParams(510,You must be over 16,WrappedArray()):Claimant CL100104 is a child under 16
+else
+ if(c.claim35Hours().unary_!)
+  KeyAndParams(501,Not caring for 35 hours,WrappedArray()):Claimant CL100105 is not caring for 35 hours
+ else
+  if(c.claimAlwaysUK().unary_!)
+   if(c.claimCurrentResidentUK().unary_!)
+    KeyAndParams(534,Not resident in UK,WrappedArray()):Claimant CL100108 is not normally UK resident
+   else
+    KeyAndParams(530,Not resident in UK,WrappedArray()):Claimant CL100107 is not UK resident
+  else
+   if(c.claimEducationFullTime())
+    KeyAndParams(513,Claimant in full time education,WrappedArray()):Claimant CL100109 is in full time education
+   else
+    if(c.isThereAnyQualifyingBenefit(c.world.dateProcessingDate).unary_!)
+     KeyAndParams(503,Dependent doesn't have a Qualifying Benefit,WrappedArray()):Dependent party without qualifying benefit
+    else
+     if(c.isThereAnyQualifyingBenefit(c.world.dateProcessingDate))
+      if(c.netIncome.>(95))
+       KeyAndParams(520,Too much income,WrappedArray()):Customers with income exceeding the threshold are not entitled to CA
+      else
+       KeyAndParams(ENT,Dependent award is valid on date,WrappedArray()):Dependent party with suitable qualifying benefit
+     else
+      KeyAndParams("000", "Default Response"):
+ -> Validate Claim Rules, if(dr.contains(processDate).unary_!)
+ true:Hospital break, first day after break,Non hospital break, first day after break,Before date
+else
+ if(processDate.isBefore(claimStartDate.plusWeeks(22)))
+  false:Process Date 21 weeks and 6 days after claim date,After date
+ else
+  if(processDate.isBefore(dr.from.plusWeeks(4)))
+   true:Hospital break, first day,Non hospital break, last day of four weeks,Non hospital break, second day,Non hospital break, first day
+  else
+   if({
+  val lastDay: org.joda.time.DateTime = dr.from.plusWeeks(4).minusDays(1);
+  processDate.isAfter(lastDay)
+})
+    if({
+  val firstInvalidDay: org.joda.time.DateTime = dr.from.plusWeeks(12);
+  dr.reason.equalsIgnoreCase("Hospital").&&(processDate.isBefore(firstInvalidDay))
+})
+     true:Hospital break, last day of twelve weeks,Hospital break, last day of twelve weeks 1,Hospital break, first day after four weeks
+    else
+     false:Hospital break, last day of break,Hospital break, first day after twelve weeks,Non hospital break, last day of break,Non hospital break, first day after four weeks
+   else
+    org.cddcore.engine.UndecidedException, Nothing]((() => new UndecidedException())):
+ -> Single Break In Care, if(c.hasEmploymentData().unary_!)
+ 0.0:<Too long-21>,<Too long-20>,<Too long-19>
+else
+ if(c.employmentPayPeriodicity().==("Annually"))
+  c.employmentGrossSalary()./(52):<Too long-23>,<Too long-22>
+ else
+  if(c.employmentPayPeriodicity().==("Weekly"))
+   c.employmentGrossSalary():<Too long-25>,<Too long-24>
+  else
+   org.cddcore.engine.UndecidedException, Nothing]((() => new UndecidedException())):
+ -> Income, if(dates.size.==(0))
+ List():No days
+else
+ if(dates.size.==(1))
+  immutable.List.apply[org.cddcore.carers.DateRange](DateRange(dates.head._1, dates.head._1, dates.head._2)):Just one day
+ else
+  if(dates.size.>(1))
+   {
+  val d: List[(org.joda.time.DateTime, String)] = dates.sortBy[Long](((x$1: (org.joda.time.DateTime, String)) => x$1._1.getMillis()))(math.Ordering.Long).removeDuplicates;
+  val dWithoutLast: List[(org.joda.time.DateTime, String)] = d.take(d.size.-(1));
+  val allButLast: List[org.cddcore.carers.DateRange] = dWithoutLast.zip[(org.joda.time.DateTime, String), (org.joda.time.DateTime, String), List[((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))]](dWithoutLast.tail)(immutable.List.canBuildFrom[((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))]).collect[org.cddcore.carers.DateRange, List[org.cddcore.carers.DateRange]](({
+    @SerialVersionUID(0) final <synthetic> class $anonfun extends scala.runtime.AbstractPartialFunction[((org.joda.time.DateTime, String), (org.joda.time.DateTime, String)),org.cddcore.carers.DateRange] with Serializable {
+      def <init>(): anonymous class $anonfun = {
+        $anonfun.super.<init>();
+        ()
+      };
+      final override def applyOrElse[A1 >: Nothing <: ((org.joda.time.DateTime, String), (org.joda.time.DateTime, String)), B1 >: org.cddcore.carers.DateRange <: Any](x3: A1, default: A1 => B1): B1 = ((x3.asInstanceOf[((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))]: ((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))): ((org.joda.time.DateTime, String), (org.joda.time.DateTime, String)) @unchecked) match {
+        case (_1: (org.joda.time.DateTime, String), _2: (org.joda.time.DateTime, String))((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))((from @ _), (to @ _)) => DateRange(from._1, to._1.minusDays(1), from._2)
+        case (defaultCase$ @ _) => default(x3)
+      };
+      final def isDefinedAt(x3: ((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))): Boolean = ((x3.asInstanceOf[((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))]: ((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))): ((org.joda.time.DateTime, String), (org.joda.time.DateTime, String)) @unchecked) match {
+        case (_1: (org.joda.time.DateTime, String), _2: (org.joda.time.DateTime, String))((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))((from @ _), (to @ _)) => true
+        case (defaultCase$ @ _) => false
+      }
+    };
+    new $anonfun()
+  }: PartialFunction[((org.joda.time.DateTime, String), (org.joda.time.DateTime, String)),org.cddcore.carers.DateRange]))(immutable.List.canBuildFrom[org.cddcore.carers.DateRange]);
+  val last: org.cddcore.carers.DateRange = DateRange(dWithoutLast.last._1, d.last._1, dWithoutLast.last._2);
+  allButLast.:+[org.cddcore.carers.DateRange, List[org.cddcore.carers.DateRange]](last)(immutable.List.canBuildFrom[org.cddcore.carers.DateRange])
+}:three days,two days
+  else
+   org.cddcore.engine.UndecidedException, Nothing]((() => new UndecidedException())):
+ -> Date to ranges, EngineWithChildren(Child care expenses,PSN  Pensions,Occupational Pension) -> Expenses, org.joda.time.Years.yearsBetween(from, to).getYears().<(16):<Too long-67>,<Too long-66>,<Too long-65>
+ -> Check for being under-age (less than age sixteen))
+Interesting Dates
+EngineWithChildren(Sixteenth Birthday,Claim start date,Claim end date,Claim submitted date,Time Limit For Claiming Three Months,Breaks in Care add the from date, and the first date after the to date,Four weeks after the start of a non hospital break in care, and twelve weeks after a hospital break of care are interesting if the break is active then)
+group by week
+ranges.groupBy[String](((d: org.cddcore.carers.DateRange) => {
+  val fake: org.joda.time.DateTime = d.from.plusDays(8.-(dayToSplit));
+  fake.getYear().+(":").+(fake.weekOfWeekyear().getAsString())
+})).toList.sortBy[String](((x$2: (String, List[org.cddcore.carers.DateRange])) => x$2._1))(math.Ordering.String).collect[org.cddcore.carers.DateRangesToBeProcessedTogether, List[org.cddcore.carers.DateRangesToBeProcessedTogether]](({
+  @SerialVersionUID(0) final <synthetic> class $anonfun extends scala.runtime.AbstractPartialFunction[(String, List[org.cddcore.carers.DateRange]),org.cddcore.carers.DateRangesToBeProcessedTogether] with Serializable {
+    def <init>(): anonymous class $anonfun = {
+      $anonfun.super.<init>();
+      ()
+    };
+    final override def applyOrElse[A1 >: Nothing <: (String, List[org.cddcore.carers.DateRange]), B1 >: org.cddcore.carers.DateRangesToBeProcessedTogether <: Any](x2: A1, default: A1 => B1): B1 = ((x2.asInstanceOf[(String, List[org.cddcore.carers.DateRange])]: (String, List[org.cddcore.carers.DateRange])): (String, List[org.cddcore.carers.DateRange]) @unchecked) match {
+      case (_1: String, _2: List[org.cddcore.carers.DateRange])(String, List[org.cddcore.carers.DateRange])(_, (v @ _)) => DateRangesToBeProcessedTogether(v)
+      case (defaultCase$ @ _) => default(x2)
+    };
+    final def isDefinedAt(x2: (String, List[org.cddcore.carers.DateRange])): Boolean = ((x2.asInstanceOf[(String, List[org.cddcore.carers.DateRange])]: (String, List[org.cddcore.carers.DateRange])): (String, List[org.cddcore.carers.DateRange]) @unchecked) match {
+      case (_1: String, _2: List[org.cddcore.carers.DateRange])(String, List[org.cddcore.carers.DateRange])(_, (v @ _)) => true
+      case (defaultCase$ @ _) => false
+    }
+  };
+  new $anonfun()
+}: PartialFunction[(String, List[org.cddcore.carers.DateRange]),org.cddcore.carers.DateRangesToBeProcessedTogether]))(immutable.List.canBuildFrom[org.cddcore.carers.DateRangesToBeProcessedTogether]):monday to month wednesday, split sunday,monday to wednesday, thursday to saturday, then monday to month wednesday split monday,monday to month wednesday, split monday,monday to wednesday, thursday to saturday, split monday,monday to wednesday, split monday,just monday, split monday
+
+Check for qualifying Benefit
+if(d.isBefore(a.awardStartDate))
+ false:QB start date in future
+else
+ if(a.claimStatus.!=("Active"))
+  false:QB not in payment
+ else
+  if(a.benefitType match {
+  case ("AA"| "DLA"| "CAA") => false
+  case _ => true
+})
+   false:QB is one of AA/DLA/CAA
+  else
+   true:QB start date exact,QB start date in past
+
+First Day Of Week Engine
+if(dayToStartOn.>(d.getDayOfWeek()))
+ d.minusWeeks(1).withDayOfWeek(dayToStartOn):Given a tuesday and start on sunday,Given a saturday and start on sunday,Given a monday and start on tuesday
+else
+ d.withDayOfWeek(dayToStartOn):Given a saturday and start on wednesday,Given a sunday and start on sunday,Given a sunday and start on monday,Given a tuesday and start on monday,Given a monday and start on monday
+
+Breaks in care
+{
+  val startDate: org.joda.time.DateTime = c.claimStartDate();
+  c.breaksInCare().foldLeft[Boolean](true)(((acc: Boolean, dr: org.cddcore.carers.DateRange) => acc.&&(BreakInCare.singleBreakInCare(d, startDate, dr))))
+}:after a break that is pre 22 weeks,last day a break that is pre 22 weeks,first day of a break that is pre 22 weeks,before a break that is pre 22 weeks,After break that is over 12 weeks,Last day of break that is over 12 weeks,First invalid day of break that is over 12 weeks,Last valid day of break that is over 12 weeks,Last valid day of break that is over 12 weeks1,First day of break that is over 12 weeks,After break that is over 4 weeks,Last day of break that is over 4 weeks,First invalid day of break that is over 4 weeks,Last valid day of break that is over 4 weeks,First day of break that is over 4 weeks,Last day of break that is one day short of 4 weeks,First day of break that is one day short of 4 weeks,Last day of break that is one day short of 12 weeks,First day of break that is one day short of 12 weeks,Just after break, multiple breaks,Just before break, multiple breaks,Just after break,Just before break
+
+Interesting Dates To DateRanges To Be Processed Together
+{
+  val interesting: List[org.cddcore.carers.DateRange] = DateRanges.datesToRanges(dates);
+  val split: List[org.cddcore.carers.DateRange] = DateRanges.splitIntoStartMiddleEnd(interesting, dayToSplit);
+  val result: List[org.cddcore.carers.DateRangesToBeProcessedTogether] = DateRanges.groupByWeek(split, dayToSplit);
+  result
+}:mon, wed, monday month, split sunday,mon, wed, monday month, split monday
+
+Splitting date ranges into start, middle and end. The second parameter is 'which day of the week is it using the usually Joda time definitions
+{
+  import DateRange._;
+  val raw: List[org.cddcore.carers.DateRange] = immutable.List.apply[org.cddcore.carers.DateRange](x.fromToEndOfFirstWeek(dayToSplit), x.middleSection(dayToSplit), x.startOfLastWeekToEnd(dayToSplit));
+  val result: List[org.cddcore.carers.DateRange] = raw.removeDuplicates.filter(((x$4: org.cddcore.carers.DateRange) => x$4.valid));
+  result
+}:Saturday to Month Saturday, split sunday,Sunday to Month Saturday, split sunday,Sunday to Month Sunday, split sunday,Wednesday to Month Tuesday, split sunday,Monday to Month Tuesday, split sunday,Saturday to Month Saturday, split monday,Sunday to Month Sunday, split monday,Wednesday to Month Tuesday, split monday,Monday to Month Tuesday, split monday,Saturday to Saturday, split sunday,Wednesday to Tuesday, split sunday,Saturday to Saturday, split monday,Sunday to Sunday, split monday,Wednesday to Tuesday, split monday,Sunday to Saturday, split sunday,Tuesday to Saturday, split sunday,Monday to Tuesday, split sunday,Monday to Sunday, split monday,Tuesday to Saturday, split monday,Monday to Tuesday, split monday,Monday to sunday, 1 week, split monday
+
+Date in range
+start.isBefore(dateOfInterest).||(start.==(dateOfInterest)).&&(end.isDefined).&&(end.get.isAfter(dateOfInterest).||(end.get.==(dateOfInterest))):<Too long-153>,<Too long-152>,<Too long-151>,<Too long-150>,<Too long-149>,<Too long-148>,<Too long-147>,<Too long-146>,<Too long-145>
+
+Validate Claim Rules
+if(c.claimantUnderSixteen)
+ KeyAndParams(510,You must be over 16,WrappedArray()):Claimant CL100104 is a child under 16
+else
+ if(c.claim35Hours().unary_!)
+  KeyAndParams(501,Not caring for 35 hours,WrappedArray()):Claimant CL100105 is not caring for 35 hours
+ else
+  if(c.claimAlwaysUK().unary_!)
+   if(c.claimCurrentResidentUK().unary_!)
+    KeyAndParams(534,Not resident in UK,WrappedArray()):Claimant CL100108 is not normally UK resident
+   else
+    KeyAndParams(530,Not resident in UK,WrappedArray()):Claimant CL100107 is not UK resident
+  else
+   if(c.claimEducationFullTime())
+    KeyAndParams(513,Claimant in full time education,WrappedArray()):Claimant CL100109 is in full time education
+   else
+    if(c.isThereAnyQualifyingBenefit(c.world.dateProcessingDate).unary_!)
+     KeyAndParams(503,Dependent doesn't have a Qualifying Benefit,WrappedArray()):Dependent party without qualifying benefit
+    else
+     if(c.isThereAnyQualifyingBenefit(c.world.dateProcessingDate))
+      if(c.netIncome.>(95))
+       KeyAndParams(520,Too much income,WrappedArray()):Customers with income exceeding the threshold are not entitled to CA
+      else
+       KeyAndParams(ENT,Dependent award is valid on date,WrappedArray()):Dependent party with suitable qualifying benefit
+     else
+      KeyAndParams("000", "Default Response"):
+
+Single Break In Care
+if(dr.contains(processDate).unary_!)
+ true:Hospital break, first day after break,Non hospital break, first day after break,Before date
+else
+ if(processDate.isBefore(claimStartDate.plusWeeks(22)))
+  false:Process Date 21 weeks and 6 days after claim date,After date
+ else
+  if(processDate.isBefore(dr.from.plusWeeks(4)))
+   true:Hospital break, first day,Non hospital break, last day of four weeks,Non hospital break, second day,Non hospital break, first day
+  else
+   if({
+  val lastDay: org.joda.time.DateTime = dr.from.plusWeeks(4).minusDays(1);
+  processDate.isAfter(lastDay)
+})
+    if({
+  val firstInvalidDay: org.joda.time.DateTime = dr.from.plusWeeks(12);
+  dr.reason.equalsIgnoreCase("Hospital").&&(processDate.isBefore(firstInvalidDay))
+})
+     true:Hospital break, last day of twelve weeks,Hospital break, last day of twelve weeks 1,Hospital break, first day after four weeks
+    else
+     false:Hospital break, last day of break,Hospital break, first day after twelve weeks,Non hospital break, last day of break,Non hospital break, first day after four weeks
+   else
+    org.cddcore.engine.UndecidedException, Nothing]((() => new UndecidedException())):
+
+Income
+if(c.hasEmploymentData().unary_!)
+ 0.0:<Too long-21>,<Too long-20>,<Too long-19>
+else
+ if(c.employmentPayPeriodicity().==("Annually"))
+  c.employmentGrossSalary()./(52):<Too long-23>,<Too long-22>
+ else
+  if(c.employmentPayPeriodicity().==("Weekly"))
+   c.employmentGrossSalary():<Too long-25>,<Too long-24>
+  else
+   org.cddcore.engine.UndecidedException, Nothing]((() => new UndecidedException())):
+
+Date to ranges
+if(dates.size.==(0))
+ List():No days
+else
+ if(dates.size.==(1))
+  immutable.List.apply[org.cddcore.carers.DateRange](DateRange(dates.head._1, dates.head._1, dates.head._2)):Just one day
+ else
+  if(dates.size.>(1))
+   {
+  val d: List[(org.joda.time.DateTime, String)] = dates.sortBy[Long](((x$1: (org.joda.time.DateTime, String)) => x$1._1.getMillis()))(math.Ordering.Long).removeDuplicates;
+  val dWithoutLast: List[(org.joda.time.DateTime, String)] = d.take(d.size.-(1));
+  val allButLast: List[org.cddcore.carers.DateRange] = dWithoutLast.zip[(org.joda.time.DateTime, String), (org.joda.time.DateTime, String), List[((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))]](dWithoutLast.tail)(immutable.List.canBuildFrom[((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))]).collect[org.cddcore.carers.DateRange, List[org.cddcore.carers.DateRange]](({
+    @SerialVersionUID(0) final <synthetic> class $anonfun extends scala.runtime.AbstractPartialFunction[((org.joda.time.DateTime, String), (org.joda.time.DateTime, String)),org.cddcore.carers.DateRange] with Serializable {
+      def <init>(): anonymous class $anonfun = {
+        $anonfun.super.<init>();
+        ()
+      };
+      final override def applyOrElse[A1 >: Nothing <: ((org.joda.time.DateTime, String), (org.joda.time.DateTime, String)), B1 >: org.cddcore.carers.DateRange <: Any](x3: A1, default: A1 => B1): B1 = ((x3.asInstanceOf[((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))]: ((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))): ((org.joda.time.DateTime, String), (org.joda.time.DateTime, String)) @unchecked) match {
+        case (_1: (org.joda.time.DateTime, String), _2: (org.joda.time.DateTime, String))((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))((from @ _), (to @ _)) => DateRange(from._1, to._1.minusDays(1), from._2)
+        case (defaultCase$ @ _) => default(x3)
+      };
+      final def isDefinedAt(x3: ((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))): Boolean = ((x3.asInstanceOf[((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))]: ((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))): ((org.joda.time.DateTime, String), (org.joda.time.DateTime, String)) @unchecked) match {
+        case (_1: (org.joda.time.DateTime, String), _2: (org.joda.time.DateTime, String))((org.joda.time.DateTime, String), (org.joda.time.DateTime, String))((from @ _), (to @ _)) => true
+        case (defaultCase$ @ _) => false
+      }
+    };
+    new $anonfun()
+  }: PartialFunction[((org.joda.time.DateTime, String), (org.joda.time.DateTime, String)),org.cddcore.carers.DateRange]))(immutable.List.canBuildFrom[org.cddcore.carers.DateRange]);
+  val last: org.cddcore.carers.DateRange = DateRange(dWithoutLast.last._1, d.last._1, dWithoutLast.last._2);
+  allButLast.:+[org.cddcore.carers.DateRange, List[org.cddcore.carers.DateRange]](last)(immutable.List.canBuildFrom[org.cddcore.carers.DateRange])
+}:three days,two days
+  else
+   org.cddcore.engine.UndecidedException, Nothing]((() => new UndecidedException())):
+
+Expenses
+EngineWithChildren(Child care expenses,PSN  Pensions,Occupational Pension)
+Check for being under-age (less than age sixteen)
+org.joda.time.Years.yearsBetween(from, to).getYears().<(16):<Too long-67>,<Too long-66>,<Too long-65>
+
+started      EngineWithChildren   Interesting Dates 
+started       EngineChild          Sixteenth Birthday 
+started        Scenario             <Too long-193> => List<> 
+finished       Scenario             <Too long-193> => List<> 
+started        Scenario             <Too long-194> => List<<2010-07-10T000000.0000100,Sixteenth Birthday>> 
+finished       Scenario             <Too long-194> => List<<2010-07-10T000000.0000100,Sixteenth Birthday>> 
+finished      EngineChild          Sixteenth Birthday 
+started       EngineChild          Claim start date 
+started        Scenario             <Too long-195> => List<<2010-01-01T000000.000Z,Claim Start Date>> 
+finished       Scenario             <Too long-195> => List<<2010-01-01T000000.000Z,Claim Start Date>> 
+finished      EngineChild          Claim start date 
+started       EngineChild          Claim end date 
+started        Scenario             <Too long-196> => List<<3999-12-31T000000.000Z,Claim End Date>> 
+finished       Scenario             <Too long-196> => List<<3999-12-31T000000.000Z,Claim End Date>> 
+started        Scenario             <Too long-197> => List<<2999-12-31T000000.000Z,Claim End Date>> 
+finished       Scenario             <Too long-197> => List<<2999-12-31T000000.000Z,Claim End Date>> 
+finished      EngineChild          Claim end date 
+started       EngineChild          Claim submitted date 
+started        Scenario             <Too long-198> => List<<2010-01-01T000000.000Z,Claim Submitted Date>> 
+finished       Scenario             <Too long-198> => List<<2010-01-01T000000.000Z,Claim Submitted Date>> 
+finished      EngineChild          Claim submitted date 
+started       EngineChild          Time Limit For Claiming Three Months 
+started        Scenario             <Too long-199> => List<> 
+finished       Scenario             <Too long-199> => List<> 
+started        Scenario             <Too long-200> => List<<2010-03-09T000000.000Z,Three month claim time limit>> 
+finished       Scenario             <Too long-200> => List<<2010-03-09T000000.000Z,Three month claim time limit>> 
+finished      EngineChild          Time Limit For Claiming Three Months 
+started       EngineChild          Breaks in Care add the from date, and the first date after the to date 
+started        Scenario             Single break => List<<2010-03-01T000000.000Z,Break in care <Hospital> started>, <2010-03-05T000000.000Z,Break in care <Hospital> ended>> 
+finished       Scenario             Single break => List<<2010-03-01T000000.000Z,Break in care <Hospital> started>, <2010-03-05T000000.000Z,Break in care <Hospital> ended>> 
+started        Scenario             Two breaks => List<<2010-03-01T000000.000Z,Break in care <Hospital> started>, <2010-03-05T000000.000Z,Break in care <Hospital> ended>, <2010-04-01T000000.0000100,Break in care <Hospital> started>, <2010-04-05T000000.0000100,Break in care <Hospital> ended>> 
+finished       Scenario             Two breaks => List<<2010-03-01T000000.000Z,Break in care <Hospital> started>, <2010-03-05T000000.000Z,Break in care <Hospital> ended>, <2010-04-01T000000.0000100,Break in care <Hospital> started>, <2010-04-05T000000.0000100,Break in care <Hospital> ended>> 
+finished      EngineChild          Breaks in Care add the from date, and the first date after the to date 
+started       EngineChild          Four weeks after the start of a non hospital break in care, and twelve weeks after a hospital break of care are interesting if the break is active then 
+started        Scenario             Non hospital break, Too short => List<> 
+finished       Scenario             Non hospital break, Too short => List<> 
+started        Scenario             Non hospital break, more than four weeks => List<<2010-07-29T000000.0000100,Care break too long>> 
+finished       Scenario             Non hospital break, more than four weeks => List<<2010-07-29T000000.0000100,Care break too long>> 
+started        Scenario             Hospital break. Too short => List<> 
+finished       Scenario             Hospital break. Too short => List<> 
+started        Scenario             Hospital break, more than twelve weeks => List<<2010-09-23T000000.0000100,Care break too long>> 
+finished       Scenario             Hospital break, more than twelve weeks => List<<2010-09-23T000000.0000100,Care break too long>> 
+finished      EngineChild          Four weeks after the start of a non hospital break in care, and twelve weeks after a hospital break of care are interesting if the break is active then 
+finished     EngineWithChildren   Interesting Dates 
+started      EngineFromTests      group by week 
+started       UseCase              Just one week 
+started        Scenario             just monday, split monday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-04<Mon>, all DateRange<reason,2010-01-04<Mon>,2010-01-04<Mon>>> 
+finished       Scenario             just monday, split monday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-04<Mon>, all DateRange<reason,2010-01-04<Mon>,2010-01-04<Mon>>> 
+started        Scenario             monday to wednesday, split monday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-06<Wed>, all DateRange<reason,2010-01-04<Mon>,2010-01-06<Wed>>> 
+finished       Scenario             monday to wednesday, split monday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-06<Wed>, all DateRange<reason,2010-01-04<Mon>,2010-01-06<Wed>>> 
+started        Scenario             monday to wednesday, thursday to saturday, split monday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-09<Sat>, all DateRange<reason,2010-01-04<Mon>,2010-01-06<Wed>>,DateRange<reason,2010-01-07<Thu>,2010-01-09<Sat>>> 
+finished       Scenario             monday to wednesday, thursday to saturday, split monday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-09<Sat>, all DateRange<reason,2010-01-04<Mon>,2010-01-06<Wed>>,DateRange<reason,2010-01-07<Thu>,2010-01-09<Sat>>> 
+finished      UseCase              Just one week 
+started       UseCase              Multiple weeks 
+started        Scenario             monday to month wednesday, split monday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-31<Sun>, all DateRange<reason,2010-01-04<Mon>,2010-01-31<Sun>>, DateRanges<start 2010-02-01<Mon>, end 2010-02-03<Wed>, all DateRange<reason,2010-02-01<Mon>,2010-02-03<Wed>>> 
+finished       Scenario             monday to month wednesday, split monday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-31<Sun>, all DateRange<reason,2010-01-04<Mon>,2010-01-31<Sun>>, DateRanges<start 2010-02-01<Mon>, end 2010-02-03<Wed>, all DateRange<reason,2010-02-01<Mon>,2010-02-03<Wed>>> 
+started        Scenario             monday to wednesday, thursday to saturday, then monday to month wednesday split monday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-09<Sat>, all DateRange<reason,2010-01-04<Mon>,2010-01-06<Wed>>,DateRange<reason,2010-01-07<Thu>,2010-01-09<Sat>>, DateRanges<start 2010-01-11<Mon>, end 2010-01-31<Sun>, all DateRange<reason,2010-01-11<Mon>,2010-01-31<Sun>>, DateRanges<start 2010-02-01<Mon>, end 2010-02-03<Wed>, all DateRange<reason,2010-02-01<Mon>,2010-02-03<Wed>>> 
+finished       Scenario             monday to wednesday, thursday to saturday, then monday to month wednesday split monday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-09<Sat>, all DateRange<reason,2010-01-04<Mon>,2010-01-06<Wed>>,DateRange<reason,2010-01-07<Thu>,2010-01-09<Sat>>, DateRanges<start 2010-01-11<Mon>, end 2010-01-31<Sun>, all DateRange<reason,2010-01-11<Mon>,2010-01-31<Sun>>, DateRanges<start 2010-02-01<Mon>, end 2010-02-03<Wed>, all DateRange<reason,2010-02-01<Mon>,2010-02-03<Wed>>> 
+started        Scenario             monday to month wednesday, split sunday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-09<Sat>, all DateRange<reason,2010-01-04<Mon>,2010-01-09<Sat>>, DateRanges<start 2010-01-10<Sun>, end 2010-01-30<Sat>, all DateRange<reason,2010-01-10<Sun>,2010-01-30<Sat>>, DateRanges<start 2010-01-31<Sun>, end 2010-02-03<Wed>, all DateRange<reason,2010-01-31<Sun>,2010-02-03<Wed>>> 
+finished       Scenario             monday to month wednesday, split sunday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-09<Sat>, all DateRange<reason,2010-01-04<Mon>,2010-01-09<Sat>>, DateRanges<start 2010-01-10<Sun>, end 2010-01-30<Sat>, all DateRange<reason,2010-01-10<Sun>,2010-01-30<Sat>>, DateRanges<start 2010-01-31<Sun>, end 2010-02-03<Wed>, all DateRange<reason,2010-01-31<Sun>,2010-02-03<Wed>>> 
+finished      UseCase              Multiple weeks 
+finished     EngineFromTests      group by week 
+started      EngineFromTests      Check for qualifying Benefit 
+started       UseCase              QB not in payment or future dated 
+started        Scenario             QB start date in past => true 
+finished       Scenario             QB start date in past => true 
+started        Scenario             QB start date exact => true 
+finished       Scenario             QB start date exact => true 
+started        Scenario             QB start date in future => false 
+finished       Scenario             QB start date in future => false 
+started        Scenario             QB not in payment => false 
+finished       Scenario             QB not in payment => false 
+started        Scenario             QB is one of AA/DLA/CAA => false 
+finished       Scenario             QB is one of AA/DLA/CAA => false 
+finished      UseCase              QB not in payment or future dated 
+finished     EngineFromTests      Check for qualifying Benefit 
+started      EngineFromTests      First Day Of Week Engine 
+started       UseCase              Date supplied is greater than or equal to the day of week to start on 
+started        Scenario             Given a monday and start on monday => 2010-01-04T000000.000Z 
+finished       Scenario             Given a monday and start on monday => 2010-01-04T000000.000Z 
+started        Scenario             Given a tuesday and start on monday => 2010-01-04T000000.000Z 
+finished       Scenario             Given a tuesday and start on monday => 2010-01-04T000000.000Z 
+started        Scenario             Given a sunday and start on monday => 2010-01-04T000000.000Z 
+finished       Scenario             Given a sunday and start on monday => 2010-01-04T000000.000Z 
+started        Scenario             Given a sunday and start on sunday => 2010-01-10T000000.000Z 
+finished       Scenario             Given a sunday and start on sunday => 2010-01-10T000000.000Z 
+finished      UseCase              Date supplied is greater than or equal to the day of week to start on 
+started       UseCase              Date supplied is less than the day of week to start on 
+started        Scenario             Given a monday and start on tuesday => 2010-01-05T000000.000Z 
+finished       Scenario             Given a monday and start on tuesday => 2010-01-05T000000.000Z 
+started        Scenario             Given a saturday and start on sunday => 2010-01-03T000000.000Z 
+finished       Scenario             Given a saturday and start on sunday => 2010-01-03T000000.000Z 
+started        Scenario             Given a saturday and start on wednesday => 2010-01-06T000000.000Z 
+finished       Scenario             Given a saturday and start on wednesday => 2010-01-06T000000.000Z 
+started        Scenario             Given a tuesday and start on sunday => 2010-01-03T000000.000Z 
+finished       Scenario             Given a tuesday and start on sunday => 2010-01-03T000000.000Z 
+finished      UseCase              Date supplied is less than the day of week to start on 
+finished     EngineFromTests      First Day Of Week Engine 
+started      EngineFromTests      Breaks in care 
+started       UseCase              The datetime is outside any break in care, means that payment is OK 
+started        Scenario             Just before break => true 
+finished       Scenario             Just before break => true 
+started        Scenario             Just after break => true 
+finished       Scenario             Just after break => true 
+started        Scenario             Just before break, multiple breaks => true 
+finished       Scenario             Just before break, multiple breaks => true 
+started        Scenario             Just after break, multiple breaks => true 
+finished       Scenario             Just after break, multiple breaks => true 
+finished      UseCase              The datetime is outside any break in care, means that payment is OK 
+started       UseCase              The datetime is in a break in care <dependant in hospital>, and the care payments were made for 22 weeks pre care, and the break is less than 12 weeks 
+started        Scenario             First day of break that is one day short of 12 weeks => true 
+finished       Scenario             First day of break that is one day short of 12 weeks => true 
+started        Scenario             Last day of break that is one day short of 12 weeks => true 
+finished       Scenario             Last day of break that is one day short of 12 weeks => true 
+finished      UseCase              The datetime is in a break in care <dependant in hospital>, and the care payments were made for 22 weeks pre care, and the break is less than 12 weeks 
+started       UseCase              The datetime is in a break in care <dependant not in hospital>, and the care payments were made for 22 weeks pre care, and the break is less than 4 weeks 
+started        Scenario             First day of break that is one day short of 4 weeks => true 
+finished       Scenario             First day of break that is one day short of 4 weeks => true 
+started        Scenario             Last day of break that is one day short of 4 weeks => true 
+finished       Scenario             Last day of break that is one day short of 4 weeks => true 
+finished      UseCase              The datetime is in a break in care <dependant not in hospital>, and the care payments were made for 22 weeks pre care, and the break is less than 4 weeks 
+started       UseCase              The datetime is in a break in care <dependant not in hospital>, and the care payments were made for 22 weeks pre care, and the break is more than 4 weeks 
+started        Scenario             First day of break that is over 4 weeks => true 
+finished       Scenario             First day of break that is over 4 weeks => true 
+started        Scenario             Last valid day of break that is over 4 weeks => true 
+finished       Scenario             Last valid day of break that is over 4 weeks => true 
+started        Scenario             First invalid day of break that is over 4 weeks => false 
+finished       Scenario             First invalid day of break that is over 4 weeks => false 
+started        Scenario             Last day of break that is over 4 weeks => false 
+finished       Scenario             Last day of break that is over 4 weeks => false 
+started        Scenario             After break that is over 4 weeks => true 
+finished       Scenario             After break that is over 4 weeks => true 
+finished      UseCase              The datetime is in a break in care <dependant not in hospital>, and the care payments were made for 22 weeks pre care, and the break is more than 4 weeks 
+started       UseCase              The datetime is in a break in care <dependant in hospital>, and the care payments were made for 22 weeks pre care, and the break is more than 12 weeks 
+started        Scenario             First day of break that is over 12 weeks => true 
+finished       Scenario             First day of break that is over 12 weeks => true 
+started        Scenario             Last valid day of break that is over 12 weeks1 => true 
+finished       Scenario             Last valid day of break that is over 12 weeks1 => true 
+started        Scenario             Last valid day of break that is over 12 weeks => true 
+finished       Scenario             Last valid day of break that is over 12 weeks => true 
+started        Scenario             First invalid day of break that is over 12 weeks => false 
+finished       Scenario             First invalid day of break that is over 12 weeks => false 
+started        Scenario             Last day of break that is over 12 weeks => false 
+finished       Scenario             Last day of break that is over 12 weeks => false 
+started        Scenario             After break that is over 12 weeks => true 
+finished       Scenario             After break that is over 12 weeks => true 
+finished      UseCase              The datetime is in a break in care <dependant in hospital>, and the care payments were made for 22 weeks pre care, and the break is more than 12 weeks 
+started       UseCase              The datetime is in a break in care and the care payments were not made for 22 weeks pre care 
+started        Scenario             before a break that is pre 22 weeks => true 
+finished       Scenario             before a break that is pre 22 weeks => true 
+started        Scenario             first day of a break that is pre 22 weeks => false 
+finished       Scenario             first day of a break that is pre 22 weeks => false 
+started        Scenario             last day a break that is pre 22 weeks => false 
+finished       Scenario             last day a break that is pre 22 weeks => false 
+started        Scenario             after a break that is pre 22 weeks => true 
+finished       Scenario             after a break that is pre 22 weeks => true 
+finished      UseCase              The datetime is in a break in care and the care payments were not made for 22 weeks pre care 
+finished     EngineFromTests      Breaks in care 
+started      EngineFromTests      Interesting Dates To DateRanges To Be Processed Together 
+started       Scenario             mon, wed, monday month, split monday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-10<Sun>, all DateRange<reason,2010-01-04<Mon>,2010-01-05<Tue>>,DateRange<reason,2010-01-06<Wed>,2010-01-10<Sun>>, DateRanges<start 2010-01-11<Mon>, end 2010-01-31<Sun>, all DateRange<reason,2010-01-11<Mon>,2010-01-31<Sun>>, DateRanges<start 2010-02-01<Mon>, end 2010-02-01<Mon>, all DateRange<reason,2010-02-01<Mon>,2010-02-01<Mon>>> 
+finished      Scenario             mon, wed, monday month, split monday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-10<Sun>, all DateRange<reason,2010-01-04<Mon>,2010-01-05<Tue>>,DateRange<reason,2010-01-06<Wed>,2010-01-10<Sun>>, DateRanges<start 2010-01-11<Mon>, end 2010-01-31<Sun>, all DateRange<reason,2010-01-11<Mon>,2010-01-31<Sun>>, DateRanges<start 2010-02-01<Mon>, end 2010-02-01<Mon>, all DateRange<reason,2010-02-01<Mon>,2010-02-01<Mon>>> 
+started       Scenario             mon, wed, monday month, split sunday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-09<Sat>, all DateRange<reason,2010-01-04<Mon>,2010-01-05<Tue>>,DateRange<reason,2010-01-06<Wed>,2010-01-09<Sat>>, DateRanges<start 2010-01-10<Sun>, end 2010-01-30<Sat>, all DateRange<reason,2010-01-10<Sun>,2010-01-30<Sat>>, DateRanges<start 2010-01-31<Sun>, end 2010-02-01<Mon>, all DateRange<reason,2010-01-31<Sun>,2010-02-01<Mon>>> 
+finished      Scenario             mon, wed, monday month, split sunday => List<DateRanges<start 2010-01-04<Mon>, end 2010-01-09<Sat>, all DateRange<reason,2010-01-04<Mon>,2010-01-05<Tue>>,DateRange<reason,2010-01-06<Wed>,2010-01-09<Sat>>, DateRanges<start 2010-01-10<Sun>, end 2010-01-30<Sat>, all DateRange<reason,2010-01-10<Sun>,2010-01-30<Sat>>, DateRanges<start 2010-01-31<Sun>, end 2010-02-01<Mon>, all DateRange<reason,2010-01-31<Sun>,2010-02-01<Mon>>> 
+finished     EngineFromTests      Interesting Dates To DateRanges To Be Processed Together 
+started      EngineFromTests      Splitting date ranges into start, middle and end. The second parameter is 'which day of the week is it using the usually Joda time definitions 
+started       UseCase              Within same week 
+started        Scenario             Monday to sunday, 1 week, split monday => List<DateRange<reason,2010-01-04<Mon>,2010-01-10<Sun>>> 
+finished       Scenario             Monday to sunday, 1 week, split monday => List<DateRange<reason,2010-01-04<Mon>,2010-01-10<Sun>>> 
+started        Scenario             Monday to Tuesday, split monday => List<DateRange<reason,2010-01-04<Mon>,2010-01-05<Tue>>> 
+finished       Scenario             Monday to Tuesday, split monday => List<DateRange<reason,2010-01-04<Mon>,2010-01-05<Tue>>> 
+started        Scenario             Tuesday to Saturday, split monday => List<DateRange<reason,2010-01-05<Tue>,2010-01-09<Sat>>> 
+finished       Scenario             Tuesday to Saturday, split monday => List<DateRange<reason,2010-01-05<Tue>,2010-01-09<Sat>>> 
+started        Scenario             Monday to Sunday, split monday => List<DateRange<reason,2010-01-04<Mon>,2010-01-10<Sun>>> 
+finished       Scenario             Monday to Sunday, split monday => List<DateRange<reason,2010-01-04<Mon>,2010-01-10<Sun>>> 
+started        Scenario             Monday to Tuesday, split sunday => List<DateRange<reason,2010-01-04<Mon>,2010-01-05<Tue>>> 
+finished       Scenario             Monday to Tuesday, split sunday => List<DateRange<reason,2010-01-04<Mon>,2010-01-05<Tue>>> 
+started        Scenario             Tuesday to Saturday, split sunday => List<DateRange<reason,2010-01-05<Tue>,2010-01-09<Sat>>> 
+finished       Scenario             Tuesday to Saturday, split sunday => List<DateRange<reason,2010-01-05<Tue>,2010-01-09<Sat>>> 
+started        Scenario             Sunday to Saturday, split sunday => List<DateRange<reason,2010-01-03<Sun>,2010-01-09<Sat>>> 
+finished       Scenario             Sunday to Saturday, split sunday => List<DateRange<reason,2010-01-03<Sun>,2010-01-09<Sat>>> 
+finished      UseCase              Within same week 
+started       UseCase              Across two weeks 
+started        Scenario             Wednesday to Tuesday, split monday => List<DateRange<reason,2010-01-06<Wed>,2010-01-10<Sun>>, DateRange<reason,2010-01-11<Mon>,2010-01-12<Tue>>> 
+finished       Scenario             Wednesday to Tuesday, split monday => List<DateRange<reason,2010-01-06<Wed>,2010-01-10<Sun>>, DateRange<reason,2010-01-11<Mon>,2010-01-12<Tue>>> 
+started        Scenario             Sunday to Sunday, split monday => List<DateRange<reason,2010-01-03<Sun>,2010-01-03<Sun>>, DateRange<reason,2010-01-04<Mon>,2010-01-10<Sun>>> 
+finished       Scenario             Sunday to Sunday, split monday => List<DateRange<reason,2010-01-03<Sun>,2010-01-03<Sun>>, DateRange<reason,2010-01-04<Mon>,2010-01-10<Sun>>> 
+started        Scenario             Saturday to Saturday, split monday => List<DateRange<reason,2010-01-02<Sat>,2010-01-03<Sun>>, DateRange<reason,2010-01-04<Mon>,2010-01-09<Sat>>> 
+finished       Scenario             Saturday to Saturday, split monday => List<DateRange<reason,2010-01-02<Sat>,2010-01-03<Sun>>, DateRange<reason,2010-01-04<Mon>,2010-01-09<Sat>>> 
+started        Scenario             Wednesday to Tuesday, split sunday => List<DateRange<reason,2010-01-06<Wed>,2010-01-09<Sat>>, DateRange<reason,2010-01-10<Sun>,2010-01-12<Tue>>> 
+finished       Scenario             Wednesday to Tuesday, split sunday => List<DateRange<reason,2010-01-06<Wed>,2010-01-09<Sat>>, DateRange<reason,2010-01-10<Sun>,2010-01-12<Tue>>> 
+started        Scenario             Saturday to Saturday, split sunday => List<DateRange<reason,2010-01-02<Sat>,2010-01-02<Sat>>, DateRange<reason,2010-01-03<Sun>,2010-01-09<Sat>>> 
+finished       Scenario             Saturday to Saturday, split sunday => List<DateRange<reason,2010-01-02<Sat>,2010-01-02<Sat>>, DateRange<reason,2010-01-03<Sun>,2010-01-09<Sat>>> 
+finished      UseCase              Across two weeks 
+started       UseCase              Across multiple weeks 
+started        Scenario             Monday to Month Tuesday, split monday => List<DateRange<reason,2010-01-04<Mon>,2010-01-10<Sun>>, DateRange<reason,2010-01-11<Mon>,2010-01-31<Sun>>, DateRange<reason,2010-02-01<Mon>,2010-02-02<Tue>>> 
+finished       Scenario             Monday to Month Tuesday, split monday => List<DateRange<reason,2010-01-04<Mon>,2010-01-10<Sun>>, DateRange<reason,2010-01-11<Mon>,2010-01-31<Sun>>, DateRange<reason,2010-02-01<Mon>,2010-02-02<Tue>>> 
+started        Scenario             Wednesday to Month Tuesday, split monday => List<DateRange<reason,2010-01-06<Wed>,2010-01-10<Sun>>, DateRange<reason,2010-01-11<Mon>,2010-01-31<Sun>>, DateRange<reason,2010-02-01<Mon>,2010-02-02<Tue>>> 
+finished       Scenario             Wednesday to Month Tuesday, split monday => List<DateRange<reason,2010-01-06<Wed>,2010-01-10<Sun>>, DateRange<reason,2010-01-11<Mon>,2010-01-31<Sun>>, DateRange<reason,2010-02-01<Mon>,2010-02-02<Tue>>> 
+started        Scenario             Sunday to Month Sunday, split monday => List<DateRange<reason,2010-01-03<Sun>,2010-01-03<Sun>>, DateRange<reason,2010-01-04<Mon>,2010-01-31<Sun>>, DateRange<reason,2010-02-01<Mon>,2010-02-07<Sun>>> 
+finished       Scenario             Sunday to Month Sunday, split monday => List<DateRange<reason,2010-01-03<Sun>,2010-01-03<Sun>>, DateRange<reason,2010-01-04<Mon>,2010-01-31<Sun>>, DateRange<reason,2010-02-01<Mon>,2010-02-07<Sun>>> 
+started        Scenario             Saturday to Month Saturday, split monday => List<DateRange<reason,2010-01-02<Sat>,2010-01-03<Sun>>, DateRange<reason,2010-01-04<Mon>,2010-01-31<Sun>>, DateRange<reason,2010-02-01<Mon>,2010-02-06<Sat>>> 
+finished       Scenario             Saturday to Month Saturday, split monday => List<DateRange<reason,2010-01-02<Sat>,2010-01-03<Sun>>, DateRange<reason,2010-01-04<Mon>,2010-01-31<Sun>>, DateRange<reason,2010-02-01<Mon>,2010-02-06<Sat>>> 
+started        Scenario             Monday to Month Tuesday, split sunday => List<DateRange<reason,2010-01-04<Mon>,2010-01-09<Sat>>, DateRange<reason,2010-01-10<Sun>,2010-01-30<Sat>>, DateRange<reason,2010-01-31<Sun>,2010-02-02<Tue>>> 
+finished       Scenario             Monday to Month Tuesday, split sunday => List<DateRange<reason,2010-01-04<Mon>,2010-01-09<Sat>>, DateRange<reason,2010-01-10<Sun>,2010-01-30<Sat>>, DateRange<reason,2010-01-31<Sun>,2010-02-02<Tue>>> 
+started        Scenario             Wednesday to Month Tuesday, split sunday => List<DateRange<reason,2010-01-06<Wed>,2010-01-09<Sat>>, DateRange<reason,2010-01-10<Sun>,2010-01-30<Sat>>, DateRange<reason,2010-01-31<Sun>,2010-02-02<Tue>>> 
+finished       Scenario             Wednesday to Month Tuesday, split sunday => List<DateRange<reason,2010-01-06<Wed>,2010-01-09<Sat>>, DateRange<reason,2010-01-10<Sun>,2010-01-30<Sat>>, DateRange<reason,2010-01-31<Sun>,2010-02-02<Tue>>> 
+started        Scenario             Sunday to Month Sunday, split sunday => List<DateRange<reason,2010-01-03<Sun>,2010-01-09<Sat>>, DateRange<reason,2010-01-10<Sun>,2010-02-06<Sat>>, DateRange<reason,2010-02-07<Sun>,2010-02-07<Sun>>> 
+finished       Scenario             Sunday to Month Sunday, split sunday => List<DateRange<reason,2010-01-03<Sun>,2010-01-09<Sat>>, DateRange<reason,2010-01-10<Sun>,2010-02-06<Sat>>, DateRange<reason,2010-02-07<Sun>,2010-02-07<Sun>>> 
+started        Scenario             Sunday to Month Saturday, split sunday => List<DateRange<reason,2010-01-03<Sun>,2010-01-09<Sat>>, DateRange<reason,2010-01-10<Sun>,2010-01-30<Sat>>, DateRange<reason,2010-01-31<Sun>,2010-02-06<Sat>>> 
+finished       Scenario             Sunday to Month Saturday, split sunday => List<DateRange<reason,2010-01-03<Sun>,2010-01-09<Sat>>, DateRange<reason,2010-01-10<Sun>,2010-01-30<Sat>>, DateRange<reason,2010-01-31<Sun>,2010-02-06<Sat>>> 
+started        Scenario             Saturday to Month Saturday, split sunday => List<DateRange<reason,2010-01-02<Sat>,2010-01-02<Sat>>, DateRange<reason,2010-01-03<Sun>,2010-01-30<Sat>>, DateRange<reason,2010-01-31<Sun>,2010-02-06<Sat>>> 
+finished       Scenario             Saturday to Month Saturday, split sunday => List<DateRange<reason,2010-01-02<Sat>,2010-01-02<Sat>>, DateRange<reason,2010-01-03<Sun>,2010-01-30<Sat>>, DateRange<reason,2010-01-31<Sun>,2010-02-06<Sat>>> 
+finished      UseCase              Across multiple weeks 
+finished     EngineFromTests      Splitting date ranges into start, middle and end. The second parameter is 'which day of the week is it using the usually Joda time definitions 
+started      EngineFromTests      Date in range 
+started       UseCase              all dates exist 
+started        Scenario             <Too long-145> => true 
+finished       Scenario             <Too long-145> => true 
+started        Scenario             <Too long-146> => true 
+finished       Scenario             <Too long-146> => true 
+started        Scenario             <Too long-147> => true 
+finished       Scenario             <Too long-147> => true 
+started        Scenario             <Too long-148> => false 
+finished       Scenario             <Too long-148> => false 
+started        Scenario             <Too long-149> => false 
+finished       Scenario             <Too long-149> => false 
+started        Scenario             <Too long-150> => true 
+finished       Scenario             <Too long-150> => true 
+started        Scenario             <Too long-151> => true 
+finished       Scenario             <Too long-151> => true 
+finished      UseCase              all dates exist 
+started       UseCase              if end doesnt exist return false 
+started        Scenario             <Too long-152> => false 
+finished       Scenario             <Too long-152> => false 
+started        Scenario             <Too long-153> => false 
+finished       Scenario             <Too long-153> => false 
+finished      UseCase              if end doesnt exist return false 
+finished     EngineFromTests      Date in range 
+started      EngineFromTests      Validate Claim Rules 
+started       UseCase              Claimants under the age of 16 are not entitled to claim Carers Allowance 
+started        Scenario             Claimant CL100104 is a child under 16 => KeyAndParams<510,You must be over 16,WrappedArray<>> 
+finished       Scenario             Claimant CL100104 is a child under 16 => KeyAndParams<510,You must be over 16,WrappedArray<>> 
+finished      UseCase              Claimants under the age of 16 are not entitled to claim Carers Allowance 
+started       UseCase              Caring Hours 
+started        Scenario             Claimant CL100105 is not caring for 35 hours => KeyAndParams<501,Not caring for 35 hours,WrappedArray<>> 
+finished       Scenario             Claimant CL100105 is not caring for 35 hours => KeyAndParams<501,Not caring for 35 hours,WrappedArray<>> 
+finished      UseCase              Caring Hours 
+started       UseCase              Claimant Residence 
+started        Scenario             Claimant CL100107 is not UK resident => KeyAndParams<530,Not resident in UK,WrappedArray<>> 
+finished       Scenario             Claimant CL100107 is not UK resident => KeyAndParams<530,Not resident in UK,WrappedArray<>> 
+finished      UseCase              Claimant Residence 
+started       UseCase              Claimant Current Residence 
+started        Scenario             Claimant CL100108 is not normally UK resident => KeyAndParams<534,Not resident in UK,WrappedArray<>> 
+finished       Scenario             Claimant CL100108 is not normally UK resident => KeyAndParams<534,Not resident in UK,WrappedArray<>> 
+finished      UseCase              Claimant Current Residence 
+started       UseCase              Claimant in Full Time Education 
+started        Scenario             Claimant CL100109 is in full time education => KeyAndParams<513,Claimant in full time education,WrappedArray<>> 
+finished       Scenario             Claimant CL100109 is in full time education => KeyAndParams<513,Claimant in full time education,WrappedArray<>> 
+finished      UseCase              Claimant in Full Time Education 
+started       UseCase              Qualifying Benefit 
+started        Scenario             Dependent party without qualifying benefit => KeyAndParams<503,Dependent doesnt have a Qualifying Benefit,WrappedArray<>> 
+finished       Scenario             Dependent party without qualifying benefit => KeyAndParams<503,Dependent doesnt have a Qualifying Benefit,WrappedArray<>> 
+started        Scenario             Dependent party with suitable qualifying benefit => KeyAndParams<ENT,Dependent award is valid on date,WrappedArray<>> 
+finished       Scenario             Dependent party with suitable qualifying benefit => KeyAndParams<ENT,Dependent award is valid on date,WrappedArray<>> 
+finished      UseCase              Qualifying Benefit 
+started       UseCase              Claimant Income and Expenses 
+started        Scenario             Customers with income exceeding the threshold are not entitled to CA => KeyAndParams<520,Too much income,WrappedArray<>> 
+failed         Scenario             Customers with income exceeding the threshold are not entitled to CA => KeyAndParams<520,Too much income,WrappedArray<>> 
+started        Scenario             Customers with income exceeding the threshold are not entitled to CA => KeyAndParams<520,Too much income,WrappedArray<>> 
+finished       Scenario             Customers with income exceeding the threshold are not entitled to CA => KeyAndParams<520,Too much income,WrappedArray<>> 
+finished      UseCase              Claimant Income and Expenses 
+finished     EngineFromTests      Validate Claim Rules 
+started      EngineFromTests      Single Break In Care 
+started       UseCase              Outside date range 
+started        Scenario             Before date => true 
+finished       Scenario             Before date => true 
+finished      UseCase              Outside date range 
+started       UseCase              Not yet 22 weeks after claim start date 
+started        Scenario             After date => false 
+finished       Scenario             After date => false 
+started        Scenario             Process Date 21 weeks and 6 days after claim date => false 
+finished       Scenario             Process Date 21 weeks and 6 days after claim date => false 
+finished      UseCase              Not yet 22 weeks after claim start date 
+started       UseCase               22 weeks after claim start date, non hospital 
+started        Scenario             Non hospital break, first day => true 
+finished       Scenario             Non hospital break, first day => true 
+started        Scenario             Non hospital break, second day => true 
+finished       Scenario             Non hospital break, second day => true 
+started        Scenario             Non hospital break, last day of four weeks => true 
+finished       Scenario             Non hospital break, last day of four weeks => true 
+started        Scenario             Non hospital break, first day after four weeks => false 
+finished       Scenario             Non hospital break, first day after four weeks => false 
+started        Scenario             Non hospital break, last day of break => false 
+finished       Scenario             Non hospital break, last day of break => false 
+started        Scenario             Non hospital break, first day after break => true 
+finished       Scenario             Non hospital break, first day after break => true 
+finished      UseCase               22 weeks after claim start date, non hospital 
+started       UseCase               22 weeks after claim start date, hospital 
+started        Scenario             Hospital break, first day => true 
+finished       Scenario             Hospital break, first day => true 
+started        Scenario             Hospital break, first day after four weeks => true 
+finished       Scenario             Hospital break, first day after four weeks => true 
+started        Scenario             Hospital break, last day of twelve weeks 1 => true 
+finished       Scenario             Hospital break, last day of twelve weeks 1 => true 
+started        Scenario             Hospital break, last day of twelve weeks => true 
+finished       Scenario             Hospital break, last day of twelve weeks => true 
+started        Scenario             Hospital break, first day after twelve weeks => false 
+finished       Scenario             Hospital break, first day after twelve weeks => false 
+started        Scenario             Hospital break, last day of break => false 
+finished       Scenario             Hospital break, last day of break => false 
+started        Scenario             Hospital break, first day after break => true 
+finished       Scenario             Hospital break, first day after break => true 
+finished      UseCase               22 weeks after claim start date, hospital 
+finished     EngineFromTests      Single Break In Care 
+started      EngineFromTests      Income 
+started       UseCase              No income 
+started        Scenario             <Too long-19> => 0.0 
+finished       Scenario             <Too long-19> => 0.0 
+started        Scenario             <Too long-20> => 0.0 
+finished       Scenario             <Too long-20> => 0.0 
+started        Scenario             <Too long-21> => 0.0 
+finished       Scenario             <Too long-21> => 0.0 
+finished      UseCase              No income 
+started       UseCase              Annually paid 
+started        Scenario             <Too long-22> => 134.6153846153846 
+finished       Scenario             <Too long-22> => 134.6153846153846 
+started        Scenario             <Too long-23> => 192.30769230769232 
+finished       Scenario             <Too long-23> => 192.30769230769232 
+finished      UseCase              Annually paid 
+started       UseCase              Weekly paid 
+started        Scenario             <Too long-24> => 110.0 
+finished       Scenario             <Too long-24> => 110.0 
+started        Scenario             <Too long-25> => 110.0 
+finished       Scenario             <Too long-25> => 110.0 
+finished      UseCase              Weekly paid 
+finished     EngineFromTests      Income 
+started      EngineFromTests      Date to ranges 
+started       Scenario             No days => List<> 
+finished      Scenario             No days => List<> 
+started       Scenario             Just one day => List<DateRange<reason,2010-01-04<Mon>,2010-01-04<Mon>>> 
+finished      Scenario             Just one day => List<DateRange<reason,2010-01-04<Mon>,2010-01-04<Mon>>> 
+started       Scenario             two days => List<DateRange<reason,2010-01-04<Mon>,2010-01-10<Sun>>> 
+finished      Scenario             two days => List<DateRange<reason,2010-01-04<Mon>,2010-01-10<Sun>>> 
+started       Scenario             three days => List<DateRange<reason,2010-01-04<Mon>,2010-01-09<Sat>>, DateRange<reason,2010-01-10<Sun>,2010-02-01<Mon>>> 
+finished      Scenario             three days => List<DateRange<reason,2010-01-04<Mon>,2010-01-09<Sat>>, DateRange<reason,2010-01-10<Sun>,2010-02-01<Mon>>> 
+finished     EngineFromTests      Date to ranges 
+started      EngineWithChildren   Expenses 
+started       EngineChild          Child care expenses 
+started        UseCase              Customer has child care expenses 
+started         Scenario             <Too long-48> => 15.0 
+finished        Scenario             <Too long-48> => 15.0 
+finished       UseCase              Customer has child care expenses 
+started        UseCase              Customer has no child care expenses 
+started         Scenario             <Too long-49> => 0.0 
+finished        Scenario             <Too long-49> => 0.0 
+finished       UseCase              Customer has no child care expenses 
+started        UseCase              Customer has no child care expenses data 
+started         Scenario             <Too long-50> => 0.0 
+finished        Scenario             <Too long-50> => 0.0 
+finished       UseCase              Customer has no child care expenses data 
+finished      EngineChild          Child care expenses 
+started       EngineChild          PSN  Pensions 
+started        UseCase              Customer has PSN Pension 
+started         Scenario             <Too long-51> => 15.0 
+finished        Scenario             <Too long-51> => 15.0 
+finished       UseCase              Customer has PSN Pension 
+started        UseCase              Customer has no PSN Pension 
+started         Scenario             <Too long-52> => 0.0 
+finished        Scenario             <Too long-52> => 0.0 
+finished       UseCase              Customer has no PSN Pension 
+started        UseCase              Customer has no PSN Pension data 
+started         Scenario             <Too long-53> => 0.0 
+finished        Scenario             <Too long-53> => 0.0 
+finished       UseCase              Customer has no PSN Pension data 
+finished      EngineChild          PSN  Pensions 
+started       EngineChild          Occupational Pension 
+started        UseCase              Customer has Occupational Pension 
+started         Scenario             <Too long-54> => 15.0 
+finished        Scenario             <Too long-54> => 15.0 
+finished       UseCase              Customer has Occupational Pension 
+started        UseCase              Customer has no Occupational pension 
+started         Scenario             <Too long-55> => 0.0 
+finished        Scenario             <Too long-55> => 0.0 
+finished       UseCase              Customer has no Occupational pension 
+started        UseCase              Customer has no Occupational pension data 
+started         Scenario             <Too long-56> => 0.0 
+finished        Scenario             <Too long-56> => 0.0 
+finished       UseCase              Customer has no Occupational pension data 
+finished      EngineChild          Occupational Pension 
+finished     EngineWithChildren   Expenses 
+started      EngineFromTests      Check for being under-age (less than age sixteen) 
+started       UseCase              Oversixteen 
+started        Scenario             <Too long-65> => true 
+finished       Scenario             <Too long-65> => true 
+started        Scenario             <Too long-66> => false 
+finished       Scenario             <Too long-66> => false 
+started        Scenario             <Too long-67> => false 
+finished       Scenario             <Too long-67> => false 
+finished      UseCase              Oversixteen 
+finished     EngineFromTests      Check for being under-age (less than age sixteen) 
+JUnit Finished
+[error] Test Customers with income exceeding the threshold are not entitled to CA => KeyAndParams<520,Too much income,WrappedArray<>> failed: ((d: org.joda.time.DateTime, c: org.cddcore.carers.CarersXmlSituation) => c.netIncome.>(95)) is not true for Scenario(Customers with income exceeding the threshold are not entitled to CA, 2010-07-25T00:00:00.000+01:00,CarersXmlSituation(
+[error]   DependantNino = DP100111A
+[error]   awardList = List(Award(DLA,DLA Middle Rate Care,Active,2010-01-18T00:00:00.000Z))
+[error]   breaksInCare = List()
+[error]   childCareExpenses = NumberFormatException empty String
+[error]   claim35Hours = true
+[error]   claimAlwaysUK = true
+[error]   claimBirthDate = 1964-01-10T00:00:00.000Z
+[error]   claimCurrentResidentUK = true
+[error]   claimEducationFullTime = false
+[error]   claimEndDate = None
+[error]   claimStartDate = 2010-03-08T00:00:00.000Z
+[error]   claimSubmittedDate = 2010-03-08T00:00:00.000Z
+[error]   dependantAwardStartDate = Some(2010-01-18T00:00:00.000Z)
+[error]   dependantLevelOfQualifyingCare = DLA Middle Rate Care
+[error]   employmentGrossSalary = 110.0
+[error]   employmentPayPeriodicity = Weekly
+[error]   hasChildCareExpenses = false
+[error]   hasEmploymentData = true
+[error]   hasOccPensionExpenses = false
+[error]   hasPsnPensionExpenses = true
+[error]   occPensionExpenses = NumberFormatException empty String
+[error]   psnPensionExpenses = 30.0
+[error]   Xml: claimXml
+[error]   <ValidateClaim xsi:schemaLocation="http://www.autotdd.com/ca Conversation%20v2_1%202010-07-16.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="http://www.autotdd.com/ca" xmlns="http://www.autotdd.com/ca"> 	<piid>String</piid> 	<newClaimantData>true</newClaimantData> 	<ClaimantData> 		<ClaimantNINO>CL100111A</ClaimantNINO> 		<ClaimantNameDetails> 			<PersonNameTitle>MR</PersonNameTitle> 			<PersonGivenName>JAMES</PersonGivenName> 			<PersonFamilyName>BOND</PersonFamilyName> 			<PersonNameSuffix>KC</PersonNameSuffix> 		</ClaimantNameDetails> 		<ClaimantBirthDate> 			<PersonBirthDate>1964-01-10</PersonBirthDate> 			<VerificationLevel>Level 1</VerificationLevel> 		</ClaimantBirthDate> 		<ClaimantMaritalStatus> 			<MaritalStatus>Single</MaritalStatus> 			<VerificationLevel>Level 1</VerificationLevel> 		</ClaimantMaritalStatus> 		<ClaimantGenderAtRegistration>1 = Male</ClaimantGenderAtRegistration> 		<ClaimantGenderCurrent>1 = Male</ClaimantGenderCurrent> 		<ClaimantNationality>GB</ClaimantNationality> 		<ClaimantContactDetails> 			<PreferredLanguages>en</PreferredLanguages> 			<Email n1:EmailPreferred="yes" n1:EmailUse="work"> 				<EmailAddress>'james.bond@sis.gov.uk'</EmailAddress> 			</Email> 			<Telephone n1:TelPreferred="yes" n1:TelUse="work" n1:TelMobile="yes"> 				<TelNationalNumber>02075551234</TelNationalNumber> 				<TelExtensionNumber>0</TelExtensionNumber> 				<TelCountryCode>44</TelCountryCode> 			</Telephone> 		</ClaimantContactDetails> 		<ClaimantAddress> 			<Line1>1 ARUNDEL STREET</Line1> 			<Line2>LONDON</Line2> 			<PostCode>WC1R 1AA</PostCode> 		</ClaimantAddress> 	</ClaimantData> 	<newClaimData>true</newClaimData> 	<ClaimData> 		<ClaimStartDate>2010-03-08</ClaimStartDate> 		<ClaimNinoKnown>yes</ClaimNinoKnown> 		<ClaimPrevious>no</ClaimPrevious> 		<ClaimOverseas>no</ClaimOverseas> 		<ClaimEUArea>no</ClaimEUArea> 		<ClaimAlwaysUK>yes</ClaimAlwaysUK> 		<ClaimCurrentResidentUK>yes</ClaimCurrentResidentUK> 		<ClaimPartnerExists>no</ClaimPartnerExists> 		<ClaimRelationToCarer>Wife</ClaimRelationToCarer> 		<ClaimPaidCare>no</ClaimPaidCare> 		<ClaimRivalCarer>no</ClaimRivalCarer> 		<Claim35Hours>yes</Claim35Hours> 		<ClaimBreakInCare>no</ClaimBreakInCare> 		<ClaimPrior35Hours>no</ClaimPrior35Hours> 		<ClaimPriorBreakInCare>no</ClaimPriorBreakInCare> 		<ClaimDependantAwayFromHome>no</ClaimDependantAwayFromHome> 		<ClaimEducationFullTime>no</ClaimEducationFullTime> 		<ClaimEmployment>yes</ClaimEmployment> 		<ClaimRentalIncome>no</ClaimRentalIncome> 		<ClaimPaidClass2NIC>no</ClaimPaidClass2NIC> 		<ClaimSelfEmployed>no</ClaimSelfEmployed> 	</ClaimData> 	<newPartnerData>false</newPartnerData> 	<newDependantData>true</newDependantData> 	<DependantData> 		<DependantNINO>DP100111A</DependantNINO> 		<DependantNameDetails> 			<PersonNameTitle>MR</PersonNameTitle> 			<PersonGivenName>OLD</PersonGivenName> 			<PersonFamilyName>PERSON</PersonFamilyName> 		</DependantNameDetails> 		<DependantBirthDate> 			<PersonBirthDate>1945-08-13</PersonBirthDate> 			<VerificationLevel>Level 1</VerificationLevel> 		</DependantBirthDate> 		<DependantMaritalStatus> 			<MaritalStatus>Single</MaritalStatus> 			<VerificationLevel>Level 0</VerificationLevel> 		</DependantMaritalStatus> 		<DependantGenderAtRegistration>1 = Male</DependantGenderAtRegistration> 		<DependantGenderCurrent>1 = Male</DependantGenderCurrent> 		<DependantNationality>GB</DependantNationality> 		<DependantContactDetails> 			<PreferredLanguages>en</PreferredLanguages> 		</DependantContactDetails> 		<DependantAddress> 			<Line1>1 PRESTON ROAD</Line1> 			<Line2>PRESTON</Line2> 			<PostCode>PR1 1AA</PostCode> 		</DependantAddress> 	</DependantData> 	<newPaidCareData>false</newPaidCareData> 	<newRivalCarerData>false</newRivalCarerData> 	<newStatementData>true</newStatementData> 	<StatementData> 		<StatementType>SignedByDependant</StatementType> 		<StatementRole>Self</StatementRole> 		<StatementSignature/> 		<StatementDate>2010-03-08</StatementDate> 		<StatementHoursConfirmed>yes</StatementHoursConfirmed> 		<StatementHoursUnconfirmed>yes</StatementHoursUnconfirmed> 		<StatementReason/> 	</StatementData> 	<newResidenceData>false</newResidenceData> 	<newEducationData>false</newEducationData> 	<newEmploymentData>true</newEmploymentData> 	<EmploymentData> 		<EmploymentStartDate>1999-05-09</EmploymentStartDate> 		<EmploymentJobType>IT SPECIALIST</EmploymentJobType> 		<EmploymentPayrollNumber>796451234531</EmploymentPayrollNumber> 		<EmploymentEmployer>S109-8762</EmploymentEmployer> 		<EmploymentAddress> 			<Line1>ACPO TRADING LTD.</Line1> 			<Line2>SLOUGH</Line2> 			<PostCode>SL1 1AA</PostCode> 		</EmploymentAddress> 		<EmploymentTelephone n1:TelPreferred="yes" n1:TelUse="work" n1:TelMobile="yes"> 			<TelNationalNumber>020887654321</TelNationalNumber> 			<TelExtensionNumber>0</TelExtensionNumber> 			<TelCountryCode>0</TelCountryCode> 		</EmploymentTelephone> 		<EmploymentWageDepartment>'HR AND PAYROLL'</EmploymentWageDepartment> 		<EmploymentWageDeptTel n1:TelPreferred="yes" n1:TelUse="work" n1:TelMobile="yes"> 			<TelNationalNumber>01234-876380</TelNationalNumber> 			<TelExtensionNumber>123456</TelExtensionNumber> 			<TelCountryCode>0</TelCountryCode> 		</EmploymentWageDeptTel> 		<EmploymentWageDeptFax n1:FaxMobile="yes" n1:FaxPreferred="yes" n1:FaxUse="work"> 			<FaxNationalNumber>01234 9876200</FaxNationalNumber> 			<FaxExtensionNumber>0</FaxExtensionNumber> 			<FaxCountryCode>0</FaxCountryCode> 		</EmploymentWageDeptFax> 		<EmploymentLastPaidDate>2010-01-29</EmploymentLastPaidDate> 		<EmploymentLastPaidPeriodStart>2010-01-25</EmploymentLastPaidPeriodStart> 		<EmploymentLastPaidPeriodEnd>2010-01-29</EmploymentLastPaidPeriodEnd> 		<EmploymentGrossSalary>110.00</EmploymentGrossSalary> 		<EmploymentIncludedComments>STUFF...</EmploymentIncludedComments> 		<EmploymentPayPeriodicity>Weekly</EmploymentPayPeriodicity> 		<EmploymentPayDate>Every Friday</EmploymentPayDate> 		<EmploymentPaidSameAmount>yes</EmploymentPaidSameAmount> 		<EmploymentHolidayOrSSP>yes</EmploymentHolidayOrSSP> 		<EmploymentHourPerWeek>17</EmploymentHourPerWeek> 		<EmploymentPaidExtras>no</EmploymentPaidExtras> 		<EmploymentExtrasComment>n/a</EmploymentExtrasComment> 		<EmploymentOwedMonies>no</EmploymentOwedMonies> 	</EmploymentData> 	<newExpensesData>true</newExpensesData> 	<ExpensesData> 		<ExpensesOccPension>no</ExpensesOccPension> 		<ExpensesPsnPension>yes</ExpensesPsnPension> 		<ExpensesPsnPensionAmount>30</ExpensesPsnPensionAmount> 		<ExpensesPsnPensionPeriodicity>Weekly</ExpensesPsnPensionPeriodicity> 		<ExpensesNecessary>no</ExpensesNecessary> 		<ExpensesChild>no</ExpensesChild> 		<ExpensesCareDP>no</ExpensesCareDP> 	</ExpensesData> 	<newSelfEmpData>false</newSelfEmpData> 	<newOtherMoneyData>false</newOtherMoneyData> 	<newPaymentData>true</newPaymentData> 	<PaymentData> 		<PaymentPeriodicity>Weekly</PaymentPeriodicity> 		<PaymentAccountHolder>MR J BOND</PaymentAccountHolder> 		<PaymentBankName>COUTTS</PaymentBankName> 		<PaymentSortCode>548711</PaymentSortCode> 		<PaymentAccountNumber>12345678</PaymentAccountNumber> 		<PaymentAlignAccount>yes</PaymentAlignAccount> 	</PaymentData> 	<newConsentData>true</newConsentData> 	<ConsentData> 		<ConsentAgreeEmployer>yes</ConsentAgreeEmployer> 		<ConsentAgreeOthers>yes</ConsentAgreeOthers> 		<ConsentSignature/> 		<ConsentDate>2010-03-08</ConsentDate> 	</ConsentData> </ValidateClaim>
+[error] \ClaimantData
+[error] ..\ClaimantBirthDate
+[error] ....\PersonBirthDate = 1964-01-10T00:00:00.000Z
+[error] \ClaimData
+[error] ..\ClaimBreaks
+[error] ....\BreakInCare = List()
+[error] ..\ClaimEndDate = None
+[error] ..\ClaimStartDate = 2010-03-08T00:00:00.000Z
+[error] ..\ClaimAlwaysUK = true
+[error] ..\ClaimEducationFullTime = false
+[error] ..\ClaimCurrentResidentUK = true
+[error] ..\Claim35Hours = true
+[error] \ExpensesData
+[error] ..\ExpensesPsnPension = true
+[error] ..\ExpensesPsnPensionAmount = 30.0
+[error] ..\ExpensesOccPension = false
+[error] ..\ExpensesOccPensionAmount = NumberFormatException
+[error] ..\ExpensesChild = false
+[error] ..\ExpensesChildAmount = NumberFormatException
+[error] \newEmploymentData = true
+[error] \EmploymentData
+[error] ..\EmploymentPayPeriodicity = Weekly
+[error] ..\EmploymentGrossSalary = 110.0
+[error] \DependantData
+[error] ..\DependantNINO = DP100111A
+[error] \StatementData
+[error] ..\StatementDate = 2010-03-08T00:00:00.000Z
+[error]   Xml: dependantCisXml
+[error]   <CISQuery xsi:schemaLocation="http://www.autotdd.com/ca CISquery%20v1_0%202010-07-05.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.autotdd.com/ca"> 	<NameInfo> 		<PersonNameTitle>MR</PersonNameTitle> 		<PersonGivenName>OLD</PersonGivenName> 		<PersonFamilyName>PERSON</PersonFamilyName> 		<PersonNameStartDate>1945-08-13</PersonNameStartDate> 	</NameInfo> 	<PersonalInfo> 		<NINO>DP100111A</NINO> 		<MaritalStatus> 			<MaritalStatus>s</MaritalStatus> 			<VerificationLevel>Level 1</VerificationLevel> 		</MaritalStatus> 		<Nationality>GB</Nationality> 		<BirthDate> 			<PersonBirthDate>1945-08-13</PersonBirthDate> 			<VerificationLevel>Level 0</VerificationLevel> 		</BirthDate> 		<GenderCurrent>1</GenderCurrent> 		<GenderAtRegistration>1</GenderAtRegistration> 		<DisabilityData/> 		<SpecialNeedsData/> 	</PersonalInfo> 	<ContactInfo> 		<PreferredLanguages>en</PreferredLanguages> 	</ContactInfo> 	<Relationships> 		<NINO>CL100111A</NINO> 		<RelationshipType>02 Partner</RelationshipType> 		<RelationshipStartDate>1984-08-13</RelationshipStartDate> 		<RelationshipEndDate>1984-08-13</RelationshipEndDate> 	</Relationships> 	<Addresses> 		<Line1>1 PRESTON ROAD</Line1> 		<Line2>PRESTON</Line2> 		<PostCode>PR1 1AA</PostCode> 		<AddressStartDate>1984-08-13</AddressStartDate> 	</Addresses> 	<Award> 		<AssessmentDetails> 			<BenefitType>DLA</BenefitType> 			<ClaimDate>2010-01-20</ClaimDate> 			<ClaimStartDate>2010-01-18</ClaimStartDate> 			<ClaimReceiptDate>2010-01-22</ClaimReceiptDate> 			<ClaimStatus>Active</ClaimStatus> 			<DecisionDate>2010-02-22</DecisionDate> 			<DecisionEffectiveDate>2010-01-22</DecisionEffectiveDate> 			<DecisionType>New Claim</DecisionType> 			<PeriodicReviewType>6 monthly</PeriodicReviewType> 			<CaseReviewDate>2011-01-13</CaseReviewDate> 		</AssessmentDetails> 		<AwardDetails> 			<AwardStartDate>2010-01-18</AwardStartDate> 			<AwardAmount>57.12</AwardAmount> 			<AwardType>Allowed</AwardType> 		</AwardDetails> 		<AwardComponents> 			<AwardComponent>DLA Middle Rate Care</AwardComponent> 			<AwardComponentAmount>57.12</AwardComponentAmount> 			<AwardClericalAdjustment>0.0</AwardClericalAdjustment> 			<OtherBenefit>NONE</OtherBenefit> 		</AwardComponents> 	</Award> </CISQuery>
+[error] \\AwardComponent = DLA Middle Rate Care
+[error] \Award = List(Award(DLA,DLA Middle Rate Care,Active,2010-01-18T00:00:00.000Z))
+[error] ..\AssessmentDetails
+[error] ....\ClaimStartDate = Some(2010-01-18T00:00:00.000Z)), because=((d: org.joda.time.DateTime, c: org.cddcore.carers.CarersXmlSituation) => c.netIncome.>(95)), expected=KeyAndParams(520,Too much income,WrappedArray()))
+[error] Detailed:
+[error]   List(2010-07-25T00:00:00.000+01:00, CarersXmlSituation(
+[error]   DependantNino = DP100111A
+[error]   awardList = List(Award(DLA,DLA Middle Rate Care,Active,2010-01-18T00:00:00.000Z))
+[error]   breaksInCare = List()
+[error]   childCareExpenses = NumberFormatException empty String
+[error]   claim35Hours = true
+[error]   claimAlwaysUK = true
+[error]   claimBirthDate = 1964-01-10T00:00:00.000Z
+[error]   claimCurrentResidentUK = true
+[error]   claimEducationFullTime = false
+[error]   claimEndDate = None
+[error]   claimStartDate = 2010-03-08T00:00:00.000Z
+[error]   claimSubmittedDate = 2010-03-08T00:00:00.000Z
+[error]   dependantAwardStartDate = Some(2010-01-18T00:00:00.000Z)
+[error]   dependantLevelOfQualifyingCare = DLA Middle Rate Care
+[error]   employmentGrossSalary = 110.0
+[error]   employmentPayPeriodicity = Weekly
+[error]   hasChildCareExpenses = false
+[error]   hasEmploymentData = true
+[error]   hasOccPensionExpenses = false
+[error]   hasPsnPensionExpenses = true
+[error]   occPensionExpenses = NumberFormatException empty String
+[error]   psnPensionExpenses = 30.0
+[error]   Xml: claimXml
+[error]   <ValidateClaim xsi:schemaLocation="http://www.autotdd.com/ca Conversation%20v2_1%202010-07-16.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="http://www.autotdd.com/ca" xmlns="http://www.autotdd.com/ca"> 	<piid>String</piid> 	<newClaimantData>true</newClaimantData> 	<ClaimantData> 		<ClaimantNINO>CL100111A</ClaimantNINO> 		<ClaimantNameDetails> 			<PersonNameTitle>MR</PersonNameTitle> 			<PersonGivenName>JAMES</PersonGivenName> 			<PersonFamilyName>BOND</PersonFamilyName> 			<PersonNameSuffix>KC</PersonNameSuffix> 		</ClaimantNameDetails> 		<ClaimantBirthDate> 			<PersonBirthDate>1964-01-10</PersonBirthDate> 			<VerificationLevel>Level 1</VerificationLevel> 		</ClaimantBirthDate> 		<ClaimantMaritalStatus> 			<MaritalStatus>Single</MaritalStatus> 			<VerificationLevel>Level 1</VerificationLevel> 		</ClaimantMaritalStatus> 		<ClaimantGenderAtRegistration>1 = Male</ClaimantGenderAtRegistration> 		<ClaimantGenderCurrent>1 = Male</ClaimantGenderCurrent> 		<ClaimantNationality>GB</ClaimantNationality> 		<ClaimantContactDetails> 			<PreferredLanguages>en</PreferredLanguages> 			<Email n1:EmailPreferred="yes" n1:EmailUse="work"> 				<EmailAddress>'james.bond@sis.gov.uk'</EmailAddress> 			</Email> 			<Telephone n1:TelPreferred="yes" n1:TelUse="work" n1:TelMobile="yes"> 				<TelNationalNumber>02075551234</TelNationalNumber> 				<TelExtensionNumber>0</TelExtensionNumber> 				<TelCountryCode>44</TelCountryCode> 			</Telephone> 		</ClaimantContactDetails> 		<ClaimantAddress> 			<Line1>1 ARUNDEL STREET</Line1> 			<Line2>LONDON</Line2> 			<PostCode>WC1R 1AA</PostCode> 		</ClaimantAddress> 	</ClaimantData> 	<newClaimData>true</newClaimData> 	<ClaimData> 		<ClaimStartDate>2010-03-08</ClaimStartDate> 		<ClaimNinoKnown>yes</ClaimNinoKnown> 		<ClaimPrevious>no</ClaimPrevious> 		<ClaimOverseas>no</ClaimOverseas> 		<ClaimEUArea>no</ClaimEUArea> 		<ClaimAlwaysUK>yes</ClaimAlwaysUK> 		<ClaimCurrentResidentUK>yes</ClaimCurrentResidentUK> 		<ClaimPartnerExists>no</ClaimPartnerExists> 		<ClaimRelationToCarer>Wife</ClaimRelationToCarer> 		<ClaimPaidCare>no</ClaimPaidCare> 		<ClaimRivalCarer>no</ClaimRivalCarer> 		<Claim35Hours>yes</Claim35Hours> 		<ClaimBreakInCare>no</ClaimBreakInCare> 		<ClaimPrior35Hours>no</ClaimPrior35Hours> 		<ClaimPriorBreakInCare>no</ClaimPriorBreakInCare> 		<ClaimDependantAwayFromHome>no</ClaimDependantAwayFromHome> 		<ClaimEducationFullTime>no</ClaimEducationFullTime> 		<ClaimEmployment>yes</ClaimEmployment> 		<ClaimRentalIncome>no</ClaimRentalIncome> 		<ClaimPaidClass2NIC>no</ClaimPaidClass2NIC> 		<ClaimSelfEmployed>no</ClaimSelfEmployed> 	</ClaimData> 	<newPartnerData>false</newPartnerData> 	<newDependantData>true</newDependantData> 	<DependantData> 		<DependantNINO>DP100111A</DependantNINO> 		<DependantNameDetails> 			<PersonNameTitle>MR</PersonNameTitle> 			<PersonGivenName>OLD</PersonGivenName> 			<PersonFamilyName>PERSON</PersonFamilyName> 		</DependantNameDetails> 		<DependantBirthDate> 			<PersonBirthDate>1945-08-13</PersonBirthDate> 			<VerificationLevel>Level 1</VerificationLevel> 		</DependantBirthDate> 		<DependantMaritalStatus> 			<MaritalStatus>Single</MaritalStatus> 			<VerificationLevel>Level 0</VerificationLevel> 		</DependantMaritalStatus> 		<DependantGenderAtRegistration>1 = Male</DependantGenderAtRegistration> 		<DependantGenderCurrent>1 = Male</DependantGenderCurrent> 		<DependantNationality>GB</DependantNationality> 		<DependantContactDetails> 			<PreferredLanguages>en</PreferredLanguages> 		</DependantContactDetails> 		<DependantAddress> 			<Line1>1 PRESTON ROAD</Line1> 			<Line2>PRESTON</Line2> 			<PostCode>PR1 1AA</PostCode> 		</DependantAddress> 	</DependantData> 	<newPaidCareData>false</newPaidCareData> 	<newRivalCarerData>false</newRivalCarerData> 	<newStatementData>true</newStatementData> 	<StatementData> 		<StatementType>SignedByDependant</StatementType> 		<StatementRole>Self</StatementRole> 		<StatementSignature/> 		<StatementDate>2010-03-08</StatementDate> 		<StatementHoursConfirmed>yes</StatementHoursConfirmed> 		<StatementHoursUnconfirmed>yes</StatementHoursUnconfirmed> 		<StatementReason/> 	</StatementData> 	<newResidenceData>false</newResidenceData> 	<newEducationData>false</newEducationData> 	<newEmploymentData>true</newEmploymentData> 	<EmploymentData> 		<EmploymentStartDate>1999-05-09</EmploymentStartDate> 		<EmploymentJobType>IT SPECIALIST</EmploymentJobType> 		<EmploymentPayrollNumber>796451234531</EmploymentPayrollNumber> 		<EmploymentEmployer>S109-8762</EmploymentEmployer> 		<EmploymentAddress> 			<Line1>ACPO TRADING LTD.</Line1> 			<Line2>SLOUGH</Line2> 			<PostCode>SL1 1AA</PostCode> 		</EmploymentAddress> 		<EmploymentTelephone n1:TelPreferred="yes" n1:TelUse="work" n1:TelMobile="yes"> 			<TelNationalNumber>020887654321</TelNationalNumber> 			<TelExtensionNumber>0</TelExtensionNumber> 			<TelCountryCode>0</TelCountryCode> 		</EmploymentTelephone> 		<EmploymentWageDepartment>'HR AND PAYROLL'</EmploymentWageDepartment> 		<EmploymentWageDeptTel n1:TelPreferred="yes" n1:TelUse="work" n1:TelMobile="yes"> 			<TelNationalNumber>01234-876380</TelNationalNumber> 			<TelExtensionNumber>123456</TelExtensionNumber> 			<TelCountryCode>0</TelCountryCode> 		</EmploymentWageDeptTel> 		<EmploymentWageDeptFax n1:FaxMobile="yes" n1:FaxPreferred="yes" n1:FaxUse="work"> 			<FaxNationalNumber>01234 9876200</FaxNationalNumber> 			<FaxExtensionNumber>0</FaxExtensionNumber> 			<FaxCountryCode>0</FaxCountryCode> 		</EmploymentWageDeptFax> 		<EmploymentLastPaidDate>2010-01-29</EmploymentLastPaidDate> 		<EmploymentLastPaidPeriodStart>2010-01-25</EmploymentLastPaidPeriodStart> 		<EmploymentLastPaidPeriodEnd>2010-01-29</EmploymentLastPaidPeriodEnd> 		<EmploymentGrossSalary>110.00</EmploymentGrossSalary> 		<EmploymentIncludedComments>STUFF...</EmploymentIncludedComments> 		<EmploymentPayPeriodicity>Weekly</EmploymentPayPeriodicity> 		<EmploymentPayDate>Every Friday</EmploymentPayDate> 		<EmploymentPaidSameAmount>yes</EmploymentPaidSameAmount> 		<EmploymentHolidayOrSSP>yes</EmploymentHolidayOrSSP> 		<EmploymentHourPerWeek>17</EmploymentHourPerWeek> 		<EmploymentPaidExtras>no</EmploymentPaidExtras> 		<EmploymentExtrasComment>n/a</EmploymentExtrasComment> 		<EmploymentOwedMonies>no</EmploymentOwedMonies> 	</EmploymentData> 	<newExpensesData>true</newExpensesData> 	<ExpensesData> 		<ExpensesOccPension>no</ExpensesOccPension> 		<ExpensesPsnPension>yes</ExpensesPsnPension> 		<ExpensesPsnPensionAmount>30</ExpensesPsnPensionAmount> 		<ExpensesPsnPensionPeriodicity>Weekly</ExpensesPsnPensionPeriodicity> 		<ExpensesNecessary>no</ExpensesNecessary> 		<ExpensesChild>no</ExpensesChild> 		<ExpensesCareDP>no</ExpensesCareDP> 	</ExpensesData> 	<newSelfEmpData>false</newSelfEmpData> 	<newOtherMoneyData>false</newOtherMoneyData> 	<newPaymentData>true</newPaymentData> 	<PaymentData> 		<PaymentPeriodicity>Weekly</PaymentPeriodicity> 		<PaymentAccountHolder>MR J BOND</PaymentAccountHolder> 		<PaymentBankName>COUTTS</PaymentBankName> 		<PaymentSortCode>548711</PaymentSortCode> 		<PaymentAccountNumber>12345678</PaymentAccountNumber> 		<PaymentAlignAccount>yes</PaymentAlignAccount> 	</PaymentData> 	<newConsentData>true</newConsentData> 	<ConsentData> 		<ConsentAgreeEmployer>yes</ConsentAgreeEmployer> 		<ConsentAgreeOthers>yes</ConsentAgreeOthers> 		<ConsentSignature/> 		<ConsentDate>2010-03-08</ConsentDate> 	</ConsentData> </ValidateClaim>
+[error] \ClaimantData
+[error] ..\ClaimantBirthDate
+[error] ....\PersonBirthDate = 1964-01-10T00:00:00.000Z
+[error] \ClaimData
+[error] ..\ClaimBreaks
+[error] ....\BreakInCare = List()
+[error] ..\ClaimEndDate = None
+[error] ..\ClaimStartDate = 2010-03-08T00:00:00.000Z
+[error] ..\ClaimAlwaysUK = true
+[error] ..\ClaimEducationFullTime = false
+[error] ..\ClaimCurrentResidentUK = true
+[error] ..\Claim35Hours = true
+[error] \ExpensesData
+[error] ..\ExpensesPsnPension = true
+[error] ..\ExpensesPsnPensionAmount = 30.0
+[error] ..\ExpensesOccPension = false
+[error] ..\ExpensesOccPensionAmount = NumberFormatException
+[error] ..\ExpensesChild = false
+[error] ..\ExpensesChildAmount = NumberFormatException
+[error] \newEmploymentData = true
+[error] \EmploymentData
+[error] ..\EmploymentPayPeriodicity = Weekly
+[error] ..\EmploymentGrossSalary = 110.0
+[error] \DependantData
+[error] ..\DependantNINO = DP100111A
+[error] \StatementData
+[error] ..\StatementDate = 2010-03-08T00:00:00.000Z
+[error]   Xml: dependantCisXml
+[error]   <CISQuery xsi:schemaLocation="http://www.autotdd.com/ca CISquery%20v1_0%202010-07-05.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.autotdd.com/ca"> 	<NameInfo> 		<PersonNameTitle>MR</PersonNameTitle> 		<PersonGivenName>OLD</PersonGivenName> 		<PersonFamilyName>PERSON</PersonFamilyName> 		<PersonNameStartDate>1945-08-13</PersonNameStartDate> 	</NameInfo> 	<PersonalInfo> 		<NINO>DP100111A</NINO> 		<MaritalStatus> 			<MaritalStatus>s</MaritalStatus> 			<VerificationLevel>Level 1</VerificationLevel> 		</MaritalStatus> 		<Nationality>GB</Nationality> 		<BirthDate> 			<PersonBirthDate>1945-08-13</PersonBirthDate> 			<VerificationLevel>Level 0</VerificationLevel> 		</BirthDate> 		<GenderCurrent>1</GenderCurrent> 		<GenderAtRegistration>1</GenderAtRegistration> 		<DisabilityData/> 		<SpecialNeedsData/> 	</PersonalInfo> 	<ContactInfo> 		<PreferredLanguages>en</PreferredLanguages> 	</ContactInfo> 	<Relationships> 		<NINO>CL100111A</NINO> 		<RelationshipType>02 Partner</RelationshipType> 		<RelationshipStartDate>1984-08-13</RelationshipStartDate> 		<RelationshipEndDate>1984-08-13</RelationshipEndDate> 	</Relationships> 	<Addresses> 		<Line1>1 PRESTON ROAD</Line1> 		<Line2>PRESTON</Line2> 		<PostCode>PR1 1AA</PostCode> 		<AddressStartDate>1984-08-13</AddressStartDate> 	</Addresses> 	<Award> 		<AssessmentDetails> 			<BenefitType>DLA</BenefitType> 			<ClaimDate>2010-01-20</ClaimDate> 			<ClaimStartDate>2010-01-18</ClaimStartDate> 			<ClaimReceiptDate>2010-01-22</ClaimReceiptDate> 			<ClaimStatus>Active</ClaimStatus> 			<DecisionDate>2010-02-22</DecisionDate> 			<DecisionEffectiveDate>2010-01-22</DecisionEffectiveDate> 			<DecisionType>New Claim</DecisionType> 			<PeriodicReviewType>6 monthly</PeriodicReviewType> 			<CaseReviewDate>2011-01-13</CaseReviewDate> 		</AssessmentDetails> 		<AwardDetails> 			<AwardStartDate>2010-01-18</AwardStartDate> 			<AwardAmount>57.12</AwardAmount> 			<AwardType>Allowed</AwardType> 		</AwardDetails> 		<AwardComponents> 			<AwardComponent>DLA Middle Rate Care</AwardComponent> 			<AwardComponentAmount>57.12</AwardComponentAmount> 			<AwardClericalAdjustment>0.0</AwardClericalAdjustment> 			<OtherBenefit>NONE</OtherBenefit> 		</AwardComponents> 	</Award> </CISQuery>
+[error] \\AwardComponent = DLA Middle Rate Care
+[error] \Award = List(Award(DLA,DLA Middle Rate Care,Active,2010-01-18T00:00:00.000Z))
+[error] ..\AssessmentDetails
+[error] ....\ClaimStartDate = Some(2010-01-18T00:00:00.000Z)))
+[error]     at org.cddcore.engine.EngineUniverse$class.validateBecause(ScenarioBuilder.scala:376)
+[error]     at org.cddcore.engine.BuilderFactory2.validateBecause(Engine.scala:90)
+[error]     at org.cddcore.engine.EngineUniverse$BuildEngine$class.buildFromScenarios(ScenarioBuilder.scala:837)
+[error]     at org.cddcore.engine.EngineUniverse$EngineFromTestsImpl.buildFromScenarios(ScenarioBuilder.scala:1096)
+[error]     at org.cddcore.engine.EngineUniverse$BuildEngine$class.buildFromScenarios(ScenarioBuilder.scala:845)
+[error]     at org.cddcore.engine.EngineUniverse$EngineFromTestsImpl.buildFromScenarios(ScenarioBuilder.scala:1096)
+[error]     at org.cddcore.engine.EngineUniverse$BuildEngine$class.buildFromScenarios(ScenarioBuilder.scala:845)
+[error]     at org.cddcore.engine.EngineUniverse$EngineFromTestsImpl.buildFromScenarios(ScenarioBuilder.scala:1096)
+[error]     at org.cddcore.engine.EngineUniverse$BuildEngine$class.buildFromScenarios(ScenarioBuilder.scala:845)
+[error]     at org.cddcore.engine.EngineUniverse$EngineFromTestsImpl.buildFromScenarios(ScenarioBuilder.scala:1096)
+[error]     at org.cddcore.engine.EngineUniverse$BuildEngine$class.buildFromScenarios(ScenarioBuilder.scala:845)
+[error]     at org.cddcore.engine.EngineUniverse$EngineFromTestsImpl.buildFromScenarios(ScenarioBuilder.scala:1096)
+[error]     at org.cddcore.engine.EngineUniverse$BuildEngine$class.buildFromScenarios(ScenarioBuilder.scala:845)
+[error]     at org.cddcore.engine.EngineUniverse$EngineFromTestsImpl.buildFromScenarios(ScenarioBuilder.scala:1096)
+[error]     at org.cddcore.engine.EngineUniverse$BuildEngine$class.buildFromScenarios(ScenarioBuilder.scala:845)
+[error]     at org.cddcore.engine.EngineUniverse$EngineFromTestsImpl.buildFromScenarios(ScenarioBuilder.scala:1096)
+[error]     at org.cddcore.engine.EngineUniverse$BuildEngine$class.buildFromScenarios(ScenarioBuilder.scala:845)
+[error]     at org.cddcore.engine.EngineUniverse$EngineFromTestsImpl.buildFromScenarios(ScenarioBuilder.scala:1096)
+[error]     at org.cddcore.engine.EngineUniverse$BuildEngine$class.buildRoot(ScenarioBuilder.scala:774)
+[error]     at org.cddcore.engine.EngineUniverse$EngineFromTestsImpl.buildRoot(ScenarioBuilder.scala:1096)
+[error]     at org.cddcore.engine.EngineUniverse$BuildEngine$class.$init$(ScenarioBuilder.scala:757)
+[error]     at org.cddcore.engine.EngineUniverse$EngineFromTestsImpl.<init>(ScenarioBuilder.scala:1096)
+[error]     at org.cddcore.engine.ABuilderFactory2$ABuilder2$$anon$2.<init>(Engine.scala:79)
+[error]     at org.cddcore.engine.ABuilderFactory2$ABuilder2$class.build(Engine.scala:79)
+[error]     at org.cddcore.engine.BuilderFactory2$Builder2.build(Engine.scala:94)
+[error]     at org.cddcore.carers.Carers$.<init>(Carers.scala:235)
+[error]     at org.cddcore.carers.Carers$.<clinit>(Carers.scala)
+[error]     at org.cddcore.carers.CarersContinuousIntegration.<init>(ContinuousIntegration.scala:14)
+[error]     at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+[error]     at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+[error]     at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+[error]     at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+[error]     at java.lang.Class.newInstance(Class.java:374)
+[error]     at org.cddcore.engine.tests.CddRunner$class.instantiate(CddJunitRunner.scala:234)
+[error]     at org.cddcore.engine.tests.CddContinuousIntegrationRunner.instantiate(CddContinuousIntegration.scala:14)
+[error]     at org.cddcore.engine.tests.CddContinuousIntegrationRunner$$anonfun$1.apply(CddContinuousIntegration.scala:17)
+[error]     at org.cddcore.engine.Engine$.test(Api.scala:365)
+[error]     at org.cddcore.engine.tests.CddContinuousIntegrationRunner.<init>(CddContinuousIntegration.scala:16)
+[error]     ...
+[error] Failed: : Total 202, Failed 2, Errors 0, Passed 200, Skipped 0
+[error] Failed tests:
+[error] 	org.cddcore.carers.SmokeWebtest
+[error] 	org.cddcore.carers.CarersContinuousIntegration
+java.lang.RuntimeException: Tests unsuccessful
+	at scala.sys.package$.error(package.scala:27)
+	at scala.Predef$.error(Predef.scala:123)
+	at sbt.Tests$.showResults(Tests.scala:192)
+	at sbt.Defaults$$anonfun$testTasks$6.apply(Defaults.scala:295)
+	at sbt.Defaults$$anonfun$testTasks$6.apply(Defaults.scala:293)
+	at sbt.Scoped$$anonfun$hf4$1.apply(Structure.scala:580)
+	at sbt.Scoped$$anonfun$hf4$1.apply(Structure.scala:580)
+	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:49)
+	at sbt.Scoped$Reduced$$anonfun$combine$1$$anonfun$apply$12.apply(Structure.scala:311)
+	at sbt.Scoped$Reduced$$anonfun$combine$1$$anonfun$apply$12.apply(Structure.scala:311)
+	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:40)
+	at sbt.std.Transform$$anon$5.work(System.scala:71)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:232)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:232)
+	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:18)
+	at sbt.Execute.work(Execute.scala:238)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:232)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:232)
+	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:159)
+	at sbt.CompletionService$$anon$2.call(CompletionService.scala:30)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+[error] (test:test) Tests unsuccessful
+[error] Total time: 11 s, completed 20-Mar-2014 11:30:15

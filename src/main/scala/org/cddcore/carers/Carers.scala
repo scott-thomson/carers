@@ -218,19 +218,15 @@ object Carers {
     because((d: DateTime, c: CarersXmlSituation) => c.isThereAnyQualifyingBenefit(c.world.dateProcessingDate)).
 
     useCase("Claimant Income and Expenses", "Claimants must have a limit to income offsetting expenses").
-    scenario(("2010-7-25"), ("2010-7-25", "CL100111A"), "Customers with income exceeding the threshold are not entitled to CA").
+    scenario(("2010-7-25"), ("2010-7-25", "CL100113A"), "Customers with income exceeding the threshold are not entitled to CA1").
     expected(KeyAndParams("520", "Too much income")).
     because((d: DateTime, c: CarersXmlSituation) => c.netIncome > 95).
 
-    scenario(("2010-7-25"), ("2010-7-25", "CL100113A"), "Customers with income exceeding the threshold are not entitled to CA").
-    expected(KeyAndParams("520", "Too much income")).
-    because((d: DateTime, c: CarersXmlSituation) => c.netIncome > 95).
-
-//    useCase("Breaks in care", "Breaks in care may cause the claim to be invalid").
-////    scenario("2010-6-1", List(("2010-7-1", "2010-12-20", false)), "Long break in care, but date outside range").expected(None).
-//    scenario("2010-7-10", List(("2010-7-1", "2010-7-20", false)), "Short break in care when after 22 weeks").expected(None).
-//    scenario("2010-12-1", List(("2010-7-1", "2010-12-20", false)), "Long break in care when after 22 weeks").expected("carers.breakInCare").
-//    because((d: DateTime, c: CarersXmlSituation) => !breaksInCare(d, c)).
+    //    useCase("Breaks in care", "Breaks in care may cause the claim to be invalid").
+    ////    scenario("2010-6-1", List(("2010-7-1", "2010-12-20", false)), "Long break in care, but date outside range").expected(None).
+    //    scenario("2010-7-10", List(("2010-7-1", "2010-7-20", false)), "Short break in care when after 22 weeks").expected(None).
+    //    scenario("2010-12-1", List(("2010-7-1", "2010-12-20", false)), "Long break in care when after 22 weeks").expected("carers.breakInCare").
+    //    because((d: DateTime, c: CarersXmlSituation) => !breaksInCare(d, c)).
 
     build
 }
