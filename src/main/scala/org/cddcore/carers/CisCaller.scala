@@ -7,21 +7,17 @@ import scala.xml.XML
 
 class WebserverNinoToCis(host: String) extends NinoToCis {
   def apply(nino: String): Elem = {
-    val url = new URL(host + nino)
-    val stream = url.openStream()
-    try {
-      val s = Source.fromInputStream(stream).mkString
-      XML.loadString(s)
-    } finally {
-      stream.close
-    }
+    val s = Source.fromURL(host + nino).mkString
+    XML.loadString(s)
   }
 }
 
 object WebserverNinoToCis {
   val cisHost = "http://localhost:8091/"
+  def apply(host: String = cisHost): NinoToCis = new WebserverNinoToCis(host)
+
   def main(args: Array[String]) {
-    val ninoToCis = new WebserverNinoToCis(cisHost)
+    val ninoToCis = WebserverNinoToCis()
     println(ninoToCis("CL100104A"))
   }
 }

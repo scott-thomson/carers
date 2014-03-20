@@ -24,8 +24,7 @@ object TimeLineCalcs {
 
     result.map((dateRangeToBeProcessedTogether: DateRangesToBeProcessedTogether) => {
       TimeLineItem(dateRangeToBeProcessedTogether.dateRanges.map((dr) => {
-        val newCarers = c.copy(world = c.world.copy(dateProcessingDate = dr.from))
-        val result = Carers.engine(newCarers)
+        val result = Carers.engine(dr.from, c)
         (dr, result)
       }))
     })

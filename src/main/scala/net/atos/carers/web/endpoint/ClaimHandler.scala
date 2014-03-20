@@ -49,7 +49,7 @@ class ClaimHandler extends AbstractHandler {
   def handlePost(custXml: String, claimDate: String) = {
     println("In handle post 1 ")
     val dateTime = Claim.asDate(claimDate)
-    val world = World(dateTime)
+    val world = World()
     val xml = try { XML.loadString(custXml) } catch { case e: Throwable => e.printStackTrace(); throw e }
     val situation = CarersXmlSituation(world, xml)
     val result = <div>{

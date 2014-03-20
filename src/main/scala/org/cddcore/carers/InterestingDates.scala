@@ -8,9 +8,11 @@ import scala.language.implicitConversions
 
 @RunWith(classOf[CddJunitRunner])
 object InterestingDates {
-  implicit def stringStringToCarers(x: Tuple2[String, String]) = CarersXmlSituation(World(x._1), Claim.getXml(x._2))
+  implicit def stringStringToCarers(x: String) = CarersXmlSituation(World(), Claim.getXml(x))
   implicit def stringToDate(x: String) = Claim.asDate(x)
   implicit def stringToOptionDate(x: String) = Some(Claim.asDate(x))
+  implicit def stringStringToDateTimeString(t: (String, String)) = List((Claim.asDate(t._1), t._2))
+  implicit def toValidateClaim(x: List[(String, String, Boolean)]): CarersXmlSituation = Claim.validateClaimWithBreaks(x: _*)
 
   val isInRange = Engine[DateTime, DateTime, Option[DateTime], Boolean]().title("Date in range").
     useCase("all dates exist").
@@ -30,10 +32,6 @@ object InterestingDates {
     scenario("2010-2-20", "2010-2-15", None).expected(false).
     scenario("2010-2-1", "2010-2-15", None).expected(false).
     build
-
-  implicit def stringToCarersXmlSituation(id: String) = CarersXmlSituation(World("2010-7-5"), Claim.getXml(id))
-  implicit def stringStringToDateTimeString(t: (String, String)) = List((Claim.asDate(t._1), t._2))
-  implicit def toValidateClaim(x: List[(String, String, Boolean)]): CarersXmlSituation = Claim.validateClaimWithBreaks(x: _*)
 
   private val addStartDateOfDateInInCareAndFirstDateOutOfBreak = (dr: DateRange) => List(
     (dr.from, "Break in care (" + dr.reason + ") started"),

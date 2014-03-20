@@ -49,33 +49,10 @@ object DateRanges {
   val saturday = 6
   val sunday = 7
 
-  implicit def stringStringToCarers(x: Tuple2[String, String]) = CarersXmlSituation(World(Claim.asDate(x._1), new TestNinoToCis), Claim.getXml(x._2))
-
   implicit def stringToDate(x: String) = Claim.asDate(x)
   implicit def stringStringToDateRange(x: Tuple3[String, String, String]) = DateRange(Claim.asDate(x._1), Claim.asDate(x._2), x._3)
-  implicit def dateDateToDateRange(x: Tuple3[DateTime, DateTime, String]) = DateRange(x._1, x._2, x._3)
   implicit def listStringTuplesToDateRangesToBeProcessedTogether(stringTuples: List[Tuple3[String, String, String]]) =
     DateRangesToBeProcessedTogether(stringTuples.collect { case (from, to, reason) => DateRange(from, to, reason) })
-
-  //  val firstDayOfWeek = Engine[DateTime, Int, DateTime]().title("First Day of Week").
-  //    description("Given a date, and the day of the week that is day one, what is the date at the start of the week the date is in?").
-  //    useCase("Day to split is less or equal than day of week").
-  //    scenario("2010-1-4", 1, "monday split monday").expected("2010-1-4").
-  //    code((d: DateTime, dayToSplit: Int) => d.withDayOfWeek(dayToSplit)).
-  //    scenario("2010-1-5", 1, "tuesday split monday").expected("2010-1-4").
-  //    scenario("2010-1-10", 1, "sunday split monday").expected("2010-1-4").
-  //    scenario("2010-1-3", 7, "sunday split sunday").expected("2010-1-3").
-  //
-  //    useCase("Day to split is bigger  than day of week").
-  //    scenario("2010-1-5", 7, "tuesday split sunday").expected("2010-1-3").
-  //    code((d: DateTime, dayToSplit: Int) => d.minusDays(7).withDayOfWeek(dayToSplit)).
-  //    because((d: DateTime, dayToSplit: Int) => dayToSplit > d.getDayOfWeek()).
-  //
-  //    scenario("2010-1-9", 7, "saturday split sunday").expected("2010-1-3").
-  //    scenario("2010-1-4", 7, "monday split sunday").expected("2010-1-3").
-  //    scenario("2010-1-10", 3, "monday split wednesday").expected("2010-1-6").
-  //
-  //    build
 
   val firstDayOfWeek = Engine[DateTime, Int, DateTime]().title("First Day Of Week Engine").
     description("Given a date and a first day of week index, return the date of the first day of the week containing the supplied date").
