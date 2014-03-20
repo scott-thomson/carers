@@ -26,7 +26,6 @@ class ClaimHandler extends AbstractHandler {
       request.getMethod match {
         case MethodPost => response.getWriter().println(handlePost(request.getParameter("custxml"), request.getParameter("claimDate")))
         case MethodGet => response.getWriter().println(handleGet)
-        case _ => response.getWriter().println(getInvalidRequestView())
       }
     } catch {
       case e: Throwable =>
@@ -39,7 +38,6 @@ class ClaimHandler extends AbstractHandler {
         props.list(response.getWriter());
         response.getWriter().println("Class Path = ")
         response.getWriter().println(props.get("java.class.path"))
-        throw e
     }
     baseRequest.setHandled(true)
   }
@@ -128,28 +126,6 @@ class ClaimHandler extends AbstractHandler {
           </table>
           <br/>
           <pre>{ returnMessage }</pre>
-        </form>
-      </body>
-    </html>
-
-  def getInvalidRequestView(): Elem =
-    <html>
-      <head>
-        <title>Validate Claim</title>
-      </head>
-      <body>
-        <form action="/" method="POST">
-          <h1>Validate Claim</h1>
-          <table>
-            <tr>
-              <td>
-                <textarea name="custxml">Invalid Http Request Type</textarea>
-              </td>
-              <td>
-                <input type="submit" value="Submit"/>
-              </td>
-            </tr>
-          </table>
         </form>
       </body>
     </html>

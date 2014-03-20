@@ -10,6 +10,8 @@ import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.selenium.HtmlUnit
 import net.atos.carers.web.endpoint.ValidateClaimServer
 import org.scalatest.junit.JUnitRunner
+import java.net.URL
+import java.net.HttpURLConnection
 
 object SmokeWebtest {
   val port = new AtomicInteger(8090)

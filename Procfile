@@ -1,1 +1,1 @@
-web: target/start net.atos.carers.web.endpoint.ValidateClaim
+web: target/start net.atos.carers.web.endpoint.ValidateClaimServer
