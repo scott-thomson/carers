@@ -10,6 +10,7 @@ import org.scalatest.BeforeAndAfterAll
 import org.eclipse.jetty.server.Server
 import net.atos.carers.web.endpoint.ClaimHandler
 import java.util.concurrent.atomic.AtomicInteger
+import net.atos.carers.web.endpoint.ValidateClaimServer
 
 object SmokeWebtest {
   val port = new AtomicInteger(8090)
@@ -20,9 +21,7 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
   import SmokeWebtest._
   val localPort = port.getAndIncrement()
   val host = s"http://localhost:$localPort/"
-  val claimHandler = new ClaimHandler
-  val server = new Server(localPort)
-  server.setHandler(claimHandler);
+  val server = ValidateClaimServer(localPort)
 
   override def beforeAll {
     server.start
@@ -30,6 +29,11 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
 
   override def afterAll {
     server.stop
+  }
+
+  "The default port method" should "return 8090 if PORT isn't set" in {
+    System.getenv("PORT") should equal(null)
+    ValidateClaimServer.defaultPort should equal(8090)
   }
 
   "Our Rubbishy Website" should "Display a form when it recieves a GET" in {

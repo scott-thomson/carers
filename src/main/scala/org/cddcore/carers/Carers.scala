@@ -79,42 +79,41 @@ object Claim {
 case class CarersXmlSituation(world: World, claimXml: Elem) extends XmlSituation {
 
   import Xml._
-  lazy val claimBirthDate = xml(claimXml) \ "ClaimantData" \ "ClaimantBirthDate" \ "PersonBirthDate" \ date("yyyy-MM-dd")
+  val claimBirthDate = xml(claimXml) \ "ClaimantData" \ "ClaimantBirthDate" \ "PersonBirthDate" \ date("yyyy-MM-dd")
   def claimantUnderSixteen(d: DateTime) = Carers.checkUnderSixteen(claimBirthDate(), d)
-  lazy val claim35Hours = xml(claimXml) \ "ClaimData" \ "Claim35Hours" \ yesNo(default = false)
-  lazy val claimCurrentResidentUK = xml(claimXml) \ "ClaimData" \ "ClaimCurrentResidentUK" \ yesNo(default = false)
-  lazy val claimEducationFullTime = xml(claimXml) \ "ClaimData" \ "ClaimEducationFullTime" \ yesNo(default = false)
-  lazy val claimAlwaysUK = xml(claimXml) \ "ClaimData" \ "ClaimAlwaysUK" \ yesNo(default = false)
-  lazy val childCareExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesChildAmount" \ double
-  lazy val hasChildCareExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesChild" \ yesNo(default = false)
-  lazy val occPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesOccPensionAmount" \ double
-  lazy val hasOccPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesOccPension" \ yesNo(default = false)
-  lazy val psnPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesPsnPensionAmount" \ double
-  lazy val hasPsnPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesPsnPension" \ yesNo(default = false)
-  lazy val hasEmploymentData = xml(claimXml) \ "newEmploymentData" \ boolean
-  lazy val employmentGrossSalary = xml(claimXml) \ "EmploymentData" \ "EmploymentGrossSalary" \ double
-  lazy val employmentPayPeriodicity = xml(claimXml) \ "EmploymentData" \ "EmploymentPayPeriodicity" \ string
+  val claim35Hours = xml(claimXml) \ "ClaimData" \ "Claim35Hours" \ yesNo(default = false)
+  val claimCurrentResidentUK = xml(claimXml) \ "ClaimData" \ "ClaimCurrentResidentUK" \ yesNo(default = false)
+  val claimEducationFullTime = xml(claimXml) \ "ClaimData" \ "ClaimEducationFullTime" \ yesNo(default = false)
+  val claimAlwaysUK = xml(claimXml) \ "ClaimData" \ "ClaimAlwaysUK" \ yesNo(default = false)
+  val childCareExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesChildAmount" \ double
+  val hasChildCareExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesChild" \ yesNo(default = false)
+  val occPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesOccPensionAmount" \ double
+  val hasOccPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesOccPension" \ yesNo(default = false)
+  val psnPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesPsnPensionAmount" \ double
+  val hasPsnPensionExpenses = xml(claimXml) \ "ExpensesData" \ "ExpensesPsnPension" \ yesNo(default = false)
+  val hasEmploymentData = xml(claimXml) \ "newEmploymentData" \ boolean
+  val employmentGrossSalary = xml(claimXml) \ "EmploymentData" \ "EmploymentGrossSalary" \ double
+  val employmentPayPeriodicity = xml(claimXml) \ "EmploymentData" \ "EmploymentPayPeriodicity" \ string
 
-  lazy val DependantNino = xml(claimXml) \ "DependantData" \ "DependantNINO" \ string
-  lazy val dependantCisXml: Elem = DependantNino.get() match {
+  val DependantNino = xml(claimXml) \ "DependantData" \ "DependantNINO" \ string
+  val dependantCisXml: Elem = DependantNino.get() match {
     case Some(s) => world.ninoToCis(s);
     case None => <NoDependantXml/>
   }
 
-  lazy val dependantLevelOfQualifyingCare = xml(dependantCisXml) \\ "AwardComponent" \ string
-  lazy val dependantHasSufficientLevelOfQualifyingCare = dependantLevelOfQualifyingCare() == "DLA Middle Rate Care"
+  val dependantLevelOfQualifyingCare = xml(dependantCisXml) \\ "AwardComponent" \ string
 
-  lazy val claimStartDate = xml(claimXml) \ "ClaimData" \ "ClaimStartDate" \ date
-  lazy val timeLimitForClaimingThreeMonths = claimSubmittedDate().minusMonths(3)
-  lazy val claimEndDate = xml(claimXml) \ "ClaimData" \ "ClaimEndDate" \ optionDate
-  lazy val claimSubmittedDate = xml(claimXml) \ "StatementData" \ "StatementDate" \ date
-  lazy val dependantAwardStartDate = xml(dependantCisXml) \ "Award" \ "AssessmentDetails" \ "ClaimStartDate" \ optionDate
+  val claimSubmittedDate = xml(claimXml) \ "StatementData" \ "StatementDate" \ date
+  val claimStartDate = xml(claimXml) \ "ClaimData" \ "ClaimStartDate" \ date
+  val timeLimitForClaimingThreeMonths = claimSubmittedDate().minusMonths(3)
+  val claimEndDate = xml(claimXml) \ "ClaimData" \ "ClaimEndDate" \ optionDate
+  val dependantAwardStartDate = xml(dependantCisXml) \ "Award" \ "AssessmentDetails" \ "ClaimStartDate" \ optionDate
 
   def income(d: DateTime) = Income.income(d, this)
   def expenses(d: DateTime) = Expenses.expenses(d, this)
   def netIncome(d: DateTime) = income(d) - expenses(d)
 
-  lazy val awardList = xml(dependantCisXml) \ "Award" \
+  val awardList = xml(dependantCisXml) \ "Award" \
     obj((group) => group.map((n) => {
       val benefitType = (n \ "AssessmentDetails" \ "BenefitType").text
       val awardComponent = (n \ "AwardComponents" \ "AwardComponent").text
@@ -123,7 +122,7 @@ case class CarersXmlSituation(world: World, claimXml: Elem) extends XmlSituation
       Award(benefitType, awardComponent, claimStatus, awardStartDate)
     }).toList)
 
-  lazy val breaksInCare = xml(claimXml) \ "ClaimData" \ "ClaimBreaks" \ "BreakInCare" \
+  val breaksInCare = xml(claimXml) \ "ClaimData" \ "ClaimBreaks" \ "BreakInCare" \
     obj((ns) => ns.map((n) => {
       val from = Claim.asDate((n \ "BICFromDate").text)
       val to = Claim.asDate((n \ "BICToDate").text)
@@ -140,7 +139,6 @@ case class Award(benefitType: String, awardComponent: String, claimStatus: Strin
 object Carers {
   implicit def stringStringToCarers(x: String) = CarersXmlSituation(World(), Claim.getXml(x))
   implicit def stringToDate(x: String) = Claim.asDate(x)
-  implicit def stringToOptionDate(x: String) = Some(Claim.asDate(x))
 
   val checkUnderSixteen = Engine[DateTime, DateTime, Boolean]().title("Check for being under-age (less than age sixteen)").
     useCase("Oversixteen").
@@ -218,8 +216,8 @@ object Carers {
     build
 
   def main(args: Array[String]) {
-    val formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
-    println("CL100111A": CarersXmlSituation)
+    //    val formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+    //    println("CL100111A": CarersXmlSituation)
   }
 
 }
