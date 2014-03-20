@@ -29,9 +29,9 @@ object TimeLineCalcs {
       }))
     })
   }
-
-  def main(args: Array[String]) {
-    //    println(findTimeLine(Claim.validateClaimWithBreaks(("2010-7-1", "2010-7-10", true))).mkString("\n"))
-  }
+  //
+  //  def main(args: Array[String]) {
+  //    //    println(findTimeLine(Claim.validateClaimWithBreaks(("2010-7-1", "2010-7-10", true))).mkString("\n"))
+  //  }
 
 }

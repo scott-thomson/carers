@@ -215,9 +215,9 @@ object Carers {
     because((d: DateTime, c: CarersXmlSituation) => c.netIncome(d) > 95).
     build
 
-  def main(args: Array[String]) {
-    //    val formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
-    //    println("CL100111A": CarersXmlSituation)
-  }
+  //  def main(args: Array[String]) {
+  //    //    val formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+  //    //    println("CL100111A": CarersXmlSituation)
+  //  }
 
 }
