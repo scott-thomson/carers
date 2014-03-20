@@ -69,7 +69,7 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
   
   def getClaimXML: String = {
     val xml: Elem =
-      <ValidateClaim xsi:schemaLocation="http://www.autotdd.com/ca Conversation%20v2_1%202010-07-16.xsd" xmlns="http://www.autotdd.com/ca" xmlns:n1="http://www.autotdd.com/ca" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	      <ValidateClaim xsi:schemaLocation="http://www.autotdd.com/ca Conversation%20v2_1%202010-07-16.xsd" xmlns="http://www.autotdd.com/ca" xmlns:n1="http://www.autotdd.com/ca" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <piid>String</piid>
         <newClaimantData>true</newClaimantData>
         <ClaimantData>
