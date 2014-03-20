@@ -146,6 +146,7 @@ object Carers {
   implicit def stringStringToCarers(x: Tuple2[String, String]) = CarersXmlSituation(World(x._1), Claim.getXml(x._2))
   implicit def stringToDate(x: String) = Claim.asDate(x)
   implicit def stringToOptionDate(x: String) = Some(Claim.asDate(x))
+  implicit def toValidateClaim(x: List[(String, String, Boolean)]): CarersXmlSituation = Claim.validateClaimWithBreaks(x: _*)
 
   val checkUnderSixteen = Engine[DateTime, DateTime, Boolean]().title("Check for being under-age (less than age sixteen)").
     useCase("Oversixteen").
@@ -177,57 +178,59 @@ object Carers {
 
     build
 
-  val engine = Engine[CarersXmlSituation, KeyAndParams]().title("Validate Claim Rules").
-    code((c: CarersXmlSituation) => KeyAndParams("000", "Default Response")).
+  val engine = Engine[DateTime, CarersXmlSituation, KeyAndParams]().title("Validate Claim Rules").
+    code((d: DateTime, c: CarersXmlSituation) => KeyAndParams("000", "Default Response")).
     useCase("Claimants under the age of 16 are not entitled to claim Carer's Allowance", "Carer's Allowance is intended for people over the age of 16 who are unable to undertake or continue regular full time employment because they are needed at home to look after a disabled person. Carer's Allowance is not available to customers under the age of 16.").
-    scenario(("2010-7-25", "CL100104A"), "Claimant CL100104 is a child under 16").
+    scenario("2010-7-25", ("2010-7-25", "CL100104A"), "Claimant CL100104 is a child under 16").
     expected(KeyAndParams("510", "You must be over 16")).
-    because((c: CarersXmlSituation) => c.claimantUnderSixteen).
+    because((d: DateTime, c: CarersXmlSituation) => c.claimantUnderSixteen).
 
     useCase("Caring Hours", "Claimants must be caring for over 35 hours per week").
-    scenario(("2010-7-25", "CL100105A"), "Claimant CL100105 is not caring for 35 hours").
+    scenario(("2010-7-25"), ("2010-7-25", "CL100105A"), "Claimant CL100105 is not caring for 35 hours").
     expected(KeyAndParams("501", "Not caring for 35 hours")).
-    because((c: CarersXmlSituation) => !c.claim35Hours()).
+    because((d: DateTime, c: CarersXmlSituation) => !c.claim35Hours()).
 
     useCase("Claimant Residence", "Claimants must resident and present in the UK").
-    scenario(("2010-7-25", "CL100107A"), "Claimant CL100107 is not UK resident").
+    scenario(("2010-7-25"), ("2010-7-25", "CL100107A"), "Claimant CL100107 is not UK resident").
     expected(KeyAndParams("530", "Not resident in UK")).
-    because((c: CarersXmlSituation) => !c.claimAlwaysUK()).
+    because((d: DateTime, c: CarersXmlSituation) => !c.claimAlwaysUK()).
 
     useCase("Claimant Current Residence", "Claimants must be currently resident in the UK with no restrictions").
-    scenario(("2010-7-25", "CL100108A"), "Claimant CL100108 is not normally UK resident").
+    scenario(("2010-7-25"), ("2010-7-25", "CL100108A"), "Claimant CL100108 is not normally UK resident").
     expected(KeyAndParams("534", "Not resident in UK")).
-    because((c: CarersXmlSituation) => !c.claimCurrentResidentUK()).
+    because((d: DateTime, c: CarersXmlSituation) => !c.claimCurrentResidentUK()).
 
     useCase("Claimant in Full Time Education", "Claimants must not be in full time education (over 21 hours/week)").
-    scenario(("2010-7-25", "CL100109A"), "Claimant CL100109 is in full time education").
+    scenario(("2010-7-25"), ("2010-7-25", "CL100109A"), "Claimant CL100109 is in full time education").
     expected(KeyAndParams("513", "Claimant in full time education")).
-    because((c: CarersXmlSituation) => c.claimEducationFullTime()).
+    because((d: DateTime, c: CarersXmlSituation) => c.claimEducationFullTime()).
 
     useCase("Qualifying Benefit", "The person for whom the customer is caring (the disabled person) must be " +
       " receiving payment of either Attendance Allowance (AA), Disability Living Allowance (DLA) " +
       "care component (middle or highest rate), or Constant Attendance Allowance (CAA) " +
       "(at least full day rate).").
-    scenario(("2010-7-25", "CL100106A"), "Dependent party without qualifying benefit").
+    scenario(("2010-7-25"), ("2010-7-25", "CL100106A"), "Dependent party without qualifying benefit").
     expected(KeyAndParams("503", "Dependent doesn't have a Qualifying Benefit")).
-    because((c: CarersXmlSituation) => !c.isThereAnyQualifyingBenefit(c.world.dateProcessingDate)).
+    because((d: DateTime, c: CarersXmlSituation) => !c.isThereAnyQualifyingBenefit(c.world.dateProcessingDate)).
 
-    scenario(("2010-7-25", "CL100101A"), "Dependent party with suitable qualifying benefit").
+    scenario(("2010-7-25"), ("2010-7-25", "CL100101A"), "Dependent party with suitable qualifying benefit").
     expected(KeyAndParams("ENT", "Dependent award is valid on date")).
-    because((c: CarersXmlSituation) => c.isThereAnyQualifyingBenefit(c.world.dateProcessingDate)).
+    because((d: DateTime, c: CarersXmlSituation) => c.isThereAnyQualifyingBenefit(c.world.dateProcessingDate)).
 
     useCase("Claimant Income and Expenses", "Claimants must have a limit to income offsetting expenses").
-    //      scenario(("2010-7-25", "CL100111A"), "Customers with income exceeding the threshold are not entitled to CA").
-    //      expected(KeyAndParams("520", "Too much income")).
-    //      because((c: CarersXmlSituation) => c.netIncome > 95).
-
-    scenario(("2010-7-25", "CL100113A"), "Customers with income exceeding the threshold are not entitled to CA").
+    scenario(("2010-7-25"), ("2010-7-25", "CL100111A"), "Customers with income exceeding the threshold are not entitled to CA").
     expected(KeyAndParams("520", "Too much income")).
-    because((c: CarersXmlSituation) => c.netIncome > 95).
-    build
+    because((d: DateTime, c: CarersXmlSituation) => c.netIncome > 95).
 
-  def main(args: Array[String]) {
-    val formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
-    println(("2010-7-25", "CL100111A"): CarersXmlSituation)
-  }
+    scenario(("2010-7-25"), ("2010-7-25", "CL100113A"), "Customers with income exceeding the threshold are not entitled to CA").
+    expected(KeyAndParams("520", "Too much income")).
+    because((d: DateTime, c: CarersXmlSituation) => c.netIncome > 95).
+
+//    useCase("Breaks in care", "Breaks in care may cause the claim to be invalid").
+////    scenario("2010-6-1", List(("2010-7-1", "2010-12-20", false)), "Long break in care, but date outside range").expected(None).
+//    scenario("2010-7-10", List(("2010-7-1", "2010-7-20", false)), "Short break in care when after 22 weeks").expected(None).
+//    scenario("2010-12-1", List(("2010-7-1", "2010-12-20", false)), "Long break in care when after 22 weeks").expected("carers.breakInCare").
+//    because((d: DateTime, c: CarersXmlSituation) => !breaksInCare(d, c)).
+
+    build
 }

@@ -18,4 +18,8 @@ libraryDependencies +=  "com.novocode" % "junit-interface" % "0.10-M2" % "test"
 
 libraryDependencies += "org.eclipse.jetty" % "jetty-webapp" % "8.0.0.M0"
 
+libraryDependencies += "org.scalatest" % "scalatest_2.10" % "2.1.0"
+
+libraryDependencies += "org.seleniumhq.selenium" % "selenium-java" % "2.35.0" % "test"
+            
 testFrameworks := Seq(TestFrameworks.JUnit, TestFrameworks.ScalaCheck, TestFrameworks.ScalaTest, TestFrameworks.Specs2)
