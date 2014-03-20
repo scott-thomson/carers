@@ -1,5 +1,7 @@
 package org.cddcore.carers
 
+import org.joda.time.DateTime
+
 case class TimeLineItem(events: List[(DateRange, KeyAndParams)]) {
   val startDate = events.head._1.from
   val endDate = events.last._1.to
@@ -23,7 +25,7 @@ object TimeLineCalcs {
     result.map((dateRangeToBeProcessedTogether: DateRangesToBeProcessedTogether) => {
       TimeLineItem(dateRangeToBeProcessedTogether.dateRanges.map((dr) => {
         val newCarers = c.copy(world = c.world.copy(dateProcessingDate = dr.from))
-        val result = Carers.engine(newCarers)
+        val result = Carers.engine(new DateTime("2010-12-01"), newCarers)
         (dr, result)
       }))
     })

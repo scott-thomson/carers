@@ -127,7 +127,7 @@ class ClaimHandler extends AbstractHandler {
             </tr>
           </table>
           <br/>
-          { returnMessage }
+          <pre>{ returnMessage }</pre>
         </form>
       </body>
     </html>
