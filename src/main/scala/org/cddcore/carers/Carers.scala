@@ -7,6 +7,7 @@ import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 import scala.xml._
 import org.joda.time.Years
+import scala.language.implicitConversions
 
 case class KeyAndParams(key: String, comment: String, params: Any*)
 
@@ -147,7 +148,6 @@ object Carers {
   implicit def stringToDate(x: String) = Claim.asDate(x)
   implicit def stringToOptionDate(x: String) = Some(Claim.asDate(x))
 
-
   val checkUnderSixteen = Engine[DateTime, DateTime, Boolean]().title("Check for being under-age (less than age sixteen)").
     useCase("Oversixteen").
     scenario("1996-12-10", "2012-12-9").expected(true).
@@ -222,17 +222,10 @@ object Carers {
     expected(KeyAndParams("520", "Too much income")).
     because((c: CarersXmlSituation) => c.netIncome > 95).
     build
-	
 
   def main(args: Array[String]) {
     val formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
     println(("2010-7-25", "CL100111A"): CarersXmlSituation)
   }
-
-
-
-
-
-
 
 }

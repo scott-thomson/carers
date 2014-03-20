@@ -6,6 +6,7 @@ import org.cddcore.engine.Engine
 import org.joda.time.format.DateTimeFormat
 import org.cddcore.engine.UseCase
 import org.cddcore.engine.Xml
+import scala.language.implicitConversions
 
 @RunWith(classOf[CddJunitRunner])
 object Expenses {

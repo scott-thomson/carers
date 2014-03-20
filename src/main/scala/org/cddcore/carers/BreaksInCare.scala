@@ -4,14 +4,15 @@ import org.junit.runner.RunWith
 import org.cddcore.engine.tests.CddJunitRunner
 import org.cddcore.engine.Engine
 import org.joda.time.DateTime
+import scala.language.implicitConversions
 
 @RunWith(classOf[CddJunitRunner])
 object BreaksInCare {
 
   implicit def stringToDate(x: String) = (Claim.asDate(x))
-  
+
   implicit def toValidateClaim(x: List[(String, String, Boolean)]): CarersXmlSituation = Claim.validateClaimWithBreaks(x: _*)
-  
+
   def breaksInCare = Engine[DateTime, CarersXmlSituation, Boolean]().title("Breaks in care").
     description("This works out if any given break in care (specified by the DateRange) still allows payment. For reference the validateClaimWithBreaks method " +
       "creates a validate claims application form with a claims start date of 2010-01-01. The 22 week enabler for breaks in care occurs on 2010-06-04").

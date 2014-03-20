@@ -4,6 +4,7 @@ import org.junit.runner.RunWith
 import org.cddcore.engine.tests.CddJunitRunner
 import org.cddcore.engine.Engine
 import org.joda.time.DateTime
+import scala.language.implicitConversions
 
 @RunWith(classOf[CddJunitRunner])
 object InterestingDates {
