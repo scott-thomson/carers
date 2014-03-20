@@ -43,30 +43,38 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
     pageTitle should be("Validate Claim")
   }
 
-  "It" should "be able to set focus to the custxml textarea" in {
+  it should "be able to set focus to the custxml textarea" in {
     click on name("custxml")
   }
 
-  "It" should "be able to set focus to the claimDate textarea" in {
+  it should "be able to set focus to the claimDate textarea" in {
     click on name("claimDate")
   }
 
-  "It" should "be able to submit claim XML and then see a timeline" in {
+  it should "be able to submit claim XML and then see a timeline if no date specified" in {
     textArea("custxml").value = getClaimXML
+    textField("claimDate").value = ""
     submit()
     val xml: Elem = XML.loadString(pageSource)
-    val timeLineNodes = xml \ "body" \ "form" \ "pre" \ "div" \ "p"
-    assert(timeLineNodes.length > 0)
+    assertDivWithIdExists(xml, "timeLine")
   }
 
-  "It" should "throw an exception if submitted with an invalid claimDate value" in {
+  it should "be able to submit claim XML and then see a result if date specified" in {
+    textArea("custxml").value = getClaimXML
+    textField("claimDate").value = "2010-5-1"
+    submit()
+    val xml: Elem = XML.loadString(pageSource)
+    assertDivWithIdExists(xml, "oneTime")
+  }
+
+  it should "throw an exception if submitted with an invalid claimDate value" in {
     go to (host + "index.html")
     click on name("claimDate")
     textField("claimDate").value = "not a date"
     submit()
   }
 
-  "It" should "throw an exception if submitted with invalid xml" in {
+  it should "throw an exception if submitted with invalid xml" in {
     go to (host + "index.html")
     textArea("custxml").value = "not xml"
     submit()
@@ -205,5 +213,14 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
         </ConsentData>
       </ValidateClaim>
     xml.toString
+  }
+  def assertDivWithIdExists(xml: Elem, attributeId: String) = {
+    val timeLineNodes = xml \\ "div"
+    assert(timeLineNodes.length > 0)
+    val optDivWithId = timeLineNodes.find((n) => {
+      val a = n.attribute("id")
+      a.isDefined && a.get.text == attributeId
+    })
+    assert(optDivWithId.isDefined)
   }
 }

@@ -13,6 +13,7 @@ import org.cddcore.carers.World
 import org.cddcore.carers.CarersXmlSituation
 import scala.xml.XML
 import org.cddcore.carers.TimeLineCalcs
+import org.cddcore.carers.TimeLineItem
 
 class ClaimHandler extends AbstractHandler {
   private val MethodPost: String = "POST";
@@ -46,15 +47,27 @@ class ClaimHandler extends AbstractHandler {
 
   def handlePost(custXml: String, claimDate: String) = {
     println("In handle post 1 ")
-    val dateTime = Claim.asDate(claimDate)
+
     val world = World()
     val xml = try { XML.loadString(custXml) } catch { case e: Throwable => e.printStackTrace(); throw e }
     val situation = CarersXmlSituation(world, xml)
-    val result = <div>{
-      val timeline = TimeLineCalcs.findTimeLine(situation)
-      val simplifiedTimeLine = TimeLineCalcs.simplifyTimeLine(timeline, Claim.asDate("2012-1-1"))
-      timeline.map((tli) => <p>{ tli } </p>)
-    }</div>
+
+    val result = claimDate.isEmpty() match {
+      case true => {
+        val timeLine: List[TimeLineItem] = TimeLineCalcs.findTimeLine(situation)
+        println("empty date")
+        <div id='timeLine'>{
+          timeLine.map((tli) => <p>{ tli }</p>)
+        }</div>
+      }
+      case _ => {
+        println("not empty date")
+        val dateTime = Claim.asDate(claimDate)
+        val result = Carers.engine(dateTime, situation)
+        <div id='oneTime'>{ result }</div>
+      }
+    }
+
     println("In handle post 2: " + result)
     //    //CDD Business logic will return a return message - hard coded for now   
     //    val returnMessage = result.toString
