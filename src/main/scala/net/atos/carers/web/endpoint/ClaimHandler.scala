@@ -56,7 +56,7 @@ class ClaimHandler extends AbstractHandler {
       case true => {
         val timeLine: List[TimeLineItem] = TimeLineCalcs.findTimeLine(situation)
         println("empty date")
-        <div>{
+        <div id='timeLine'>{
           timeLine.map((tli) => <p>{ tli }</p>)
         }</div>
       }
@@ -64,7 +64,7 @@ class ClaimHandler extends AbstractHandler {
         println("not empty date")
         val dateTime = Claim.asDate(claimDate)
         val result = Carers.engine(dateTime, situation)
-        <div>{ result }</div>
+        <div id='oneTime'>{ result }</div>
       }
     }
 
