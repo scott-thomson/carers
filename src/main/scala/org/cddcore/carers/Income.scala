@@ -33,8 +33,8 @@ object Income {
     build
 
   def main(args: Array[String]) {
-    println(income("2010-7-25", "CL100108A"))
-    println(income("2010-3-1", "CL100112A"))
+    //    println(income("2010-7-25", "CL100108A"))
+    //    println(income("2010-3-1", "CL100112A"))
   }
 
 }

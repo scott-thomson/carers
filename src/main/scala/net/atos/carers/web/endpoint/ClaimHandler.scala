@@ -27,7 +27,6 @@ class ClaimHandler extends AbstractHandler {
       request.getMethod match {
         case MethodPost => response.getWriter().println(handlePost(request.getParameter("custxml"), request.getParameter("claimDate")))
         case MethodGet => response.getWriter().println(handleGet)
-        case _ => response.getWriter().println(getInvalidRequestView())
       }
     } catch {
       case e: Throwable =>
@@ -40,7 +39,6 @@ class ClaimHandler extends AbstractHandler {
         props.list(response.getWriter());
         response.getWriter().println("Class Path = ")
         response.getWriter().println(props.get("java.class.path"))
-        throw e
     }
     baseRequest.setHandled(true)
   }
@@ -53,10 +51,10 @@ class ClaimHandler extends AbstractHandler {
     val world = World()
     val xml = try { XML.loadString(custXml) } catch { case e: Throwable => e.printStackTrace(); throw e }
     val situation = CarersXmlSituation(world, xml)
-    val timeLine: List[TimeLineItem] = TimeLineCalcs.findTimeLine(situation)
 
     val result = claimDate.isEmpty() match {
       case true => {
+        val timeLine: List[TimeLineItem] = TimeLineCalcs.findTimeLine(situation)
         println("empty date")
         <div>{
           timeLine.map((tli) => <p>{ tli }</p>)
@@ -143,28 +141,6 @@ class ClaimHandler extends AbstractHandler {
           </table>
           <br/>
           <pre>{ returnMessage }</pre>
-        </form>
-      </body>
-    </html>
-
-  def getInvalidRequestView(): Elem =
-    <html>
-      <head>
-        <title>Validate Claim</title>
-      </head>
-      <body>
-        <form action="/" method="POST">
-          <h1>Validate Claim</h1>
-          <table>
-            <tr>
-              <td>
-                <textarea name="custxml">Invalid Http Request Type</textarea>
-              </td>
-              <td>
-                <input type="submit" value="Submit"/>
-              </td>
-            </tr>
-          </table>
         </form>
       </body>
     </html>

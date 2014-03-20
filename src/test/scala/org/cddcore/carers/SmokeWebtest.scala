@@ -3,14 +3,15 @@ package org.cddcore.carers
 import java.util.concurrent.atomic.AtomicInteger
 import scala.xml.Elem
 import scala.xml.XML
-import org.eclipse.jetty.server.Server
 import org.junit.runner.RunWith
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.selenium.HtmlUnit
-import net.atos.carers.web.endpoint.ClaimHandler
+import net.atos.carers.web.endpoint.ValidateClaimServer
 import org.scalatest.junit.JUnitRunner
+import java.net.URL
+import java.net.HttpURLConnection
 
 object SmokeWebtest {
   val port = new AtomicInteger(8090)
@@ -21,9 +22,7 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
   import SmokeWebtest._
   val localPort = port.getAndIncrement()
   val host = s"http://localhost:$localPort/"
-  val claimHandler = new ClaimHandler
-  val server = new Server(localPort)
-  server.setHandler(claimHandler);
+  val server = ValidateClaimServer(localPort)
 
   override def beforeAll {
     server.start
@@ -31,6 +30,12 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
 
   override def afterAll {
     server.stop
+  }
+
+  "The default port method" should "return 8090 if PORT isn't set" in {
+    val port = System.getenv("PORT")
+    val expected = if (port == null) 8090 else port.toInt
+    ValidateClaimServer.defaultPort should equal(expected)
   }
 
   "Our Rubbishy Website" should "Display a form when it recieves a GET" in {
@@ -41,11 +46,11 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
   "It" should "be able to set focus to the custxml textarea" in {
     click on name("custxml")
   }
-  
+
   "It" should "be able to set focus to the claimDate textarea" in {
     click on name("claimDate")
   }
-  
+
   "It" should "be able to submit claim XML and then see a timeline" in {
     textArea("custxml").value = getClaimXML
     submit()
@@ -66,7 +71,7 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
     textArea("custxml").value = "not xml"
     submit()
   }
-  
+
   def getClaimXML: String = {
     val xml: Elem =
 	      <ValidateClaim xsi:schemaLocation="http://www.autotdd.com/ca Conversation%20v2_1%202010-07-16.xsd" xmlns="http://www.autotdd.com/ca" xmlns:n1="http://www.autotdd.com/ca" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -199,6 +204,6 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
           <ConsentDate>2010-03-15</ConsentDate>
         </ConsentData>
       </ValidateClaim>
-      xml.toString
+    xml.toString
   }
- }
+}

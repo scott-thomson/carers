@@ -5,14 +5,14 @@ import scala.xml.XML
 
 import org.eclipse.jetty.server.Server
 
-object ValidateClaim {
+object ValidateClaimServer {
 
-  val claimHandler = new ClaimHandler 
+  val claimHandler = new ClaimHandler
 
-  def getCustId(custXml: String): String = {
-    val xmlStr: Elem = XML.loadString(custXml)
-    val claimantNode = xmlStr \ "ClaimantData" \ "ClaimantNINO"
-    claimantNode.text
+  def apply(port: Int = defaultPort) = {
+    val s = new Server(port);
+    s.setHandler(claimHandler);
+    s
   }
 
   def defaultPort = {
@@ -24,8 +24,7 @@ object ValidateClaim {
   }
 
   def main(args: Array[String]) {
-    val s = new Server(defaultPort);
-    s.setHandler(claimHandler);
+    val s = apply()
     s.start
     s.join
   }
