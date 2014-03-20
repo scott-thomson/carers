@@ -17,11 +17,11 @@ case class TimeLineItem(events: List[(DateRange, KeyAndParams)]) {
 object TimeLineCalcs {
 
   type TimeLine = List[TimeLineItem]
+
   /** Returns a DatesToBeProcessedTogether and the days that the claim is valid for */
   def findTimeLine(c: CarersXmlSituation): TimeLine = {
     val dates = InterestingDates.interestingDates(c)
-    val dayToSplit = DateRanges.sunday
-    val result = DateRanges.interestingDatesToDateRangesToBeProcessedTogether(dates, dayToSplit)
+    val result = DateRanges.interestingDatesToDateRangesToBeProcessedTogether(dates, c.world.dayToSplitOn)
 
     result.map((dateRangeToBeProcessedTogether: DateRangesToBeProcessedTogether) => {
       TimeLineItem(dateRangeToBeProcessedTogether.dateRanges.map((dr) => {
@@ -47,9 +47,36 @@ object TimeLineCalcs {
     })
   }
 
+  def foldTimelineOnItemKeys(tl: TimeLine): TimeLine = {
+    type accumulator = (List[TimeLineItem], Option[TimeLineItem])
+    val initialValue: accumulator = (List[TimeLineItem](), None)
+    val foldFn: ((accumulator, TimeLineItem) => accumulator) =
+      (acc: accumulator, v: TimeLineItem) => {
+        (acc, v) match {
+          case ((list, None), v) => (list, Some(v))
+          case ((list, Some(TimeLineItem((DateRange(fromM, toM, reasonM), kAndPM) :: Nil))), TimeLineItem((DateRange(from, to, reason), kAndP) :: Nil)) if kAndPM == kAndP => {
+            val newTli = TimeLineItem(List((DateRange(fromM, to, reasonM), kAndP)))
+            (list, Some(newTli))
+          }
+          case ((list, Some(mergeV)), v) => ((list :+ mergeV, Some(v)))
+        }
+      }
+    val result = tl.foldLeft[accumulator](initialValue)(foldFn)
+    result._2 match {
+      case None => result._1
+      case Some(tli) => result._1 :+ tli
+    }
+    //    tl.foldLeft[accumulator](initialValue)(foldFn)
+
+  }
+
   //
-  //  def main(args: Array[String]) {
-  //    //    println(findTimeLine(Claim.validateClaimWithBreaks(("2010-7-1", "2010-7-10", true))).mkString("\n"))
-  //  }
+  def main(args: Array[String]) {
+    val situation: CarersXmlSituation = CarersXmlSituation(World(), Claim.getXml("CL800119A"))
+    val timeLine = findTimeLine(situation)
+    println(timeLine.mkString("\n"))
+    println
+    println(foldTimelineOnItemKeys(timeLine).mkString("\n"))
+  }
 
 }

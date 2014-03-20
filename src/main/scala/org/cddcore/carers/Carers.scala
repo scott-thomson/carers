@@ -1,19 +1,21 @@
 package org.cddcore.carers
 
-import org.junit.runner.RunWith
+import scala.language.implicitConversions
+import scala.xml._
+
 import org.cddcore.engine._
 import org.cddcore.engine.tests.CddJunitRunner
 import org.joda.time.DateTime
-import org.joda.time.format.DateTimeFormat
-import scala.xml._
 import org.joda.time.Years
-import scala.language.implicitConversions
+import org.joda.time.format.DateTimeFormat
+import org.junit.runner.RunWith
 
 case class KeyAndParams(key: String, comment: String, params: Any*)
 
 case class World(ninoToCis: NinoToCis = new TestNinoToCis) extends LoggerDisplay {
   def loggerDisplay(dp: LoggerDisplayProcessor): String =
     "World()"
+  val dayToSplitOn = DateRanges.monday
 }
 
 trait NinoToCis {
@@ -216,7 +218,7 @@ object Carers {
     because((d: DateTime, c: CarersXmlSituation) => c.netIncome(d) > 95).
 
     useCase("Breaks in care", "Breaks in care may cause the claim to be invalid").
-    scenario("2010-12-1", List(("2010-7-1", "2010-12-20", false)), "Long break in care when after 22 weeks").expected(KeyAndParams("599", "Break In Care")).
+    scenario("2010-12-1", List(("2010-7-1", "2010-12-20", false)), "Long break in care when after 22 weeks").expected(KeyAndParams("502", "Break In Care")).
     because((d: DateTime, c: CarersXmlSituation) => !BreaksInCare.breaksInCare(d, c)).
 
     build
