@@ -1,6 +1,7 @@
 package org.cddcore.carers
 
 import org.joda.time.DateTime
+import org.joda.time.Weeks
 
 case class TimeLineItem(events: List[(DateRange, KeyAndParams)]) {
   val startDate = events.head._1.from
@@ -29,6 +30,23 @@ object TimeLineCalcs {
       }))
     })
   }
+
+  case class SimplifiedTimelineItem(date: DateTime, award: Double, reason: String)
+
+  def simplifyTimeLine(t: TimeLine, endDate: DateTime) = {
+    t.flatMap((tli) => {
+      val actualEndDate = if (endDate.isAfter(tli.endDate)) tli.endDate else endDate
+      val weeks = Weeks.weeksBetween(tli.startDate, actualEndDate).getWeeks
+      (0 to weeks - 1).map((week) => {
+        val reasons = tli.events.foldLeft(List[KeyAndParams]())((acc, e) => e._2 :: acc)
+        SimplifiedTimelineItem(tli.startDate.plusDays(week * 7), tli.wasOk match {
+          case false => 0;
+          case true => 57.6
+        }, reasons.mkString)
+      })
+    })
+  }
+
   //
   //  def main(args: Array[String]) {
   //    //    println(findTimeLine(Claim.validateClaimWithBreaks(("2010-7-1", "2010-7-10", true))).mkString("\n"))

@@ -51,7 +51,9 @@ class ClaimHandler extends AbstractHandler {
     val xml = try { XML.loadString(custXml) } catch { case e: Throwable => e.printStackTrace(); throw e }
     val situation = CarersXmlSituation(world, xml)
     val result = <div>{
-      TimeLineCalcs.findTimeLine(situation).map((tli) => <p>{ tli } </p>)
+      val timeline = TimeLineCalcs.findTimeLine(situation)
+      val simplifiedTimeLine = TimeLineCalcs.simplifyTimeLine(timeline, Claim.asDate("2012-1-1"))
+      timeline.map((tli) => <p>{ tli } </p>)
     }</div>
     println("In handle post 2: " + result)
     //    //CDD Business logic will return a return message - hard coded for now   
