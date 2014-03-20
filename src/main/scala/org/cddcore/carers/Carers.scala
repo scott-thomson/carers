@@ -139,6 +139,7 @@ case class Award(benefitType: String, awardComponent: String, claimStatus: Strin
 object Carers {
   implicit def stringStringToCarers(x: String) = CarersXmlSituation(World(), Claim.getXml(x))
   implicit def stringToDate(x: String) = Claim.asDate(x)
+  implicit def toValidateClaim(x: List[(String, String, Boolean)]): CarersXmlSituation = Claim.validateClaimWithBreaks(x: _*)
 
   val checkUnderSixteen = Engine[DateTime, DateTime, Boolean]().title("Check for being under-age (less than age sixteen)").
     useCase("Oversixteen").
@@ -213,6 +214,11 @@ object Carers {
     scenario("2010-7-25", "CL100113A", "Customers with income exceeding the threshold are not entitled to CA").
     expected(KeyAndParams("520", "Too much income")).
     because((d: DateTime, c: CarersXmlSituation) => c.netIncome(d) > 95).
+
+    useCase("Breaks in care", "Breaks in care may cause the claim to be invalid").
+    scenario("2010-12-1", List(("2010-7-1", "2010-12-20", false)), "Long break in care when after 22 weeks").expected(KeyAndParams("599", "Break In Care")).
+    because((d: DateTime, c: CarersXmlSituation) => !BreaksInCare.breaksInCare(d, c)).
+
     build
 
   //  def main(args: Array[String]) {
