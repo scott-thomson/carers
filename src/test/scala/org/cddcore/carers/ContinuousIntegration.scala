@@ -15,6 +15,7 @@ class CarersContinuousIntegration extends CddContinuousIntegrationTest {
     Carers.checkUnderSixteen,
     Carers.checkQualifyingBenefit,
     InterestingDates.interestingDates,
+    InterestingDates.isInRange,
     BreaksInCare.breaksInCare,
     BreakInCare.singleBreakInCare,
     DateRanges.firstDayOfWeek,
