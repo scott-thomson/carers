@@ -12,7 +12,7 @@ case class TimeLineItem(events: List[(DateRange, KeyAndParams)]) {
   val wasOk = daysInWhichIWasOk > 2
   override def toString = s"TimeLineItem($startDate, $endDate, days=$daysInWhichIWasOk, wasOK=$wasOk, dateRange=\n  ${events.mkString("\n  ")})"
   def eventToJsonString(event: (DateRange, KeyAndParams)) =
-    event match { case (_, KeyAndParams(key, _)) => key }
+    event match { case (_, KeyAndParams(key, _)) => s"'$key'" }
   def jsonToString = {
     val renderedStartDate = Claim.toString(startDate)
     val renderedEndDate = Claim.toString(endDate)
@@ -24,7 +24,7 @@ case class TimeLineItem(events: List[(DateRange, KeyAndParams)]) {
 
 object TimeLineCalcs {
   def toJson(list: TimeLine): String =
-    list.map(_.jsonToString).mkString("[", ",\n", "]")
+    list.map(_.jsonToString).mkString("[", ",\n", "]").replaceAll("\'", "\"")
 
   type TimeLine = List[TimeLineItem]
   /** Returns a DatesToBeProcessedTogether and the days that the claim is valid for */
