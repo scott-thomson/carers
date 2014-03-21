@@ -20,16 +20,19 @@ class ClaimHandler extends AbstractHandler {
 
   private val MethodGet: String = "GET";
   val world = World()
+  val contentTypeText = "text/html;charset=utf-8"
+  val contentTypeJson = "application/json;charset=utf-8"
   def handle(target: String, baseRequest: Request, request: HttpServletRequest, response: HttpServletResponse) {
-    response.setContentType("text/html;charset=utf-8")
     response.setStatus(HttpServletResponse.SC_OK);
     try {
       val path = request.getRequestURI()
-      (request.getMethod, path) match {
-        case (MethodPost, "/json") => response.getWriter().println(getJson(request.getParameter("custxml")))
-        case (MethodPost, _) => response.getWriter().println(handlePost(request.getParameter("custxml"), request.getParameter("claimDate")))
-        case (MethodGet, _) => response.getWriter().println(handleGet)
+      val (body, contentType) = (request.getMethod, path) match {
+        case (MethodPost, "/json") =>          (getJson(request.getParameter("custxml")), contentTypeJson)
+        case (MethodPost, _) =>(handlePost(request.getParameter("custxml"), request.getParameter("claimDate")), contentTypeText)
+        case (MethodGet, _) => (handleGet, contentTypeText)
       }
+      response.setContentType(contentType)
+      response.getWriter().println(body)
     } catch {
       case e: Throwable =>
         e.printStackTrace(response.getWriter);
