@@ -1,7 +1,6 @@
 package org.cddcore.carers
 
 import org.joda.time.DateTime
-import org.joda.time.Weeks
 
 case class TimeLineItem(events: List[(DateRange, KeyAndParams)]) {
   val startDate = events.head._1.from
@@ -12,16 +11,27 @@ case class TimeLineItem(events: List[(DateRange, KeyAndParams)]) {
   })
   val wasOk = daysInWhichIWasOk > 2
   override def toString = s"TimeLineItem($startDate, $endDate, days=$daysInWhichIWasOk, wasOK=$wasOk, dateRange=\n  ${events.mkString("\n  ")})"
+  def eventToJsonString(event: (DateRange, KeyAndParams)) =
+    event match { case (_, KeyAndParams(key, _)) => key }
+  def jsonToString = {
+    val renderedStartDate = Claim.toString(startDate)
+    val renderedEndDate = Claim.toString(endDate)
+    val renderedEvents = events.map(eventToJsonString(_)).mkString("[", ",", "]")
+    val result = s"{'startDate': '$renderedStartDate','endDate': '$renderedEndDate', 'wasOk':$wasOk, 'events':$renderedEvents}"
+    result
+  }
 }
 
 object TimeLineCalcs {
+  def toJson(list: TimeLine): String =
+    list.map(_.jsonToString).mkString("[", ",\n", "]")
 
   type TimeLine = List[TimeLineItem]
-
   /** Returns a DatesToBeProcessedTogether and the days that the claim is valid for */
   def findTimeLine(c: CarersXmlSituation): TimeLine = {
     val dates = InterestingDates.interestingDates(c)
-    val result = DateRanges.interestingDatesToDateRangesToBeProcessedTogether(dates, c.world.dayToSplitOn)
+    val dayToSplit = DateRanges.sunday
+    val result = DateRanges.interestingDatesToDateRangesToBeProcessedTogether(dates, dayToSplit)
 
     result.map((dateRangeToBeProcessedTogether: DateRangesToBeProcessedTogether) => {
       TimeLineItem(dateRangeToBeProcessedTogether.dateRanges.map((dr) => {
@@ -31,52 +41,8 @@ object TimeLineCalcs {
     })
   }
 
-  case class SimplifiedTimelineItem(date: DateTime, award: Double, reason: String)
-
-  def simplifyTimeLine(t: TimeLine, endDate: DateTime) = {
-    t.flatMap((tli) => {
-      val actualEndDate = if (endDate.isAfter(tli.endDate)) tli.endDate else endDate
-      val weeks = Weeks.weeksBetween(tli.startDate, actualEndDate).getWeeks
-      (0 to weeks - 1).map((week) => {
-        val reasons = tli.events.foldLeft(List[KeyAndParams]())((acc, e) => e._2 :: acc)
-        SimplifiedTimelineItem(tli.startDate.plusDays(week * 7), tli.wasOk match {
-          case false => 0;
-          case true => 57.6
-        }, reasons.mkString)
-      })
-    })
-  }
-
-  def foldTimelineOnItemKeys(tl: TimeLine): TimeLine = {
-    type accumulator = (List[TimeLineItem], Option[TimeLineItem])
-    val initialValue: accumulator = (List[TimeLineItem](), None)
-    val foldFn: ((accumulator, TimeLineItem) => accumulator) =
-      (acc: accumulator, v: TimeLineItem) => {
-        (acc, v) match {
-          case ((list, None), v) => (list, Some(v))
-          case ((list, Some(TimeLineItem((DateRange(fromM, toM, reasonM), kAndPM) :: Nil))), TimeLineItem((DateRange(from, to, reason), kAndP) :: Nil)) if kAndPM == kAndP => {
-            val newTli = TimeLineItem(List((DateRange(fromM, to, reasonM), kAndP)))
-            (list, Some(newTli))
-          }
-          case ((list, Some(mergeV)), v) => ((list :+ mergeV, Some(v)))
-        }
-      }
-    val result = tl.foldLeft[accumulator](initialValue)(foldFn)
-    result._2 match {
-      case None => result._1
-      case Some(tli) => result._1 :+ tli
-    }
-    //    tl.foldLeft[accumulator](initialValue)(foldFn)
-
-  }
-
-  //
   def main(args: Array[String]) {
-    val situation: CarersXmlSituation = CarersXmlSituation(World(), Claim.getXml("CL800119A"))
-    val timeLine = findTimeLine(situation)
-    println(timeLine.mkString("\n"))
-    println
-    println(foldTimelineOnItemKeys(timeLine).mkString("\n"))
+    println(findTimeLine(Claim.validateClaimWithBreaks(("2010-7-1", "2010-7-10", true))).mkString("\n"))
   }
 
 }

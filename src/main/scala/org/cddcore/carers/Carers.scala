@@ -76,6 +76,7 @@ object Claim {
 
   private val formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
   def asDate(s: String): DateTime = formatter.parseDateTime(s);
+  def toString(d: DateTime): String = formatter.print(d);
 }
 
 case class CarersXmlSituation(world: World, claimXml: Elem) extends XmlSituation {
