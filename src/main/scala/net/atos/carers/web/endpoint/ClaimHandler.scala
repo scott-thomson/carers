@@ -25,7 +25,9 @@ class ClaimHandler extends AbstractHandler {
     response.setStatus(HttpServletResponse.SC_OK);
     try {
       request.getMethod match {
-        case MethodPost => response.getWriter().println(handlePost(request.getParameter("custxml"), request.getParameter("claimDate")))
+        case MethodPost => {
+          response.getWriter().println(handlePost(request.getParameter("custxml"), request.getParameter("claimDate")))
+        }
         case MethodGet => response.getWriter().println(handleGet)
       }
     } catch {
@@ -83,9 +85,9 @@ class ClaimHandler extends AbstractHandler {
         <title>Validate Claim</title>
       </head>
       <body>
-        <form action="/" method="POST">
-          <h1>Validate Claim { operatingPort }</h1>
-          <table>
+        <h1>Validate Claim { operatingPort }</h1>
+        <table>
+          <form action="/" method="POST">
             <tr>
               <td>
                 Claim Xml:
@@ -101,12 +103,14 @@ class ClaimHandler extends AbstractHandler {
               <td>
                 <input type="text" name="claimDate" value={ claimDate }/>
               </td>
+            </tr>
+            <tr>
               <td>
                 <input type="submit" value="Submit"/>
               </td>
             </tr>
-          </table>
-        </form>
+          </form>
+        </table>
       </body>
     </html>
 
@@ -116,9 +120,9 @@ class ClaimHandler extends AbstractHandler {
         <title>Validate Claim</title>
       </head>
       <body>
-        <form action="/" method="POST">
-          <h1>Validate Claim</h1>
-          <table>
+        <h1>Validate Claim</h1>
+        <table>
+          <form action="/" method="POST">
             <tr>
               <td>
                 Claim Xml:
@@ -134,14 +138,16 @@ class ClaimHandler extends AbstractHandler {
               <td>
                 <input type="text" name="claimDate" value={ claimDate }/>
               </td>
+            </tr>
+            <tr>
               <td>
                 <input type="submit" value="Submit"/>
               </td>
             </tr>
-          </table>
-          <br/>
-          <pre>{ returnMessage }</pre>
-        </form>
+          </form>
+        </table>
+        <br/>
+        <pre>{ returnMessage }</pre>
       </body>
     </html>
 
