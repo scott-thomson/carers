@@ -83,12 +83,12 @@ class ClaimHandler extends AbstractHandler {
     //    //CDD Business logic will return a return message - hard coded for now   
     //    val returnMessage = result.toString
 
-    getCarerView(custXml, claimDate, result.toString)
+    getCarerView(custXml, claimDate, result)
   }
 
   val operatingPort = System.getenv("PORT")
 
-  def getCarerView(xmlString: String, claimDate: String, returnMessage: String = ""): Elem =
+  def getCarerView(xmlString: String, claimDate: String, returnMessage: Elem = <nothing />): Elem =
     <html>
       <head>
         <title>Validate Claim</title>
@@ -113,7 +113,7 @@ class ClaimHandler extends AbstractHandler {
                 <input type="text" name="claimDate" value={ claimDate }/>
               </td>
               <td>
-                <input type="submit" value="Submit"/>
+                <input id="submit" type="submit" value="Submit"/>
               </td>
             </tr>
           </table>
@@ -131,7 +131,7 @@ class ClaimHandler extends AbstractHandler {
                 <textarea name="custxml">{ xmlString }</textarea>
               </td>
               <td>
-                <input type="submit" value="Submit"/>
+                <input id="submitjson" type="submit" value="Submit"/>
               </td>
             </tr>
           </table>
