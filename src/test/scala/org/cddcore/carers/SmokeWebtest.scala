@@ -72,7 +72,7 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
     textField("claimDate").value = ""
     click on id("submitjson")
     val source: String = pageSource
-    assert(source.contains("startDate"))
+    assert(source.startsWith("[{\"startDate\": \"2010-05-10\""))
   }
   
   it should "throw an exception if submitted with an invalid claimDate value" in {
