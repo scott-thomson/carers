@@ -6,10 +6,10 @@ case class TimeLineItem(events: List[(DateRange, KeyAndParams)]) {
   val startDate = events.head._1.from
   val endDate = events.last._1.to
   val daysInWhichIWasOk = events.foldLeft[Int](0)((acc, tuple) => tuple match {
-    case (dr, keyAndParams) if keyAndParams.key == "ENT" => dr.days
-    case _ => 0
+    case (dr, keyAndParams) if keyAndParams.key == "ENT" => acc + dr.days
+    case _ => acc
   })
-  val wasOk = daysInWhichIWasOk > 2
+  val wasOk = daysInWhichIWasOk >= 2
   override def toString = s"TimeLineItem($startDate, $endDate, days=$daysInWhichIWasOk, wasOK=$wasOk, dateRange=\n  ${events.mkString("\n  ")})"
   def eventToJsonString(event: (DateRange, KeyAndParams)) =
     event match { case (_, KeyAndParams(key, _)) => s"'$key'" }
@@ -30,8 +30,7 @@ object TimeLineCalcs {
   /** Returns a DatesToBeProcessedTogether and the days that the claim is valid for */
   def findTimeLine(c: CarersXmlSituation): TimeLine = {
     val dates = InterestingDates.interestingDates(c)
-    val dayToSplit = DateRanges.sunday
-    val result = DateRanges.interestingDatesToDateRangesToBeProcessedTogether(dates, dayToSplit)
+    val result = DateRanges.interestingDatesToDateRangesToBeProcessedTogether(dates, c.world.dayToSplitOn)
 
     result.map((dateRangeToBeProcessedTogether: DateRangesToBeProcessedTogether) => {
       TimeLineItem(dateRangeToBeProcessedTogether.dateRanges.map((dr) => {
@@ -63,7 +62,7 @@ object TimeLineCalcs {
   }
 
   def main(args: Array[String]) {
-    println(findTimeLine(Claim.validateClaimWithBreaks(("2010-7-1", "2010-7-10", true))).mkString("\n"))
+    println(findTimeLine(CarersXmlSituation(World(), Claim.getXml("CL800119A"))).mkString("\n"))
   }
 
 }

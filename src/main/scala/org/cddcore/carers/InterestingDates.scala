@@ -53,6 +53,12 @@ object InterestingDates {
     scenario("CL100105A").expected(("2010-1-1", "Claim Start Date")).
     code((c: CarersXmlSituation) => List((c.claimStartDate(), "Claim Start Date"))).
 
+    childEngine("First monday after claim start", "Is an interesting day if claim start date is not monday or wednesday").
+    scenario("CL100100A").expected(List()).
+    scenario("CL800119A").expected(List(("2010-5-10", "Monday after Claim Start Date"))).
+    code((c: CarersXmlSituation) => List((DateRanges.firstDayOfWeek(c.claimStartDate(), DateRanges.monday).plusDays(7), "Monday after Claim Start Date"))).
+    because((c: CarersXmlSituation) => !DateRanges.validClaimStartDay(c.claimStartDate())).
+
     childEngine("Claim end date", "Is always an interesting date, and we have to fake it if it doesn't exist").
     scenario("CL100105A").expected(("3999-12-31", "Claim End Date")).
 

@@ -27,8 +27,8 @@ class ClaimHandler extends AbstractHandler {
     try {
       val path = request.getRequestURI()
       val (body, contentType) = (request.getMethod, path) match {
-        case (MethodPost, "/json") =>          (getJson(request.getParameter("custxml")), contentTypeJson)
-        case (MethodPost, _) =>(handlePost(request.getParameter("custxml"), request.getParameter("claimDate")), contentTypeText)
+        case (MethodPost, "/json") => (getJson(request.getParameter("custxml")), contentTypeJson)
+        case (MethodPost, _) => (handlePost(request.getParameter("custxml"), request.getParameter("claimDate")), contentTypeText)
         case (MethodGet, _) => (handleGet, contentTypeText)
       }
       response.setContentType(contentType)
@@ -51,7 +51,7 @@ class ClaimHandler extends AbstractHandler {
   def getJson(custXml: String) = {
     val xml = try { XML.loadString(custXml) } catch { case e: Throwable => e.printStackTrace(); throw e }
     val situation = CarersXmlSituation(world, xml)
-    val timeLine: List[TimeLineItem] = TimeLineCalcs.findTimeLine(situation)
+    val timeLine: List[TimeLineItem] = TimeLineCalcs.foldTimelineOnItemKeys(TimeLineCalcs.findTimeLine(situation))
     TimeLineCalcs.toJson(timeLine)
   }
 
@@ -65,7 +65,7 @@ class ClaimHandler extends AbstractHandler {
 
     val result = claimDate.isEmpty() match {
       case true => {
-        val timeLine: List[TimeLineItem] = TimeLineCalcs.findTimeLine(situation)
+        val timeLine: List[TimeLineItem] = TimeLineCalcs.foldTimelineOnItemKeys(TimeLineCalcs.findTimeLine(situation))
         println("empty date")
         <div id='timeLine'>{
           timeLine.map((tli) => <p>{ tli }</p>)

@@ -108,6 +108,7 @@ case class CarersXmlSituation(world: World, claimXml: Elem) extends XmlSituation
 
   val claimSubmittedDate = xml(claimXml) \ "StatementData" \ "StatementDate" \ date
   val claimStartDate = xml(claimXml) \ "ClaimData" \ "ClaimStartDate" \ date
+  val firstMondayAfterClaimStartDate = DateRanges.firstDayOfWeek(claimStartDate(), DateRanges.monday).plusDays(7)
   val timeLimitForClaimingThreeMonths = claimSubmittedDate().minusMonths(3)
   val claimEndDate = xml(claimXml) \ "ClaimData" \ "ClaimEndDate" \ optionDate
   val dependantAwardStartDate = xml(dependantCisXml) \ "Award" \ "AssessmentDetails" \ "ClaimStartDate" \ optionDate
@@ -223,9 +224,11 @@ object Carers {
     because((d: DateTime, c: CarersXmlSituation) => !BreaksInCare.breaksInCare(d, c)).
 
     useCase("Claim starts on wrong day of week", "Claims must begin on a monday or a wednesday").
-    scenario("2010-5-06", "CL800119A", "Claimant CL800119 does not begin on a Mon/Wed").
+    scenario("2010-05-06", "CL800119A", "Claimant CL800119 does not begin on a Mon/Wed, asking on claim start date").
     expected(KeyAndParams("599", "Claim does not begin on Mon or Wed")).
-    because((d: DateTime, c: CarersXmlSituation) => !DateRanges.validClaimStartDay(c.claimStartDate())).
+    because((d: DateTime, c: CarersXmlSituation) => !DateRanges.validClaimStartDay(c.claimStartDate()) && c.claimStartDate() == d).
+    scenario("2010-05-07", "CL800119A", "Claimant CL800119 does not begin on a Mon/Wed, asking on day that isn't the claim start date").
+    expected(KeyAndParams("ENT", "Dependent award is valid on date")).
 
     build
 
