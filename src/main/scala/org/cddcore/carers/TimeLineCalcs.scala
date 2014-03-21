@@ -24,7 +24,7 @@ case class TimeLineItem(events: List[(DateRange, KeyAndParams)]) {
 
 object TimeLineCalcs {
   def toJson(list: TimeLine): String =
-    list.map(_.jsonToString).mkString("[", ",\n", "]")
+    list.map(_.jsonToString).mkString("[", ",\n", "]").replaceAll("\'", "\"")
 
   type TimeLine = List[TimeLineItem]
   /** Returns a DatesToBeProcessedTogether and the days that the claim is valid for */
