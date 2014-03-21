@@ -121,7 +121,7 @@ class ClaimHandler extends AbstractHandler {
           <pre>{ returnMessage }</pre>
         </form>
         <form action="/json" method="POST">
-          <h1>Validate Claim Json{ operatingPort }</h1>
+          <h1>Validate Claim Json</h1>
           <table>
             <tr>
               <td>
