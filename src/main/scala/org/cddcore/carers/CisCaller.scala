@@ -16,8 +16,8 @@ object WebserverNinoToCis {
   val cisHost = "http://localhost:8091/"
   def apply(host: String = cisHost): NinoToCis = new WebserverNinoToCis(host)
 
-  def main(args: Array[String]) {
-    //    val ninoToCis = WebserverNinoToCis()
-    //    println(ninoToCis("CL100104A"))
-  }
+  //  def main(args: Array[String]) {
+  //    val ninoToCis = WebserverNinoToCis("http://atos-cis.pcfapps.vsel-canopy.com/")
+  //    println(ninoToCis("CL100104A"))
+  //  }
 }

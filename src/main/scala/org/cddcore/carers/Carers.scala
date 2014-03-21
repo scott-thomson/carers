@@ -12,7 +12,7 @@ import org.junit.runner.RunWith
 
 case class KeyAndParams(key: String, comment: String, params: Any*)
 
-case class World(ninoToCis: NinoToCis = new TestNinoToCis) extends LoggerDisplay {
+case class World(ninoToCis: NinoToCis = new WebserverNinoToCis("http://atos-cis.pcfapps.vsel-canopy.com/")) extends LoggerDisplay {
   def loggerDisplay(dp: LoggerDisplayProcessor): String =
     "World()"
   val dayToSplitOn = DateRanges.monday
