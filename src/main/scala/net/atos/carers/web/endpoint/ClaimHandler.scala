@@ -19,14 +19,16 @@ class ClaimHandler extends AbstractHandler {
   private val MethodPost: String = "POST";
 
   private val MethodGet: String = "GET";
-
+  val world = World()
   def handle(target: String, baseRequest: Request, request: HttpServletRequest, response: HttpServletResponse) {
     response.setContentType("text/html;charset=utf-8")
     response.setStatus(HttpServletResponse.SC_OK);
     try {
-      request.getMethod match {
-        case MethodPost => response.getWriter().println(handlePost(request.getParameter("custxml"), request.getParameter("claimDate")))
-        case MethodGet => response.getWriter().println(handleGet)
+      val path = request.getRequestURI()
+      (request.getMethod, path) match {
+        case (MethodPost, "/json") => response.getWriter().println(getJson(request.getParameter("custxml")))
+        case (MethodPost, _) => response.getWriter().println(handlePost(request.getParameter("custxml"), request.getParameter("claimDate")))
+        case (MethodGet, _) => response.getWriter().println(handleGet)
       }
     } catch {
       case e: Throwable =>
@@ -43,12 +45,18 @@ class ClaimHandler extends AbstractHandler {
     baseRequest.setHandled(true)
   }
 
+  def getJson(custXml: String) = {
+    val xml = try { XML.loadString(custXml) } catch { case e: Throwable => e.printStackTrace(); throw e }
+    val situation = CarersXmlSituation(world, xml)
+    val timeLine: List[TimeLineItem] = TimeLineCalcs.findTimeLine(situation)
+    TimeLineCalcs.toJson(timeLine)
+  }
+
   def handleGet() = getCarerView("", getDefaultDate);
 
   def handlePost(custXml: String, claimDate: String) = {
     println("In handle post 1 ")
 
-    val world = World()
     val xml = try { XML.loadString(custXml) } catch { case e: Throwable => e.printStackTrace(); throw e }
     val situation = CarersXmlSituation(world, xml)
 
@@ -72,45 +80,12 @@ class ClaimHandler extends AbstractHandler {
     //    //CDD Business logic will return a return message - hard coded for now   
     //    val returnMessage = result.toString
 
-    getCarerView(custXml, result, claimDate)
+    getCarerView(custXml, claimDate, result.toString)
   }
 
   val operatingPort = System.getenv("PORT")
 
-  def getCarerView(xmlString: String, claimDate: String): Elem =
-    <html>
-      <head>
-        <title>Validate Claim</title>
-      </head>
-      <body>
-        <form action="/" method="POST">
-          <h1>Validate Claim { operatingPort }</h1>
-          <table>
-            <tr>
-              <td>
-                Claim Xml:
-              </td>
-              <td>
-                <textarea name="custxml">{ xmlString }</textarea>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Claim Date:
-              </td>
-              <td>
-                <input type="text" name="claimDate" value={ claimDate }/>
-              </td>
-              <td>
-                <input type="submit" value="Submit"/>
-              </td>
-            </tr>
-          </table>
-        </form>
-      </body>
-    </html>
-
-  def getCarerView(xmlString: String, returnMessage: Elem, claimDate: String): Elem =
+  def getCarerView(xmlString: String, claimDate: String, returnMessage: String = ""): Elem =
     <html>
       <head>
         <title>Validate Claim</title>
@@ -141,6 +116,22 @@ class ClaimHandler extends AbstractHandler {
           </table>
           <br/>
           <pre>{ returnMessage }</pre>
+        </form>
+        <form action="/json" method="POST">
+          <h1>Validate Claim Json{ operatingPort }</h1>
+          <table>
+            <tr>
+              <td>
+                Claim Xml:
+              </td>
+              <td>
+                <textarea name="custxml">{ xmlString }</textarea>
+              </td>
+              <td>
+                <input type="submit" value="Submit"/>
+              </td>
+            </tr>
+          </table>
         </form>
       </body>
     </html>
