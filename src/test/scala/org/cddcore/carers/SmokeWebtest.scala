@@ -54,7 +54,7 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
   it should "be able to submit claim XML and then see a timeline if no date specified" in {
     textArea("custxml").value = getClaimXML
     textField("claimDate").value = ""
-    submit()
+    click on id("submit")
     val xml: Elem = XML.loadString(pageSource)
     assertDivWithIdExists(xml, "timeLine")
   }
@@ -62,22 +62,30 @@ class SmokeWebtest extends FlatSpec with ShouldMatchers with HtmlUnit with Befor
   it should "be able to submit claim XML and then see a result if date specified" in {
     textArea("custxml").value = getClaimXML
     textField("claimDate").value = "2010-5-1"
-    submit()
+    click on id("submit")
     val xml: Elem = XML.loadString(pageSource)
     assertDivWithIdExists(xml, "oneTime")
   }
 
+  it should "be able to submit claim XML and then see a timeline in json format" in {
+    textArea("custxml").value = getClaimXML
+    textField("claimDate").value = ""
+    click on id("submitjson")
+    val source: String = pageSource
+    assert(source.startsWith("[{\"startDate\": \"2010-05-10\""))
+  }
+  
   it should "throw an exception if submitted with an invalid claimDate value" in {
     go to (host + "index.html")
     click on name("claimDate")
     textField("claimDate").value = "not a date"
-    submit()
+    click on id("submit")
   }
 
   it should "throw an exception if submitted with invalid xml" in {
     go to (host + "index.html")
     textArea("custxml").value = "not xml"
-    submit()
+    click on id("submit")
   }
 
   def getClaimXML: String = {
