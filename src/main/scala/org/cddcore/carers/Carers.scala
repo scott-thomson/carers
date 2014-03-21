@@ -209,7 +209,7 @@ object Carers {
     expected(KeyAndParams("503", "Dependent doesn't have a Qualifying Benefit")).
     because((d: DateTime, c: CarersXmlSituation) => !c.isThereAnyQualifyingBenefit(d)).
 
-    scenario("2010-7-25", "CL100101A", "Dependent party with suitable qualifying benefit").
+    scenario("2010-7-25", "CL100100A", "Dependent party with suitable qualifying benefit").
     expected(KeyAndParams("ENT", "Dependent award is valid on date")).
     because((d: DateTime, c: CarersXmlSituation) => c.isThereAnyQualifyingBenefit(d)).
 
@@ -221,6 +221,11 @@ object Carers {
     useCase("Breaks in care", "Breaks in care may cause the claim to be invalid").
     scenario("2010-12-1", List(("2010-7-1", "2010-12-20", false)), "Long break in care when after 22 weeks").expected(KeyAndParams("502", "Break In Care")).
     because((d: DateTime, c: CarersXmlSituation) => !BreaksInCare.breaksInCare(d, c)).
+
+    useCase("Claim starts on wrong day of week", "Claims must begin on a monday or a wednesday").
+    scenario("2010-5-06", "CL800119A", "Claimant CL800119 does not begin on a Mon/Wed").
+    expected(KeyAndParams("599", "Claim does not begin on Mon or Wed")).
+    because((d: DateTime, c: CarersXmlSituation) => !DateRanges.validClaimStartDay(c.claimStartDate())).
 
     build
 

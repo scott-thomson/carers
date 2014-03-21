@@ -41,6 +41,27 @@ object TimeLineCalcs {
     })
   }
 
+  def foldTimelineOnItemKeys(tl: TimeLine): TimeLine = {
+    type accumulator = (List[TimeLineItem], Option[TimeLineItem])
+    val initialValue: accumulator = (List[TimeLineItem](), None)
+    val foldFn: ((accumulator, TimeLineItem) => accumulator) =
+      (acc: accumulator, v: TimeLineItem) => {
+        (acc, v) match {
+          case ((list, None), v) => (list, Some(v))
+          case ((list, Some(TimeLineItem((DateRange(fromM, toM, reasonM), kAndPM) :: Nil))), TimeLineItem((DateRange(from, to, reason), kAndP) :: Nil)) if kAndPM == kAndP => {
+            val newTli = TimeLineItem(List((DateRange(fromM, to, reasonM), kAndP)))
+            (list, Some(newTli))
+          }
+          case ((list, Some(mergeV)), v) => ((list :+ mergeV, Some(v)))
+        }
+      }
+    val result = tl.foldLeft[accumulator](initialValue)(foldFn)
+    result._2 match {
+      case None => result._1
+      case Some(tli) => result._1 :+ tli
+    }
+  }
+
   def main(args: Array[String]) {
     println(findTimeLine(Claim.validateClaimWithBreaks(("2010-7-1", "2010-7-10", true))).mkString("\n"))
   }

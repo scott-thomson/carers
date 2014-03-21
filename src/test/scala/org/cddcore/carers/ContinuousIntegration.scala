@@ -22,6 +22,7 @@ class CarersContinuousIntegration extends CddContinuousIntegrationTest {
     DateRanges.firstDayOfWeek,
     DateRanges.datesToRanges,
     DateRanges.groupByWeek,
+    DateRanges.validClaimStartDay,
     DateRanges.splitIntoStartMiddleEnd,
     DateRanges.interestingDatesToDateRangesToBeProcessedTogether)
 }

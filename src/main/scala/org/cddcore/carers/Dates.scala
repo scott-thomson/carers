@@ -58,9 +58,16 @@ object DateRanges {
   implicit def listStringTuplesToDateRangesToBeProcessedTogether(stringTuples: List[Tuple3[String, String, String]]) =
     DateRangesToBeProcessedTogether(stringTuples.collect { case (from, to, reason) => DateRange(from, to, reason) })
 
-  def validClaimStartDays(): List[Int] = {
-    List(monday, wednesday)
-  }
+  val validClaimStartDays = Set(monday, wednesday)
+
+  val validClaimStartDay = Engine[DateTime, Boolean]().title("Valid Claim Start Date").
+    useCase("Valid days", "Valid start days are monday and wednesday").
+    scenario("2010-1-4").expected(true).
+    scenario("2010-1-6").expected(true).
+    useCase("Invalid days", "are not monday and wednesday").
+    scenario("2010-1-5").expected(false).
+    because((d: DateTime) => !validClaimStartDays.contains(d.dayOfWeek().get())).
+    build
 
   val firstDayOfWeek = Engine[DateTime, Int, DateTime]().title("First Day Of Week Engine").
     description("Given a date and a first day of week index, return the date of the first day of the week containing the supplied date").
