@@ -86,7 +86,7 @@ object DateRanges {
     scenario("2010-1-9", sunday, "Given a saturday and start on sunday").expected("2010-1-3").
     scenario("2010-1-9", wednesday, "Given a saturday and start on wednesday").expected("2010-1-6").
     scenario("2010-1-5", sunday, "Given a tuesday and start on sunday").expected("2010-1-3").
-    build.cached
+    build
 
   def lastDayOfWeek(d: DateTime, dayToSplit: Int) = firstDayOfWeek(d, dayToSplit).plusDays(6)
 
