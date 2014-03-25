@@ -9,3 +9,7 @@ cf login (requires e-mail and credentials and will ask you to select a space = d
 cf by itself shows available commands
 
 cf push takes manifest.yml from working directory and deploys the application
+
+http://atos-cads.pcfapps.vsel-canopy.com/
+http://atos-cis.pcfapps.vsel-canopy.com/
+http://atos-core.pcfapps.vsel-canopy.com/
