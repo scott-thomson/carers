@@ -10,6 +10,8 @@ import org.junit.runner.RunWith
 @RunWith(classOf[CddContinuousIntegrationRunner])
 class CarersContinuousIntegration extends CddContinuousIntegrationTest {
   Engine.logging = false
+  println("Starting to build engines")
+  val start = System.currentTimeMillis()
   val engines = List(Income.income,
     Expenses.expenses,
     Carers.engine,
@@ -25,4 +27,6 @@ class CarersContinuousIntegration extends CddContinuousIntegrationTest {
     DateRanges.validClaimStartDay,
     DateRanges.splitIntoStartMiddleEnd,
     DateRanges.interestingDatesToDateRangesToBeProcessedTogether)
+  val duration = (System.currentTimeMillis() - start) / 1000.0
+  println(f"Finished building engines. Took: ${duration}%2.2fs")
 }
